@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import './Login.css';
 
-class App extends Component {
+class Login extends Component {
   render() {
     return (
-      <h1>Login Page</h1>
+      <div className="login">
+        <h1>Login Page</h1>
+      </div>
     );
   }
 }
 
-export default App;
+export default Login;
