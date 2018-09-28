@@ -1,0 +1,31 @@
+.action {
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content max-content auto;
+  padding: 8px 18px;
+  background: #F6F8FA;
+  border: 1px solid #D1D5DA;
+  color: #586069;
+
+  & > .time {
+
+    & > a {
+      font-weight: lighter;
+      font-size: 12px;
+    }
+    text-align: right;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & > * {
+    margin-right: 6px;
+  }
+}
