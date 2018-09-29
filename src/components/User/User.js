@@ -5,28 +5,29 @@ import Action from '../Action/Action';
 
 import InfoPage from '../InfoPage/InfoPage';
 
-import './User.css';
+import styles from './User.module.css';
+import '../InfoPage/InfoPage.module.css';
 
 class User extends InfoPage {
   render() {
     return (
-      <div className="user">
-        <div className="general">
-          <div className="photo"><img src={"http://robohash.org/" + this.state.username + "?bgset=bg2"} /></div>
-          <div className="name">{this.props.match.url}</div>
-          <div className="gap"></div>
-          <div className="desc">Description of account</div>
-          <div className="buttons">
-            <div className="button">
+      <div className={`${styles.user}`}>
+        <div className={`${styles.general}`}>
+          <div className={`${styles.photo}`}><img src={"http://robohash.org/" + this.state.username + "?bgset=bg2"} /></div>
+          <div className={`${styles.name}`}>{this.props.match.url}</div>
+          <div className={`${styles.gap}`}></div>
+          <div className={`${styles.desc}`}>Description of account</div>
+          <div className={`${styles.buttons}`}>
+            <div className={`${styles.button}`}>
               <MaterialIcon icon="folder" />
-              <span className="buttonText">Manage Keys</span>
+              <span className={`${styles.buttonText}`}>Manage Keys</span>
             </div>
           </div>
         </div>
-        <div className="tabs">
+        <div className={`${styles.tabs}`}>
           {this.generateTabs(["history", "keys"])}
         </div>
-        <div className="feed">
+        <div className={`${styles.feed}`}>
           {this.generateFeed(["history", "keys"])}
         </div>
       </div>

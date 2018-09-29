@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import './Login.css';
+import styles from './Login.module.css';
 
 class Login extends Component {
   render() {
     return (
-      <div className="login">
+      <div className={`${styles.login}`}>
         <h1>Login Page</h1>
       </div>
     );

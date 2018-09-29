@@ -85,27 +85,5 @@ div.key {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     margin-top: 16px;
-
-    .tab {
-      cursor: pointer;
-      font-size: 18px;
-      padding: 8px 24px;
-      text-transform: capitalize;
-
-      &.selected {
-        & > .underline {
-          width: 100%;
-        }
-      }
-
-      & > .underline {
-        transition: ease 0.1s;
-        margin: auto;
-        width: 0%;
-        margin-top: 2px;
-        height: 4px;
-        background: black;
-      }
-    }
   }
 }

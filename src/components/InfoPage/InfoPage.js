@@ -3,7 +3,9 @@ import MaterialIcon from 'material-icons-react';
 
 import Action from '../Action/Action';
 
-class Obj extends Component {
+import styles from './InfoPage.module.css';
+
+class InfoPage extends Component {
   constructor() {
     super();
 
@@ -26,16 +28,16 @@ class Obj extends Component {
     for (var i = 0; i < tabs.length; i++) {
       if (tabs[i] == this.state.selected) {
         tabsArray.push(
-          <span id={tabs[i]} className="tab selected" onClick={this.tabClicked}>
+          <span id={tabs[i]} className={`${styles.tab} + ${styles.selected}`} onClick={this.tabClicked}>
             {tabs[i]}
-            <div className="underline"></div>
+            <div className={`${styles.underline}`}></div>
           </span>
         )
       } else {
         tabsArray.push(
-          <span id={tabs[i]} className="tab" onClick={this.tabClicked}>
+          <span id={tabs[i]} className={`${styles.tab}`} onClick={this.tabClicked}>
             {tabs[i]}
-            <div className="underline"></div>
+            <div className={`${styles.underline}`}></div>
           </span>
         )
       }
@@ -49,7 +51,15 @@ class Obj extends Component {
     for (var i = 0; i < tabs.length; i++) {
       switch (tabs[i]) {
         case "history":
-          var content = <Action />
+          var content = [
+            <Action author={"ShonaLilly"} keyid={"80"} index={1} isLost={false} place={"Cupboard"} receiver={"EMatheson"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"80"} index={2} isLost={false} place={"Cupboard"} receiver={"ShonaLilly"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"11254"} index={1} isLost={false} place={"GREEN_ROOM_CB"} receiver={"ShonnaLilly"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"SK54"} index={1} isLost={false} place={"IDEAS_MASTER"} receiver={"ShonaLilly"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"PQ858"} index={1} isLost={false} place={"KITCHEN_CB"} receiver={"VDawod"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"D3108"} index={1} isLost={false} place={"N329"} receiver={"VDawod"} time={"4 hours ago"}/>,
+            <Action author={"ShonaLilly"} keyid={"D3062"} index={1} isLost={false} place={"N332"} receiver={"VDawod"} time={"4 hours ago"}/>,
+          ]
           break;
         case "keys":
           var content = ""
@@ -59,9 +69,7 @@ class Obj extends Component {
       }
       if (tabs[i] == this.state.selected) {
         feed.push(
-          <div className={"selected"}>
-            {content}
-            {content}
+          <div className={`${styles.selected}`}>
             {content}
           </div>
         );
@@ -75,4 +83,4 @@ class Obj extends Component {
   }
 }
 
-export default Obj;
+export default InfoPage;

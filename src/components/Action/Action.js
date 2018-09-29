@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
 
-import styles from './Action.css';
+import styles from './Action.module.css';
 
 class Action extends Component {
   constructor() {
@@ -10,24 +9,24 @@ class Action extends Component {
 
   render() {
     return (
-      <div className='action'>
-        <span className="name">
-          <a href="/user/ShonaLilly">ShonaLilly</a>
+      <div className={`${styles.action}`}>
+        <span className={`${styles.name}`}>
+          <a href="/user/ShonaLilly">{this.props.author}</a>
         </span>
-        <span className="plain">assigned</span>
-        <span className="key">
-          <a href="/key/0359(1)">key/0359(1)</a>
+        <span className={`${styles.plain}`}>assigned</span>
+        <span className={`${styles.key}`}>
+          <a href={"/key/" + this.props.keyid + "(" + this.props.index + ")"}>{"key/" + this.props.keyid}({this.props.index})</a>
         </span>
-        <span className="plain">as</span>
-        <span className="location">
-          <a href="">lost</a>
+        <span className={`${styles.plain}`}>to</span>
+        <span className={`${styles.located}`}>
+          <a href={"/user/" + this.props.receiver}>{this.props.receiver}</a> <a href={"/place/" + this.props.place}>({this.props.place})</a>
         </span>
-        <span className="time">
-          <a href="">4 hours ago</a>
+        <span className={`${styles.time}`}>
+          <a href="">{this.props.time}</a>
         </span>
       </div>
     );
   }
 }
 
-export default CSSModules(Action, styles);
+export default Action;

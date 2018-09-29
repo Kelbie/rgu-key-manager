@@ -7,43 +7,43 @@ import Action from '../Action/Action';
 
 import InfoPage from '../InfoPage/InfoPage';
 
-import './Key.css';
+import styles from './Key.module.css';
 
 class Key extends InfoPage {
   constructor() {
     super();
-    console.log(this.state);
   }
 
   componentWillMount() {
     var hash = sha256.create();
+    hash.update(this.props.match.params.keyid);
     var data = new Identicon(hash.hex(), 420).toString();
     this.setState({"identicon": data});
   }
 
   render() {
     return (
-      <div className="key">
-        <div className="general">
-          <div className="photo"><img width={420} height={420} src={"data:image/png;base64," + this.state.identicon} /></div>
-          <div className="name">{this.props.match.url}</div>
-          <div className="gap"></div>
-          <div className="desc">Description of account</div>
-          <div className="buttons">
-            <div className="button">
+      <div className={`${styles.key}`}>
+        <div className={`${styles.general}`}>
+          <div className={`${styles.photo}`}><img width={420} height={420} src={"data:image/png;base64," + this.state.identicon} /></div>
+          <div className={`${styles.name}`}>{this.props.match.url}</div>
+          <div className={`${styles.gap}`}></div>
+          <div className={`${styles.desc}`}>Description of key</div>
+          <div className={`${styles.buttons}`}>
+            <div className={`${styles.button}`}>
               <MaterialIcon icon="send" />
-              <span className="buttonText">Transfer</span>
+              <span className={`${styles.buttonText}`}>Transfer</span>
             </div>
-            <div className="button">
+            <div className={`${styles.button}`}>
               <MaterialIcon icon="warning" />
-              <span className="buttonText">Lost</span>
+              <span className={`${styles.buttonText}`}>Lost</span>
             </div>
           </div>
         </div>
-        <div className="tabs">
+        <div className={`${styles.tabs}`}>
           {this.generateTabs(["history"])}
         </div>
-        <div className="feed">
+        <div className={`${styles.feed}`}>
           {this.generateFeed(["history"])}
         </div>
       </div>
