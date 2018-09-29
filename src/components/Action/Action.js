@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 
-import './Action.css';
+import styles from './Action.css';
 
 class Action extends Component {
   constructor() {
@@ -9,13 +10,13 @@ class Action extends Component {
 
   render() {
     return (
-      <div className="action">
+      <div className='action'>
         <span className="name">
-          <a href="">ShonaLilly</a>
+          <a href="/user/ShonaLilly">ShonaLilly</a>
         </span>
         <span className="plain">assigned</span>
         <span className="key">
-          <a href="">key/0359</a>
+          <a href="/key/0359(1)">key/0359(1)</a>
         </span>
         <span className="plain">as</span>
         <span className="location">
@@ -29,4 +30,4 @@ class Action extends Component {
   }
 }
 
-export default Action;
+export default CSSModules(Action, styles);
