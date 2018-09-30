@@ -3,6 +3,7 @@ import MaterialIcon from 'material-icons-react';
 
 import Action from '../Action/Action';
 import KeyObject from '../KeyObject/KeyObject';
+import Button from '../Button/Button';
 
 import styles from './InfoPage.module.css';
 
@@ -84,6 +85,14 @@ class InfoPage extends Component {
     return feed;
   }
 
+  generateButtons(buttons) {
+    var buttonsHTML = [];
+    for (var i = 0; i < buttons.length; i++) {
+      buttonsHTML.push(<Button icon={this.props.buttons[i].icon} text={this.props.buttons[i].text}/>)
+    }
+    return buttonsHTML;
+  }
+
   render() {
     return (
       <div className={`${styles.page}`}>
@@ -93,14 +102,7 @@ class InfoPage extends Component {
           <div className={`${styles.gap}`}></div>
           <div className={`${styles.desc}`}>Description of account</div>
           <div className={`${styles.buttons}`}>
-            <div className={`${styles.button}`}>
-              <MaterialIcon icon="folder" />
-              <span className={`${styles.buttonText}`}>Manage Keys</span>
-            </div>
-            <div className={`${styles.button}`}>
-              <MaterialIcon icon="group_add" />
-              <span className={`${styles.buttonText}`}>Invite</span>
-            </div>
+            {this.generateButtons(this.props.buttons)}
           </div>
         </div>
         <div className={`${styles.tabs}`}>
