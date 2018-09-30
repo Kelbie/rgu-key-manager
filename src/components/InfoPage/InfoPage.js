@@ -9,7 +9,6 @@ import styles from './InfoPage.module.css';
 class InfoPage extends Component {
   constructor() {
     super();
-
     this.tabClicked = this.tabClicked.bind(this)
     this.generateTabs = this.generateTabs.bind(this)
     this.generateFeed = this.generateFeed.bind(this)
@@ -23,7 +22,8 @@ class InfoPage extends Component {
   }
 
   componentWillMount() {
-    this.setState(this.props.match.params);
+    console.log(this);
+    this.setState(this.props.routeParams.match.params);
   }
 
   generateTabs(tabs) {
@@ -76,12 +76,41 @@ class InfoPage extends Component {
           {content[tabs[i]]}
         </div>)
       } else {
-        feed.push(<div className={`${styles.deselected}`}>
+        feed.push(<div className={`${styles.deselected} ${styles[tabs[i]]}`}>
           {content[tabs[i]]}
         </div>)
       }
     }
     return feed;
+  }
+
+  render() {
+    return (
+      <div className={`${styles.page}`}>
+        <div className={`${styles.general}`}>
+          <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
+          <div className={`${styles.name}`}>{this.props.routeParams.match.url}</div>
+          <div className={`${styles.gap}`}></div>
+          <div className={`${styles.desc}`}>Description of account</div>
+          <div className={`${styles.buttons}`}>
+            <div className={`${styles.button}`}>
+              <MaterialIcon icon="folder" />
+              <span className={`${styles.buttonText}`}>Manage Keys</span>
+            </div>
+            <div className={`${styles.button}`}>
+              <MaterialIcon icon="group_add" />
+              <span className={`${styles.buttonText}`}>Invite</span>
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.tabs}`}>
+          {this.generateTabs(this.props.navigation)}
+        </div>
+        <div className={`${styles.feed}`}>
+          {this.generateFeed(this.props.navigation)}
+        </div>
+      </div>
+    );
   }
 }
 

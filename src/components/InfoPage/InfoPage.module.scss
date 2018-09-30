@@ -30,3 +30,107 @@
 .deselected {
   display: none !important;
 }
+
+
+.page {
+  margin: auto;
+  max-width: 800px;
+  min-height: 100vh;
+  padding: 32px;
+
+  .general {
+    display: grid;
+    grid-template: "photo name buttons"
+                   "gap   desc desc";
+    grid-template-columns: max-content max-content auto;
+    grid-column-gap: 12px;
+
+    .photo {
+      overflow: hidden;
+      grid-area: photo;
+      width: 64px;
+      height: 64px;
+      background: white;
+      border: 2px solid black;
+
+      &.user {
+        border-radius: 100%;
+      }
+
+      &.key {
+        border-radius: 0%;
+      }
+
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .name {
+      grid-area: name;
+      // Vertically Align text
+      display: flex;
+      align-items: center;
+      font-family: "Roboto Slab";
+      font-size: 24px;
+    }
+
+    .desc {
+      grid-area: desc;
+    }
+
+    .gap {
+      grid-area: gap;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      grid-area: buttons;
+
+      .button {
+        cursor: pointer;
+        display: inline-block;
+        margin-left: 4px;
+        margin-right: 4px;
+        padding: 8px;
+        color: #586069;
+        background: #F6F8FA;
+        border: 1px solid #D1D5DA;
+        border-radius: 8px;
+        width: max-content;
+
+        & > * {
+          display: inline-block;
+          font-size: 12px;
+          margin-left: 4px;
+          margin-right: 4px;
+          vertical-align: middle;
+        }
+
+        & > i {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .feed {
+    & > .history {
+      display: grid;
+      grid-row-gap: 8px;
+    }
+
+    & > .keys {
+      display: grid;
+      grid-row-gap: 24px;
+    }
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    margin-top: 16px;
+  }
+}

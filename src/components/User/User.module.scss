@@ -75,7 +75,7 @@
   }
 
   .feed {
-    & > * {
+    & > .action {
       display: grid;
       grid-row-gap: 8px;
     }
