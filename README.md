@@ -22,3 +22,7 @@ npm run watch-css & npm start
 7. To view the app go to http://localhost:3000/user/ShonaLilly 😎
 
 8. To stop running the server press `ctrl+c` in the terminal.
+
+## REST API Specification
+
+View Specification [here]()
