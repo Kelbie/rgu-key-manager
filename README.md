@@ -23,6 +23,10 @@ npm run watch-css & npm start
 
 8. To stop running the server press `ctrl+c` in the terminal.
 
+## Contributing
+
+When making contributions try and make them in the form of pull requests, and if you think the changes should be reviewed by someone before being merged then don't merge it until someone else has reviewed it.
+
 ## REST API Specification
 
 View Specification [here](/RESTAPISpec/README.md)
