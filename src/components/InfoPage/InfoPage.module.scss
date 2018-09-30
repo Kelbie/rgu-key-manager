@@ -61,6 +61,17 @@
         border-radius: 0%;
       }
 
+      &.place {
+        border: 0px;
+        background: black;
+        clip-path: polygon(50% 0, 0 100%, 100% 100%);
+
+        & > img {
+          transform: scale(0.9) translateY(1.5px);
+          clip-path: polygon(50% 0, 0 100%, 100% 100%);
+        }
+      }
+
       & > img {
         width: 100%;
         height: 100%;

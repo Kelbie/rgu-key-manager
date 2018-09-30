@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import User from './components/User/User';
 import Key from './components/Key/Key';
+import Place from './components/Place/Place';
 
 import logo from './logo.svg';
 import './App.css';
@@ -15,6 +16,7 @@ class App extends Component {
         <Switch>
           <Route path="/user/:username" component={User}/>
           <Route path="/key/:keyid" component={Key}/>
+          <Route path="/place/:place" component={Place}/>
           <Route path="/login" component={Login} />
         </Switch>
       </Router>

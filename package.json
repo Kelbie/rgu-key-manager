@@ -11,7 +11,8 @@
     "react-css-modules": "^4.7.7",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.0-next.2150693d"
+    "react-scripts": "2.0.0-next.2150693d",
+    "trianglify": "^1.2.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
