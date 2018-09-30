@@ -7,7 +7,7 @@ Using [this](https://github.com/jamescooke/restapidocs/blob/master/examples/READ
 Open endpoints require no Authentication.
 
 - [Register](): `POST /register/`
-- [Login](/login): `POST /login/`
+- [Login](login.md): `POST /login/`
 
 ## Endpoints that require Authentication
 
