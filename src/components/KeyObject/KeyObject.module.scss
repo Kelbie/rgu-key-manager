@@ -1,0 +1,40 @@
+.keyObject {
+  display: grid;
+  grid-template-columns: max-content;
+  width: max-content;
+  grid-row-gap: 0px;
+  padding: 16px;
+  text-align: center;
+  font-family: "Roboto";
+  background: #F6F8FA;
+  border: 1px solid #D1D5DA;
+  cursor: pointer;
+
+  img {
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    border: 1px solid black;
+  }
+
+  .label {
+    color: #C7CACE;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .value {
+    font-size: 18px;
+    color: #393939;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
