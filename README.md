@@ -25,4 +25,4 @@ npm run watch-css & npm start
 
 ## REST API Specification
 
-View Specification [here]()
+View Specification [here](/RESTAPISpec/README.md)
