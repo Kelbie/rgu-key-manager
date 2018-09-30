@@ -22,6 +22,10 @@ class User extends InfoPage {
               <MaterialIcon icon="folder" />
               <span className={`${styles.buttonText}`}>Manage Keys</span>
             </div>
+            <div className={`${styles.button}`}>
+              <MaterialIcon icon="group_add" />
+              <span className={`${styles.buttonText}`}>Invite</span>
+            </div>
           </div>
         </div>
         <div className={`${styles.tabs}`}>
