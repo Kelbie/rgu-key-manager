@@ -5,7 +5,7 @@ import Action from '../Action/Action';
 
 import InfoPage from '../InfoPage/InfoPage';
 
-import styles from './User.module.css';
+import styles from './User.module.scss';
 
 class User extends Component {
   constructor() {

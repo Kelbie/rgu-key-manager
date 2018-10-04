@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 
-import styles from './Button.module.css';
+import styles from './Button.module.scss';
 
 class Button extends Component {
   constructor() {

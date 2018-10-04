@@ -5,7 +5,7 @@ import Action from '../Action/Action';
 import KeyObject from '../KeyObject/KeyObject';
 import Button from '../Button/Button';
 
-import styles from './InfoPage.module.css';
+import styles from './InfoPage.module.scss';
 
 class InfoPage extends Component {
   constructor() {

@@ -7,7 +7,7 @@ import Action from '../Action/Action';
 
 import InfoPage from '../InfoPage/InfoPage';
 
-import styles from './Key.module.css';
+import styles from './Key.module.scss';
 
 class Key extends Component {
   constructor() {

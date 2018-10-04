@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import styles from './Action.module.css';
+import styles from './Action.module.scss';
 
 class Action extends Component {
   constructor() {

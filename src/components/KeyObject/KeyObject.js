@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import sha256 from 'js-sha256';
 
-import styles from './KeyObject.module.css';
+import styles from './KeyObject.module.scss';
 
 class KeyObject extends Component {
   constructor() {

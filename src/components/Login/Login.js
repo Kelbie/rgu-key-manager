@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import styles from './Login.module.css';
+import styles from './Login.module.scss';
 
 class Login extends Component {
   render() {

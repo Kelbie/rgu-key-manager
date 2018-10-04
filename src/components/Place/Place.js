@@ -6,7 +6,7 @@ import Action from '../Action/Action';
 
 import InfoPage from '../InfoPage/InfoPage';
 
-import styles from './Place.module.css';
+import styles from './Place.module.scss';
 
 class Place extends Component {
   constructor() {
