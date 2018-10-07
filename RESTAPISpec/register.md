@@ -1,8 +1,8 @@
-# Login
+# Register
 
-Used to collect a Token for a registered User.
+Used to generate account for a user.
 
-**URL** : `/login/`
+**URL** : `/register/`
 
 **Method** : `POST`
 
@@ -12,8 +12,10 @@ Used to collect a Token for a registered User.
 
 ```
 {
-  "username": "[valid username]",
-  "password" "[password in plain text]"
+  "email": "[valid email address]",
+  "username": "[unique username]",
+  "password" "[password in plain text]",
+  "password_repeat": "[repeat 'password']"
 }
 ```
 
@@ -21,8 +23,10 @@ Used to collect a Token for a registered User.
 
 ```
 {
-  "username": ShonaLilly,
-  "password": "noonewillguessthis"
+  "username": ShonaLilly@rgu.ac.uk,
+  "username": "ShonaLilly",
+  "password": "noonewillguessthis",
+  "password_repeat": "noonewillguessthis"
 }
 ```
 
