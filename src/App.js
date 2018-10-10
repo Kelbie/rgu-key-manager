@@ -18,6 +18,7 @@ class App extends Component {
           <Route path="/key/:keyid" component={Key}/>
           <Route path="/place/:place" component={Place}/>
           <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard}/>
         </Switch>
       </Router>
     </div>);
