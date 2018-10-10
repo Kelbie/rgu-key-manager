@@ -18,18 +18,24 @@ class Dashboard extends Component {
       <div className={`${styles.Dashboard}`}>
       <Tabs>
         <TabList>
-          <Tab>Title 1</Tab>
-          <Tab>Title 2</Tab>
+          <Tab>Home Page</Tab>
+          <Tab>Manage Users</Tab>
+          <Tab>Key Map</Tab>
         </TabList>
 
       <TabPanel>
-        <h2>Any content 1</h2>
+        <h2>Home Page things go here</h2>
       </TabPanel>
+
       <TabPanel>
-        <h2>Any content 2</h2>
+        <h2>Manage Users things go here</h2>
+      </TabPanel>
+
+      <TabPanel>
+        <h2>Key Map goes here</h2>
       </TabPanel>
     </Tabs>
-      </div>
+    </div>
     );
   }
 
