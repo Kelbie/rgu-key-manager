@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Dashboard.css';
+import './Dashboard.module.scss';
 
 import { withStyles } from '@material-ui/core/styles';
 

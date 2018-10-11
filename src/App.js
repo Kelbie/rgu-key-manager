@@ -8,11 +8,8 @@ import Key from './components/Key/Key';
 import Place from './components/Place/Place';
 
 // Graphical components
-import AppBar from './components/AppBar/AppBar'
-
-import logo from './logo.svg';
-import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
+import './App.module.scss';
 
 class App extends Component {
   render() {
