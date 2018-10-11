@@ -1,4 +1,6 @@
 .button {
+  position: relative;
+  transition: 0.2s ease;
   cursor: pointer;
   display: inline-block;
   margin-left: 4px;
@@ -9,6 +11,35 @@
   border: 1px solid #D1D5DA;
   border-radius: 8px;
   width: max-content;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  &:hover {
+    transform: translateY(-4px);
+
+    &:before {
+      // adds hitbox below link so when it moves up it doesn't cause any glitches
+      transform: translateY(4px);
+      position:absolute;
+      content:'';
+      top: 0px;
+      right: 0px;
+      left: 0px;
+      bottom:-1px;
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+
+
+  .buttonText {/**/}
 
   & > * {
     display: inline-block;

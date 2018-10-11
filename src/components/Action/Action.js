@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import CSSModules from 'react-css-modules';
 import styles from './Action.module.scss';
 
 class Action extends Component {
@@ -9,19 +9,19 @@ class Action extends Component {
 
   render() {
     return (
-      <div className={`${styles.action}`}>
-        <span className={`${styles.name}`}>
+      <div styleName="action">
+        <span styleName="name">
           <a href="/user/ShonaLilly">{this.props.author}</a>
         </span>
-        <span className={`${styles.plain}`}>assigned</span>
-        <span className={`${styles.key}`}>
+        <span styleName="plain">assigned</span>
+        <span styleName="key">
           <a href={"/key/" + this.props.keyid + "(" + this.props.index + ")"}>{"key/" + this.props.keyid}({this.props.index})</a>
         </span>
-        <span className={`${styles.plain}`}>to</span>
-        <span className={`${styles.located}`}>
+        <span styleName="plain">to</span>
+        <span styleName="located">
           <a href={"/user/" + this.props.receiver}>{this.props.receiver}</a> <a href={"/place/" + this.props.place}>({this.props.place})</a>
         </span>
-        <span className={`${styles.time}`}>
+        <span styleName="time">
           <a href="">{this.props.time}</a>
         </span>
       </div>
@@ -29,4 +29,4 @@ class Action extends Component {
   }
 }
 
-export default Action;
+export default CSSModules(Action, styles);

@@ -1,18 +1,25 @@
 .action {
   display: grid;
-  grid-template-columns: max-content max-content max-content max-content max-content auto;
+  grid-template-columns: max-content max-content max-content max-content max-content minmax(max-content, auto);
   padding: 8px 18px;
   background: #F6F8FA;
   border: 1px solid #D1D5DA;
   color: #586069;
+  font-size: 12px;
+
+
+
+  & > .name {/**/}
+  & > .plain {/**/}
+  & > .key {/**/}
+  & > .located {/**/}
 
   & > .time {
-
+    text-align: right;
     & > a {
       font-weight: lighter;
-      font-size: 12px;
     }
-    text-align: right;
+
   }
 
   a {

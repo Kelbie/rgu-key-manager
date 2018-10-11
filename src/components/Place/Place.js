@@ -22,7 +22,7 @@ class Place extends Component {
     return (
       <InfoPage type={"place"}
                 routeParams={this.props}
-                navigation={["history", "keys"]}
+                navigation={["history", "spares", "stored"]}
                 image={<img width={420} height={420} src={ this.state.pattern } />}
                 buttons={[{text: "Manage Keys", icon: "folder"}]}
                 />
