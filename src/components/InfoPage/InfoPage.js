@@ -57,6 +57,7 @@ class InfoPage extends Component {
         <Action author={"ShonaLilly"} keyid={"PQ858"} index={1} isLost={false} place={"KITCHEN_CB"} receiver={"VDawod"} time={"4 hours ago"}/>,
         <Action author={"ShonaLilly"} keyid={"D3108"} index={1} isLost={false} place={"N329"} receiver={"VDawod"} time={"4 hours ago"}/>,
         <Action author={"ShonaLilly"} keyid={"D3062"} index={1} isLost={false} place={"N332"} receiver={"VDawod"} time={"4 hours ago"}/>
+         
       ],
       keys: [
         <KeyObject/>,

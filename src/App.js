@@ -5,6 +5,7 @@ import Login from './components/Login/Login';
 import User from './components/User/User';
 import Key from './components/Key/Key';
 import Place from './components/Place/Place';
+import Dashboard from './components/Dashboard/Dashboard';
 
 import logo from './logo.svg';
 import './App.css';
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/key/:keyid" component={Key}/>
           <Route path="/place/:place" component={Place}/>
           <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard}/>
         </Switch>
       </Router>
     </div>);
