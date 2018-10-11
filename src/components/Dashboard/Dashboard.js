@@ -4,8 +4,6 @@ import './Dashboard.scss';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import PropTypes from 'prop-types';
-
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -24,10 +22,6 @@ import PeopleIcon from '@material-ui/icons/Person';
 import UsersIcon from '@material-ui/icons/SupervisorAccount'
 import MapIcon from '@material-ui/icons/LocationOn';
 import ListItemText from '@material-ui/core/ListItemText';
-
-const styles = theme => ({
-    toolbar: theme.mixins.toolbar,
-});
 
 class Dashboard extends Component {
   constructor() {
@@ -79,8 +73,4 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
-    classes : PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(Dashboard);
+export default Dashboard;
