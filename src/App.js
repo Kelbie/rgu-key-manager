@@ -29,7 +29,7 @@ class App extends Component {
           </Switch>
         </Router>
 
-        <AppBar></AppBar>
+        <Dashboard/>
       </div>
     );
   }
