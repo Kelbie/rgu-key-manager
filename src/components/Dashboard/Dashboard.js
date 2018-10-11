@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import './Dashboard.scss';
 
-import { withStyles } from '@material-ui/core/styles';
-
 // Header components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,15 +28,16 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 class Dashboard extends Component {
-    constructor() {
-        super();
-    }
 
     state = {
-        open: true,
+        open: false,
     };
 
-    handleClick = () => {
+    handleKeysClick = () => {
+        this.setState(state => ({ open: !state.open }));
+    };
+
+    handleFobsClick = () => {
         this.setState(state => ({ open: !state.open }));
     };
 
@@ -61,40 +60,53 @@ class Dashboard extends Component {
                     <List>
                         <ListItem button>
                             <ListItemIcon><UsersIcon/></ListItemIcon>
-                            <ListItemText primary="MANAGE USERS"/>
+                            <ListItemText primary="Manage users"/>
                         </ListItem>
                         <ListItem button>
                             <ListItemIcon><MapIcon/></ListItemIcon>
-                            <ListItemText primary="KEY MAP"/>
+                            <ListItemText primary="Keys map"/>
                         </ListItem>
                     </List>
                     <Divider/>
                     <List subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}>
                         {/* Keys collapse list */}
-                        <ListItem button onClick={this.handleClick}>
+                        <ListItem button onClick={this.handleKeysClick}>
                             <ListItemIcon><KeyIcon/></ListItemIcon>
-                            <ListItemText inset primary="KEYS"/>
+                            <ListItemText inset primary="Keys"/>
                             {this.state.open ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
                         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
-                                <ListItem button className="nested-item">
-                                    <ListItemText inset primary="ALL KEYS" />
+                                <ListItem button className="nestedItem">
+                                    <ListItemText inset primary="All keys" />
                                 </ListItem>
-                                <ListItem button className="nested-item">
-                                    <ListItemText inset primary="LOST KEYS" />
+                                <ListItem button className="nestedItem">
+                                    <ListItemText inset primary="Lost Keys" />
                                 </ListItem>
                             </List>
                         </Collapse>
 
-
-                        <ListItem button>
+                        {/* Fobs collapse list */}  
+                        <ListItem button onClick={this.handleFobsClick}>
                             <ListItemIcon><FobIcon/></ListItemIcon>
-                            <ListItemText primary="FOBS"/>
+                            <ListItemText inset primary="Fobs"/>
+                            {this.state.open ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
+                        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                                <ListItem button className="nestedItem">
+                                    <ListItemText inset primary="All fobs" />
+                                </ListItem>
+                                <ListItem button className="nestedItem">
+                                    <ListItemText inset primary="Lost fobs" />
+                                </ListItem>
+                            </List>
+                        </Collapse>
+
+                        {/* People item list */}  
                         <ListItem button>
                             <ListItemIcon><PeopleIcon/></ListItemIcon>
-                            <ListItemText primary="PEOPLE"/>
+                            <ListItemText primary="People"/>
                         </ListItem>
                     </List>
                 </Drawer>
