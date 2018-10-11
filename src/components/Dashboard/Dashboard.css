@@ -1,0 +1,26 @@
+.root {
+    flex-grow: 1;
+    position: relative;
+}
+.app-bar {
+    position: fixed;
+    z-index: 10;
+}
+.grow {
+    flex-grow: 1;
+}
+.menuButton {
+    margin-left: -12;
+    margin-right: 20;
+}
+.loginButton {
+    float: right;
+}
+.drawerPaper {
+    position: relative;
+    z-index: 1;
+    width: 240px;
+}
+.toolbar {
+    height: 60px;
+}
