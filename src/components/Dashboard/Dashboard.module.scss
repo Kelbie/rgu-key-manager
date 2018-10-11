@@ -4,7 +4,7 @@
 }
 .app-bar {
     position: fixed;
-    z-index: 10;
+    z-index: 10000;
 }
 .grow {
     flex-grow: 1;
@@ -16,7 +16,7 @@
 .loginButton {
     float: right;
 }
-.drawerPaper {
+.drawer-paper {
     position: relative;
     z-index: 1;
     width: 240px;

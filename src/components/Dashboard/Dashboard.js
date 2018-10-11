@@ -48,7 +48,7 @@ class Dashboard extends Component {
                     <Button className="loginButton" color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" className="drawerPaper">
+            <Drawer variant="permanent" className="drawer-paper">
                 <div className="toolbar"/>
                 <List>
                     <ListItem button>
