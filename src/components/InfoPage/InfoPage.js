@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react';
+import CSSModules from 'react-css-modules';
 
 import Action from '../Action/Action';
 import KeyObject from '../KeyObject/KeyObject';
@@ -33,12 +34,12 @@ class InfoPage extends Component {
       if (tabs[i] == this.state.selected) {
         tabsArray.push(<span id={tabs[i]} className={`${styles.tab} + ${styles.selected}`} onClick={this.tabClicked}>
           {tabs[i]}
-          <div className={`${styles.underline}`}></div>
+          <div styleName="underline"></div>
         </span>)
       } else {
-        tabsArray.push(<span id={tabs[i]} className={`${styles.tab}`} onClick={this.tabClicked}>
+        tabsArray.push(<span id={tabs[i]} styleName="tab" onClick={this.tabClicked}>
           {tabs[i]}
-          <div className={`${styles.underline}`}></div>
+          <div styleName="underline"></div>
         </span>)
       }
     }
@@ -59,6 +60,17 @@ class InfoPage extends Component {
         <Action author={"ShonaLilly"} keyid={"D3062"} index={1} isLost={false} place={"N332"} receiver={"VDawod"} time={"4 hours ago"}/>
       ],
       keys: [
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>,
+        <KeyObject/>
+      ],
+      spares: [
         <KeyObject/>,
         <KeyObject/>,
         <KeyObject/>,
@@ -95,20 +107,20 @@ class InfoPage extends Component {
 
   render() {
     return (
-      <div className={`${styles.page}`}>
-        <div className={`${styles.general}`}>
+      <div styleName="page">
+        <div styleName="general">
           <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
-          <div className={`${styles.name}`}>{this.props.routeParams.match.url}</div>
-          <div className={`${styles.gap}`}></div>
-          <div className={`${styles.desc}`}>Description of account</div>
-          <div className={`${styles.buttons}`}>
+          <div styleName="name">{this.props.routeParams.match.url}</div>
+          <div styleName="gap"></div>
+          <div styleName="desc">Description of account</div>
+          <div styleName="buttons">
             {this.generateButtons(this.props.buttons)}
           </div>
         </div>
-        <div className={`${styles.tabs}`}>
+        <div styleName="tabs">
           {this.generateTabs(this.props.navigation)}
         </div>
-        <div className={`${styles.feed}`}>
+        <div styleName="feed">
           {this.generateFeed(this.props.navigation)}
         </div>
       </div>
@@ -116,4 +128,4 @@ class InfoPage extends Component {
   }
 }
 
-export default InfoPage;
+export default CSSModules(InfoPage, styles);

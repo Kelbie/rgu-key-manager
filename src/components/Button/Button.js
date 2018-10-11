@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
+import CSSModules from 'react-css-modules';
 
 import styles from './Button.module.scss';
 
@@ -10,12 +11,12 @@ class Button extends Component {
 
   render() {
     return (
-      <div className={`${styles.button}`}>
+      <div styleName="button">
         <MaterialIcon icon={this.props.icon} />
-        <span className={`${styles.buttonText}`}>{this.props.text}</span>
+        <span styleName="buttonText">{this.props.text}</span>
       </div>
     );
   }
 }
 
-export default Button;
+export default CSSModules(Button, styles);

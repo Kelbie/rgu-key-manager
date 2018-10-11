@@ -1,8 +1,4 @@
 .keyObject {
-  display: grid;
-  grid-template-columns: max-content;
-  width: max-content;
-  grid-row-gap: 0px;
   padding: 16px;
   text-align: center;
   font-family: "Roboto";
@@ -12,20 +8,20 @@
 
   img {
     margin: auto;
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     border: 1px solid black;
   }
 
   .label {
-    color: #C7CACE;
+    color: #babcbe;
     margin-top: 6px;
     font-size: 12px;
     font-weight: bold;
   }
 
   .value {
-    font-size: 18px;
+    font-size: 12px;
     color: #393939;
 
     a {
