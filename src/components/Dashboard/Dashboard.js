@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './AppBar.css';
+import './Dashboard.css';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -29,7 +29,7 @@ const styles = theme => ({
     toolbar: theme.mixins.toolbar,
 });
 
-class mAppBar extends Component {
+class Dashboard extends Component {
   constructor() {
     super();
   }
@@ -79,7 +79,7 @@ class mAppBar extends Component {
   }
 }
 
-mAppBar.propTypes = {
+Dashboard.propTypes = {
     classes : PropTypes.object.isRequired,
 }
 
