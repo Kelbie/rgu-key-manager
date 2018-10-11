@@ -4,7 +4,7 @@
 }
 .app-bar {
     position: fixed;
-    z-index: 10000;
+    z-index: 2;
 }
 .grow {
     flex-grow: 1;
@@ -17,7 +17,7 @@
     float: right;
 }
 .drawer-paper {
-    position: relative;
+    position: fixed;
     z-index: 1;
     width: 240px;
 }

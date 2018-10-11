@@ -26,7 +26,7 @@ class App extends Component {
           </Switch>
         </Router>
 
-        <Dashboard/>
+        <Dashboard></Dashboard>
       </div>
     );
   }
