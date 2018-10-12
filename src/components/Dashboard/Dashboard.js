@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
 import './Dashboard.scss';
+import logo from '../../rgu-logo.png';
 
 // Header components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
 // Drawer components
 import Drawer from '@material-ui/core/Drawer';
@@ -21,6 +20,7 @@ import FobIcon from '@material-ui/icons/Nfc'
 import PeopleIcon from '@material-ui/icons/Person';
 import UsersIcon from '@material-ui/icons/SupervisorAccount'
 import MapIcon from '@material-ui/icons/LocationOn';
+import HomeIcon from '@material-ui/icons/Home';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -29,7 +29,6 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 
 class Dashboard extends Component {
 
-    // Collapse iten state
     state = {
         openKey: false,
         openFob: false,
@@ -46,18 +45,20 @@ class Dashboard extends Component {
             <div className="root">
                 <AppBar className="app-bar">
                     <Toolbar>
-                        <IconButton className="menuButton" color="inherit" aria-label="Menu">
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="title" color="inherit" className="grow">
+                        <img className="logo" src={logo}/>
+                        <Typography button inset variant="title" color="inherit" className="grow">
                             RGU Keys Manager
                         </Typography>
                         <Button className="loginButton" color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" className="drawer-paper">
-                    <div className="toolbar"/>
+                    <Toolbar/>
                     <List>
+                        <ListItem button>
+                            <ListItemIcon><HomeIcon/></ListItemIcon>
+                            <ListItemText primary="Home"/>
+                        </ListItem>
                         <ListItem button>
                             <ListItemIcon><UsersIcon/></ListItemIcon>
                             <ListItemText primary="Manage users"/>
