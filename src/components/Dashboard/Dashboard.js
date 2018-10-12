@@ -98,6 +98,10 @@ class Dashboard extends Component {
                         </ListItem>
                     </List>
                 </Drawer>
+                <main className="content">
+                  <div className="padding"/>
+                  {this.props.content}
+                </main>
             </div>
         );
     }
