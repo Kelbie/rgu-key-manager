@@ -6,6 +6,10 @@
     position: fixed;
     z-index: 2;
 }
+.logo {
+    height: 30px;
+    padding-right: 10px;
+}
 .grow {
     flex-grow: 1;
 }
@@ -21,8 +25,8 @@
     z-index: 1;
     width: 240px;
 }
-.toolbar {
-    height: 60px;
+.drawerClose {
+    overflow-x: hidden;
 }
 .nestedItem ListItemText{
     left: 20px;
