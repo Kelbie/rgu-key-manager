@@ -7,7 +7,16 @@ import logo from '../../rgu-logo.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import IconFace from '@material-ui/icons/Face';
+import Chip from '@material-ui/core/Chip'
+import Avatar from '@material-ui/core/Avatar'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import Button from '@material-ui/core/Button'
+
 
 // Drawer components
 import Drawer from '@material-ui/core/Drawer';
@@ -21,6 +30,7 @@ import PeopleIcon from '@material-ui/icons/Person';
 import UsersIcon from '@material-ui/icons/SupervisorAccount'
 import MapIcon from '@material-ui/icons/LocationOn';
 import HomeIcon from '@material-ui/icons/Home';
+import AboutIcon from '@material-ui/icons/Info';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -32,6 +42,8 @@ class Dashboard extends Component {
     state = {
         openKey: false,
         openFob: false,
+        openLogoutDialog: false,
+        auth: true,
     };
     handleKeyClick = () => {
         this.setState(state => ({ openKey: !state.openKey }));
@@ -39,8 +51,16 @@ class Dashboard extends Component {
     handleFobClick = () => {
         this.setState(state => ({ openFob: !state.openFob }));
     };
+    handleLogoutDialogClick = () => {
+        this.setState(state => ({ openLogoutDialog: !state.openLogoutDialog }));
+    };
+    handleLogout = () => {
+        alert('You are disconnected');
+        this.handleLogoutDialogClick();
+    };
 
     render() {
+        const { auth } = this.state;
         return (
             <div className="root">
                 <AppBar className="app-bar">
@@ -49,13 +69,40 @@ class Dashboard extends Component {
                         <Typography button inset variant="title" color="inherit" className="grow">
                             RGU Keys Manager
                         </Typography>
-                        <Button className="loginButton" color="inherit">Login</Button>
+                        {auth && (
+                            <div>
+                                <Chip
+                                    avatar={<Avatar><IconFace/></Avatar>}
+                                    label="User name"
+                                    onDelete={this.handleLogoutDialogClick}
+                                    className="account-chip}"/>
+                                <Dialog
+                                        open={this.state.openLogoutDialog}
+                                        aria-labelledby="logout-dialog-title"
+                                        aria-describedby="logout-dialog-description">
+                                    <DialogTitle id="logout-dialog-title">{"Logout"}</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText id="logout-dialog-description">
+                                            Are you sure to logout ?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={this.handleLogoutDialogClick} color="primary" autoFocus>
+                                            Back
+                                        </Button>
+                                        <Button onClick={this.handleLogout} color="secondary">
+                                            Logout
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
+                        )}
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" className="drawer-paper">
                     <Toolbar/>
                     <List>
-                        <ListItem button>
+                        <ListItem button selected>
                             <ListItemIcon><HomeIcon/></ListItemIcon>
                             <ListItemText primary="Home"/>
                         </ListItem>
@@ -108,6 +155,13 @@ class Dashboard extends Component {
                         <ListItem button>
                             <ListItemIcon><PeopleIcon/></ListItemIcon>
                             <ListItemText primary="People"/>
+                        </ListItem>
+                    </List>
+                    <Divider/>
+                    <List className="about-item">
+                        <ListItem button>
+                            <ListItemIcon><AboutIcon/></ListItemIcon>
+                            <ListItemText primary="About"/>
                         </ListItem>
                     </List>
                 </Drawer>
