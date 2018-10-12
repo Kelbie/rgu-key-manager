@@ -29,16 +29,16 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 
 class Dashboard extends Component {
 
+    // Collapse iten state
     state = {
-        open: false,
+        openKey: false,
+        openFob: false,
     };
-
-    handleKeysClick = () => {
-        this.setState(state => ({ open: !state.open }));
+    handleKeyClick = () => {
+        this.setState(state => ({ openKey: !state.openKey }));
     };
-
-    handleFobsClick = () => {
-        this.setState(state => ({ open: !state.open }));
+    handleFobClick = () => {
+        this.setState(state => ({ openFob: !state.openFob }));
     };
 
     render() {
@@ -68,14 +68,14 @@ class Dashboard extends Component {
                         </ListItem>
                     </List>
                     <Divider/>
-                    <List subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}>
+                    <List subheader={<ListSubheader component="div">Keys managment</ListSubheader>}>
                         {/* Keys collapse list */}
-                        <ListItem button onClick={this.handleKeysClick}>
+                        <ListItem button onClick={this.handleKeyClick}>
                             <ListItemIcon><KeyIcon/></ListItemIcon>
                             <ListItemText inset primary="Keys"/>
-                            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                            {this.state.openKey ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
-                        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                        <Collapse in={this.state.openKey} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
                                 <ListItem button className="nestedItem">
                                     <ListItemText inset primary="All keys" />
@@ -87,12 +87,12 @@ class Dashboard extends Component {
                         </Collapse>
 
                         {/* Fobs collapse list */}  
-                        <ListItem button onClick={this.handleFobsClick}>
+                        <ListItem button onClick={this.handleFobClick}>
                             <ListItemIcon><FobIcon/></ListItemIcon>
                             <ListItemText inset primary="Fobs"/>
-                            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                            {this.state.openFob ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
-                        <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                        <Collapse in={this.state.openFob} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
                                 <ListItem button className="nestedItem">
                                     <ListItemText inset primary="All fobs" />
