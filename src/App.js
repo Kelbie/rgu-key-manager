@@ -15,18 +15,22 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-        <Router>
-          <Switch>
-            <Route path="/user/:username" component={User}/>
-            <Route path="/key/:keyid" component={Key}/>
-            <Route path="/place/:place" component={Place}/>
-            <Route path="/login" component={Login} />
-          </Switch>
-        </Router>
+        <Dashboard
+          content={<>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+            <Router>
+              <Switch>
+                <Route path="/user/:username" component={User}/>
+                <Route path="/key/:keyid" component={Key}/>
+                <Route path="/place/:place" component={Place}/>
+                <Route path="/login" component={Login} />
+              </Switch>
+            </Router>
+            </>
+          }
+          />
 
-        <Dashboard></Dashboard>
       </div>
     );
   }
