@@ -10,6 +10,7 @@ import Place from './components/Place/Place';
 // Graphical components
 import Dashboard from './components/Dashboard/Dashboard';
 import './App.module.scss';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
   render() {
@@ -26,7 +27,8 @@ class App extends Component {
           </Switch>
         </Router>
 
-        <Dashboard></Dashboard>
+        <CssBaseline/>
+        <Dashboard/>
       </div>
     );
   }
