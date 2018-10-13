@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
+import './App.module.scss';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 // Router components
 import Login from './components/Login/Login';
 import User from './components/User/User';
@@ -8,11 +11,15 @@ import Key from './components/Key/Key';
 import Place from './components/Place/Place';
 
 // Graphical components
-import Dashboard from './components/Dashboard/Dashboard';
-import './App.module.scss';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './components/Header/Header';
+import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
 
 class App extends Component {
+
+  state = {
+      auth: false,
+  };
+
   render() {
     return (
       <div className="app">
@@ -28,10 +35,9 @@ class App extends Component {
         </Router>
 
         <CssBaseline/>
-        <Dashboard/>
+        <Header/>
+        <NavigationDrawer/>
       </div>
     );
   }
-}
-
-export default App;
+} export default App;
