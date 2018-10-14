@@ -21,7 +21,6 @@ class Header extends Component {
 
     state = {
         openLogoutDialog: false,
-        auth: true,
     };
 
     handleLogoutDialogClick = () => {
@@ -33,7 +32,6 @@ class Header extends Component {
     };
 
     render() {
-        const { auth } = this.state;
         return (
             <div className="root">
                 <AppBar className="app-bar">
@@ -42,34 +40,32 @@ class Header extends Component {
                         <Typography button inset variant="title" color="inherit" className="grow">
                             RGU Keys Manager
                         </Typography>
-                        {auth && (
-                            <div>
-                                <Chip
-                                    avatar={<Avatar><IconFace/></Avatar>}
-                                    label="User name"
-                                    onDelete={this.handleLogoutDialogClick}
-                                    className="account-chip}"/>
-                                <Dialog
-                                        open={this.state.openLogoutDialog}
-                                        aria-labelledby="logout-dialog-title"
-                                        aria-describedby="logout-dialog-description">
-                                    <DialogTitle id="logout-dialog-title">{"Logout"}</DialogTitle>
-                                    <DialogContent>
-                                        <DialogContentText id="logout-dialog-description">
-                                            Are you sure to logout ?
-                                        </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={this.handleLogoutDialogClick} color="primary" autoFocus>
-                                            Back
-                                        </Button>
-                                        <Button onClick={this.handleLogout} color="secondary">
-                                            Logout
-                                        </Button>
-                                    </DialogActions>
-                                </Dialog>
-                            </div>
-                        )}
+                        <div>
+                            <Chip
+                                avatar={<Avatar><IconFace/></Avatar>}
+                                label="User name"
+                                onDelete={this.handleLogoutDialogClick}
+                                className="account-chip}"/>
+                            <Dialog
+                                    open={this.state.openLogoutDialog}
+                                    aria-labelledby="logout-dialog-title"
+                                    aria-describedby="logout-dialog-description">
+                                <DialogTitle id="logout-dialog-title">{"Logout"}</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText id="logout-dialog-description">
+                                        Are you sure to logout ?
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={this.handleLogoutDialogClick} color="primary" autoFocus>
+                                        Back
+                                    </Button>
+                                    <Button onClick={this.handleLogout} color="secondary">
+                                        Logout
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
                     </Toolbar>
                 </AppBar>
             </div>
