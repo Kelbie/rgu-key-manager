@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './Header.scss';
-import RGULogo from '../../rgu-logo.png';
+import AppLogo from '../../app-logo.svg';
 
 // Header components
 import AppBar from '@material-ui/core/AppBar';
@@ -36,7 +36,7 @@ class Header extends Component {
             <div className="root">
                 <AppBar className="app-bar">
                     <Toolbar>
-                        <img className="logo" src={RGULogo}/>
+                        <img className="logo" src={AppLogo}/>
                         <Typography button inset variant="title" color="inherit" className="grow">
                             RGU Keys Manager
                         </Typography>
