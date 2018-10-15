@@ -15,10 +15,20 @@ import WelcomePage from './components/WelcomePage/WelcomePage';
 import Header from './components/Header/Header';
 import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
 
+// Change default theme color
+import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: purple[500] }, // Purple as primary color
+    secondary: { main: "#651fff" }, // Deeppurple as secondary color
+  },
+});
+
 class App extends Component {
 
   state = {
-      auth: false,
+      auth: true,
   };
 
   render() {
@@ -27,6 +37,7 @@ class App extends Component {
 
     return (
       <div className="app">
+        <MuiThemeProvider theme={theme}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
 
@@ -52,6 +63,7 @@ class App extends Component {
             <WelcomePage/>
           </div>
         )}
+        </MuiThemeProvider>
       </div>
     );
   }
