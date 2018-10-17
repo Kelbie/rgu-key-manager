@@ -6,6 +6,10 @@
     position: fixed;
     z-index: 2;
 }
+.logo {
+    height: 30px;
+    padding-right: 10px;
+}
 .grow {
     flex-grow: 1;
 }
@@ -15,15 +19,4 @@
 }
 .loginButton {
     float: right;
-}
-.drawer-paper {
-    position: fixed;
-    z-index: 1;
-    width: 240px;
-}
-.toolbar {
-    height: 60px;
-}
-.nested-item {
-    margin-left: 10px;
 }
