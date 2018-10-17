@@ -36,7 +36,7 @@ class Header extends Component {
             <div className="root">
                 <AppBar className="app-bar">
                     <Toolbar>
-                        <img className="logo" src={AppLogo}/>
+                        <img className="logo" src={"/app-logo.png"}/>
                         <Typography button inset variant="title" color="inherit" className="grow">
                             RGU Keys Manager
                         </Typography>
