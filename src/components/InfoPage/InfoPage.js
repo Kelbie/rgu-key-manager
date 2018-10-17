@@ -36,9 +36,6 @@ class InfoPage extends Component {
         <Tabs tabs={["Activity", "Keys"]} contents={[
             <ExpansionPanel />, <Table columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[{"keyId": "123(1)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(2)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(3)", "type": "Door Key", "duplicates": "3"}]}/>
           ]} />
-        <div styleName="feed">
-        </div>
-
       </div>
     );
   }
