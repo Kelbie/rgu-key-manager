@@ -5,7 +5,7 @@ import './App.module.scss';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Router components
-import Login from './components/Login/Login';
+import AboutPage from './components/AboutPage/AboutPage';
 import User from './components/User/User';
 import Key from './components/Key/Key';
 import Place from './components/Place/Place';
@@ -14,6 +14,7 @@ import WelcomePage from './components/WelcomePage/WelcomePage';
 // Graphical components
 import Header from './components/Header/Header';
 import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
+import Toolbar from '@material-ui/core/Toolbar';
 
 // Change default theme color
 import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
@@ -36,25 +37,26 @@ class App extends Component {
     const { auth } = this.state;
 
     return (
-      <div className="app">
-        <MuiThemeProvider theme={theme}>
+      <div className="app"> <MuiThemeProvider theme={theme}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
 
         {auth && (
           <div>
-            <Router>
-              <Switch>
-                <Route path="/user/:username" component={User}/>
-                <Route path="/key/:keyid" component={Key}/>
-                <Route path="/place/:place" component={Place}/>
-                <Route path="/login" component={Login} />
-              </Switch>
-            </Router>
-
             <CssBaseline/>
             <Header/>
             <NavigationDrawer/>
+            <main className="content">
+              <Toolbar/>
+              <Router>
+                <Switch>
+                  <Route path="/user/:username" component={User}/>
+                  <Route path="/key/:keyid" component={Key}/>
+                  <Route path="/place/:place" component={Place}/>
+                  <Route path="/about" component={AboutPage} />
+                </Switch>
+              </Router>
+            </main>
           </div>
         )}
         
@@ -63,8 +65,7 @@ class App extends Component {
             <WelcomePage/>
           </div>
         )}
-        </MuiThemeProvider>
-      </div>
+      </MuiThemeProvider></div>
     );
   }
 } export default App;
