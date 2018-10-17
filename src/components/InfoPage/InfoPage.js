@@ -16,7 +16,6 @@ import styles from './InfoPage.module.scss';
 class InfoPage extends Component {
   constructor() {
     super();
-
   }
 
   render() {

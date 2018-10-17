@@ -16,12 +16,39 @@
 
 ```
 npm install
-npm run watch-css & npm start
+npm start
 ```
 
 7. To view the app go to http://localhost:3000/user/ShonaLilly 😎
 
 8. To stop running the server press `ctrl+c` in the terminal.
+
+## Requirements
+
+**Functional Requirements:**
+
+**Non-Functional Requirements:**
+
+**Must...**
+
+- be able to see the movement of keys/fobs overtime.
+- be more obvious where keys are located & what rooms they open. (less ambiguity)
+- allow one or more keys to be added to the database at a time.
+
+**Should...**
+
+- be able to filter the results.
+- have a user friendly way to hand out spares if someone forgets a key.
+- enable the admin to give temporary permissions to other users.
+- should allow fobs to be deactivated.
+- have some kind of notification system.
+
+**Could...**
+
+- [use React Suspense to load data in a more user friendly way](https://medium.com/@ryanflorence/the-suspense-is-killing-redux-e888f9692430)
+- be able to import data from excel spreadsheets.
+
+**Won't...**
 
 ## Contributing
 
