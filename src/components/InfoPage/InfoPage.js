@@ -6,6 +6,7 @@ import Action from '../Action/Action';
 import KeyObject from '../KeyObject/KeyObject';
 import Button from '../Button/Button';
 
+import HeaderButton from '../Button/HeaderButton';
 import styles from './InfoPage.module.scss';
 
 class InfoPage extends Component {
@@ -114,7 +115,9 @@ class InfoPage extends Component {
           <div styleName="gap"></div>
           <div styleName="desc">Description of account</div>
           <div styleName="buttons">
-            {this.generateButtons(this.props.buttons)}
+            {this.props.buttons.map(button => {
+              return <HeaderButton text={button.text} icon={button.icon} />
+            })}
           </div>
         </div>
         <div styleName="tabs">

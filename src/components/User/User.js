@@ -18,8 +18,7 @@ class User extends Component {
                 routeParams={this.props}
                 navigation={["history", "keys"]}
                 image={<img src={"http://robohash.org/" + this.props.match.params.username + "?bgset=bg2"} />}
-                buttons={[{text: "Manage Keys", icon: "folder"}, {text: "Invite", icon: "group_add"}]}
-                />
+                buttons={[{text: "Manage Keys", icon: "vpn_key"}, {text: "Invite", icon: "person_add"}]} />
 
     );
   }
