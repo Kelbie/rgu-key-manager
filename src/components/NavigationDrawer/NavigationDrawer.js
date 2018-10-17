@@ -101,12 +101,12 @@ class NavigationDrawer extends Component {
                         </ListItem>
                     </List>
                     <Divider/>
-                    <List className="about-item">
-                        <ListItem button>
+                    <List>
+                        <ListItem button >
                             <ListItemIcon><FaceIcon/></ListItemIcon>
                             <ListItemText primary="Account settings"/>
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button href="/about">
                             <ListItemIcon><AboutIcon/></ListItemIcon>
                             <ListItemText primary="About"/>
                         </ListItem>
