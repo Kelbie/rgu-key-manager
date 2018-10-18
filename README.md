@@ -58,4 +58,4 @@ When making contributions try and make them in the form of pull requests, and if
 
 View Specification [here](/RESTAPISpec/README.md)
 
-https://docs.google.com/document/d/1v8M80MBZZdQ-oE62C715Eo5TFTpUmb8dNkRHaEMoEg0/edit?usp=sharing
+Report link (view only for now) https://docs.google.com/document/d/1v8M80MBZZdQ-oE62C715Eo5TFTpUmb8dNkRHaEMoEg0/edit?usp=sharing
