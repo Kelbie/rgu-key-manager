@@ -6,104 +6,16 @@ import Action from '../Action/Action';
 import KeyObject from '../KeyObject/KeyObject';
 import Button from '../Button/Button';
 
+import HeaderButton from '../Button/HeaderButton';
+import Tabs from '../Tabs/Tabs';
+import ExpansionPanel from '../ExpansionPanel/ExpansionPanel';
+import Table from '../Table/Table';
+
 import styles from './InfoPage.module.scss';
 
 class InfoPage extends Component {
   constructor() {
     super();
-    this.tabClicked = this.tabClicked.bind(this)
-    this.generateTabs = this.generateTabs.bind(this)
-    this.generateFeed = this.generateFeed.bind(this)
-    this.state = {
-      selected: ["history"]
-    };
-  }
-
-  tabClicked(obj) {
-    this.setState({selected: obj.target.id});
-  }
-
-  componentWillMount() {
-    console.log(this);
-    this.setState(this.props.routeParams.match.params);
-  }
-
-  generateTabs(tabs) {
-    var tabsArray = [];
-    for (var i = 0; i < tabs.length; i++) {
-      if (tabs[i] == this.state.selected) {
-        tabsArray.push(<span id={tabs[i]} className={`${styles.tab} + ${styles.selected}`} onClick={this.tabClicked}>
-          {tabs[i]}
-          <div styleName="underline"></div>
-        </span>)
-      } else {
-        tabsArray.push(<span id={tabs[i]} styleName="tab" onClick={this.tabClicked}>
-          {tabs[i]}
-          <div styleName="underline"></div>
-        </span>)
-      }
-    }
-
-    return tabsArray;
-  }
-
-  generateFeed(tabs) {
-    var feed = [];
-    var content = {
-      history: [
-        <Action author={"ShonaLilly"} keyid={"80"} index={1} isLost={false} place={"Cupboard"} receiver={"EMatheson"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"80"} index={2} isLost={false} place={"Cupboard"} receiver={"ShonaLilly"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"11254"} index={1} isLost={false} place={"GREEN_ROOM_CB"} receiver={"ShonnaLilly"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"SK54"} index={1} isLost={false} place={"IDEAS_MASTER"} receiver={"ShonaLilly"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"PQ858"} index={1} isLost={false} place={"KITCHEN_CB"} receiver={"VDawod"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"D3108"} index={1} isLost={false} place={"N329"} receiver={"VDawod"} time={"4 hours ago"}/>,
-        <Action author={"ShonaLilly"} keyid={"D3062"} index={1} isLost={false} place={"N332"} receiver={"VDawod"} time={"4 hours ago"}/>
-         
-      ],
-      keys: [
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>
-      ],
-      spares: [
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>,
-        <KeyObject/>
-      ]
-    }
-    for (var i = 0; i < tabs.length; i++) {
-      console.log(tabs[i], this.state.selected);
-      if (tabs[i] == this.state.selected) {
-        feed.push(<div className={`${styles.selected} ${styles[tabs[i]]}`}>
-          {content[tabs[i]]}
-        </div>)
-      } else {
-        feed.push(<div className={`${styles.deselected} ${styles[tabs[i]]}`}>
-          {content[tabs[i]]}
-        </div>)
-      }
-    }
-    return feed;
-  }
-
-  generateButtons(buttons) {
-    var buttonsHTML = [];
-    for (var i = 0; i < buttons.length; i++) {
-      buttonsHTML.push(<Button icon={this.props.buttons[i].icon} text={this.props.buttons[i].text}/>)
-    }
-    return buttonsHTML;
   }
 
   render() {
@@ -115,15 +27,14 @@ class InfoPage extends Component {
           <div styleName="gap"></div>
           <div styleName="desc">Description of account</div>
           <div styleName="buttons">
-            {this.generateButtons(this.props.buttons)}
+            {this.props.buttons.map(button => {
+              return <HeaderButton text={button.text} icon={button.icon} />
+            })}
           </div>
         </div>
-        <div styleName="tabs">
-          {this.generateTabs(this.props.navigation)}
-        </div>
-        <div styleName="feed">
-          {this.generateFeed(this.props.navigation)}
-        </div>
+        <Tabs tabs={["Activity", "Keys"]} contents={[
+            <ExpansionPanel />, <Table columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[{"keyId": "123(1)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(2)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(3)", "type": "Door Key", "duplicates": "3"}]}/>
+          ]} />
       </div>
     );
   }

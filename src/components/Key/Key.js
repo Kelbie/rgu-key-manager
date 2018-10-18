@@ -27,7 +27,7 @@ class Key extends Component {
                 routeParams={this.props}
                 navigation={["history", "spares"]}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
-                buttons={[{text: "transfer", icon: "send"}, {text: "lost", icon: "warning"}]} />
+                buttons={[{text: "Transfer", icon: "send"}, {text: "lost", icon: "warning"}]} />
     );
   }
 }

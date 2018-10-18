@@ -2,7 +2,7 @@
 
 Using [this](https://github.com/jamescooke/restapidocs/blob/master/examples/README.md) template.
 
-Endpoints with asterisks(\*) are important, those without are cool but not mandatory. 
+Endpoints with asterisks(\*) are important, those without are cool but not mandatory.
 
 ## Open Endpoints
 
@@ -20,4 +20,7 @@ Closed endpoints require a valid Token to be included in the header of the reque
 - [Place](): `GET /place/:placeId/` *
 - [Users](): `GET /Users/` *
 - [Keys](): `GET /keys/` *
-- [Invite](): `GET? /invite/:username`
+- [Places](): `GET /places/` *
+- [Invite](): `GET? /invite/:username/`
+- [Lost](): `POST /lost/:keyId/`
+- [Lost](): `GET /lost/`
