@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 import Trianglify from 'trianglify'; // only needed in node.js
 
-import Action from '../Action/Action';
+import Action from '../../components/Action/Action';
 
-import InfoPage from '../InfoPage/InfoPage';
+import InfoPage from '../../components/InfoPage/InfoPage';
 
 import styles from './Place.module.scss';
 
