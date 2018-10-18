@@ -6,9 +6,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Router components
 import AboutPage from './components/AboutPage/AboutPage';
-import User from './components/User/User';
-import Key from './components/Key/Key';
-import Place from './components/Place/Place';
+import User from './pages/User/User';
+import Key from './pages/Key/Key';
+import Place from './pages/Place/Place';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 
 // Graphical components
@@ -59,7 +59,7 @@ class App extends Component {
             </main>
           </div>
         )}
-        
+
         {!auth && (
           <div>
             <WelcomePage/>
