@@ -3,7 +3,6 @@ import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
 import Action from '../Action/Action';
-import KeyObject from '../KeyObject/KeyObject';
 import Button from '../Button/Button';
 
 import HeaderButton from '../Button/HeaderButton';
@@ -27,7 +26,7 @@ class InfoPage extends Component {
           <div styleName="gap"></div>
           <div styleName="desc">Description of account</div>
           <div styleName="buttons">
-            {this.props.buttons.map(button => {
+            {this.props.buttons.slice(0,1).map(button => {
               return <HeaderButton text={button.text} icon={button.icon} />
             })}
           </div>
