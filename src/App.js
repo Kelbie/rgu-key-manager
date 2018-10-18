@@ -39,10 +39,9 @@ class App extends Component {
     return (
       <div className="app"> <MuiThemeProvider theme={theme}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
 
         {auth && (
-          <div>
+          <div className="root">
             <CssBaseline/>
             <Header/>
             <NavigationDrawer/>
