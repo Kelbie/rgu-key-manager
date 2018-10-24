@@ -28,8 +28,12 @@ class Header extends Component {
         this.setState(state => ({ openLogoutDialog: !state.openLogoutDialog }));
     };
     handleLogout = () => {
-        alert('You are disconnected');
-        this.handleLogoutDialogClick();
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+        }).catch(function(error) {
+            // An error happened.
+            alert("Error : " + error);
+        });
     };
 
     render() {
