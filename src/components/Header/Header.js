@@ -44,7 +44,7 @@ class Header extends Component {
                         <div>
                             <Chip
                                 avatar={<Avatar><IconFace/></Avatar>}
-                                label={firebase.auth().currentUser.displayName || "Unknown"}
+                                label={firebase.auth().currentUser.displayName || "Unnamed"}
                                 onDelete={this.handleLogoutDialogClick}
                                 className="account-chip}"/>
                             <Dialog
