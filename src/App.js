@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 // Router components
 import Container from './components/Container/Container';
-import WelcomePage from './components/WelcomePage/WelcomePage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 // Firebase initialisation
 import firebase, {auth, database} from "./components/Firebase/Firebase";
@@ -38,7 +38,7 @@ const styles = ({
 class App extends Component {
 
   state = {
-      signed: false,
+      signed: undefined,
       currentUser: null
   };
   
@@ -67,7 +67,7 @@ class App extends Component {
       <div className={classes.app}> <MuiThemeProvider theme={theme}>
         <CssBaseline/>
 
-        {signed && (
+        {signed == true && (
           <Router className={classes.root}>
             <div>
               <Header/>
@@ -79,8 +79,8 @@ class App extends Component {
             </div>
           </Router>
         )}
-        
-        {!signed && (
+
+        {signed == false && (
           <div>
             <WelcomePage/>
           </div>

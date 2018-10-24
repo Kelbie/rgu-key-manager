@@ -12,7 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 
-import firebase from "../Firebase/Firebase";
+import firebase from "../../components/Firebase/Firebase";
 
 class WelcomePage extends Component {
 
