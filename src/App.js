@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 // Router components
 import Container from './components/Container/Container';
-import WelcomePage from './components/WelcomePage/WelcomePage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 // Firebase initialisation
 import firebase, {auth, database} from "./components/Firebase/Firebase";
