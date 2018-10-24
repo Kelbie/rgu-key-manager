@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import './App.module.scss';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 // Router components
-import AboutPage from './components/AboutPage/AboutPage';
-import User from './components/User/User';
-import Key from './components/Key/Key';
-import Place from './components/Place/Place';
+import Container from './components/Container/Container';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 
 // Graphical components
 import Header from './components/Header/Header';
 import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
-import Toolbar from '@material-ui/core/Toolbar';
 
 // Change default theme color
 import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
@@ -26,6 +23,16 @@ const theme = createMuiTheme({
   },
 });
 
+const styles = ({
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    marginLeft: 240,
+  },
+  toolbar: theme.mixins.toolbar,
+});
+
 class App extends Component {
 
   state = {
@@ -33,30 +40,26 @@ class App extends Component {
   };
 
   render() {
+    const { classes } = this.props;
 
     const { auth } = this.state;
 
     return (
-      <div className="app"> <MuiThemeProvider theme={theme}>
+      <div className={classes.app}> <MuiThemeProvider theme={theme}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
+        <CssBaseline/>
 
         {auth && (
-          <div className="root">
-            <CssBaseline/>
-            <Header/>
-            <NavigationDrawer/>
-            <main className="content">
-              <Toolbar/>
-              <Router>
-                <Switch>
-                  <Route path="/user/:username" component={User}/>
-                  <Route path="/key/:keyid" component={Key}/>
-                  <Route path="/place/:place" component={Place}/>
-                  <Route path="/about" component={AboutPage} />
-                </Switch>
-              </Router>
-            </main>
-          </div>
+          <Router className={classes.root}>
+            <div>
+              <Header/>
+              <NavigationDrawer/>
+              <div className={classes.toolbar}/>
+              <div className={classes.content}>
+                <Container/>
+              </div>
+            </div>
+          </Router>
         )}
         
         {!auth && (
@@ -67,4 +70,10 @@ class App extends Component {
       </MuiThemeProvider></div>
     );
   }
-} export default App;
+};
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
