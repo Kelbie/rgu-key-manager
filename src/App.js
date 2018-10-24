@@ -9,6 +9,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from './components/Container/Container';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 
+// Firebase initialisation
+import firebase from "./components/Firebase/Firebase";
+
 // Graphical components
 import Header from './components/Header/Header';
 import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
@@ -22,7 +25,6 @@ const theme = createMuiTheme({
     secondary: { main: "#651fff" }, // Deeppurple as secondary color
   },
 });
-
 const styles = ({
   content: {
     flexGrow: 1,
