@@ -5,7 +5,7 @@ import sha256 from 'js-sha256';
 
 import Action from '../../components/Action/Action';
 
-import InfoPage from '../../components/InfoPage/InfoPage';
+import InfoPage from '../../pages/InfoPage/InfoPage';
 
 import styles from './Key.module.scss';
 

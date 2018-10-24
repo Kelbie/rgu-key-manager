@@ -4,7 +4,7 @@ import Trianglify from 'trianglify'; // only needed in node.js
 
 import Action from '../../components/Action/Action';
 
-import InfoPage from '../../components/InfoPage/InfoPage';
+import InfoPage from '../../pages/InfoPage/InfoPage';
 
 import styles from './Place.module.scss';
 

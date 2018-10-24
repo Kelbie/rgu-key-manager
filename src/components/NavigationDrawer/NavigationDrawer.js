@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { Link } from "react-router-dom";
 
-import './NavigationDrawer.scss';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 // Drawer components
 import Drawer from '@material-ui/core/Drawer';
@@ -24,6 +26,22 @@ import AboutIcon from '@material-ui/icons/Info';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import FaceIcon from '@material-ui/icons/Face'
+import { NEG_ONE } from 'long';
+
+const styles = theme => ({
+    drawerPaper: {
+        position: 'relative',
+        zIndex: 0,
+        width: 240,
+    },
+    toolbar: theme.mixins.toolbar,
+    nested: {
+        paddingLeft: theme.spacing.unit * 4,
+    },
+    link: {
+        textDecoration: 'none',
+    },
+});
 
 class NavigationDrawer extends Component {
 
@@ -40,80 +58,105 @@ class NavigationDrawer extends Component {
     };
 
     render() {
+        const { classes } = this.props;
         return (
-            <div className="root">
-                <Drawer variant="permanent" className="drawer-paper">
-                    <Toolbar/>
-                    <List>
+            <Drawer variant="permanent" className={classes.drawerPaper}>
+                <div className={classes.toolbar} />
+                <List>
+                    <Link className={classes.link} to="">
                         <ListItem button selected>
                             <ListItemIcon><HomeIcon/></ListItemIcon>
                             <ListItemText primary="Home"/>
                         </ListItem>
+                    </Link>
+                    <Link className={classes.link} to="">
                         <ListItem button>
                             <ListItemIcon><UsersIcon/></ListItemIcon>
                             <ListItemText primary="Manage users"/>
                         </ListItem>
+                    </Link>
+                    <Link className={classes.link} to="">
                         <ListItem button>
                             <ListItemIcon><MapIcon/></ListItemIcon>
                             <ListItemText primary="Keys map"/>
                         </ListItem>
-                    </List>
-                    <Divider/>
-                    <List subheader={<ListSubheader component="div">Keys managment</ListSubheader>}>
-                        {/* Keys collapse list */}
-                        <ListItem button onClick={this.handleKeyItemClick}>
-                            <ListItemIcon><KeyIcon/></ListItemIcon>
-                            <ListItemText inset primary="Keys"/>
-                            {this.state.openKeyItem ? <ExpandLess /> : <ExpandMore />}
-                        </ListItem>
-                        <Collapse in={this.state.openKeyItem} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding>
-                                <ListItem button className="nestedItem">
+                    </Link>
+                </List>
+                <Divider/>
+                <List subheader={<ListSubheader component="div">Keys managment</ListSubheader>}>
+                    {/* Keys collapse list */}
+                    <ListItem button onClick={this.handleKeyItemClick}>
+                        <ListItemIcon><KeyIcon/></ListItemIcon>
+                        <ListItemText inset primary="Keys"/>
+                        {this.state.openKeyItem ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={this.state.openKeyItem} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <Link className={classes.link} to="">
+                                <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="All keys" />
                                 </ListItem>
-                                <ListItem button className="nestedItem">
+                            </Link>
+                            <Link className={classes.link} to="">
+                                <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="Lost Keys" />
                                 </ListItem>
-                            </List>
-                        </Collapse>
+                            </Link>
+                        </List>
+                    </Collapse>
 
-                        {/* Fobs collapse list */}  
-                        <ListItem button onClick={this.handleFobItemClick}>
-                            <ListItemIcon><FobIcon/></ListItemIcon>
-                            <ListItemText inset primary="Fobs"/>
-                            {this.state.openFobItem ? <ExpandLess /> : <ExpandMore />}
-                        </ListItem>
-                        <Collapse in={this.state.openFobItem} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding>
-                                <ListItem button className="nestedItem">
+                    {/* Fobs collapse list */}  
+                    <ListItem button onClick={this.handleFobItemClick}>
+                        <ListItemIcon><FobIcon/></ListItemIcon>
+                        <ListItemText inset primary="Fobs"/>
+                        {this.state.openFobItem ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={this.state.openFobItem} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <Link className={classes.link} to="">
+                                <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="All fobs" />
                                 </ListItem>
-                                <ListItem button className="nestedItem">
+                            </Link>
+                            <Link className={classes.link} to="">
+                                <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="Lost fobs" />
                                 </ListItem>
-                            </List>
-                        </Collapse>
+                            </Link>
+                        </List>
+                    </Collapse>
 
-                        {/* People item list */}  
+                    {/* People item list */}  
+                    <Link className={classes.link} to="/people">
                         <ListItem button>
                             <ListItemIcon><PeopleIcon/></ListItemIcon>
                             <ListItemText primary="People"/>
                         </ListItem>
-                    </List>
-                    <Divider/>
-                    <List>
-                        <ListItem button >
+                    </Link>
+                </List>
+                <Divider/>
+                <List>
+                    <Link className={classes.link} to="/account">
+                        <ListItem button>
                             <ListItemIcon><FaceIcon/></ListItemIcon>
                             <ListItemText primary="Account settings"/>
                         </ListItem>
-                        <ListItem button href="/about">
+                    </Link>
+                    <Link className={classes.link} to="/about">
+                        <ListItem button>
                             <ListItemIcon><AboutIcon/></ListItemIcon>
                             <ListItemText primary="About"/>
                         </ListItem>
-                    </List>
-                </Drawer>
-            </div>
+                    </Link>
+                </List>
+            </Drawer>
         );
     }
 
-} export default NavigationDrawer;
+};
+
+NavigationDrawer.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(NavigationDrawer);

@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
-import Action from '../Action/Action';
-import Button from '../Button/Button';
-
-import HeaderButton from '../Button/HeaderButton';
-import Tabs from '../Tabs/Tabs';
-import ExpansionPanel from '../ExpansionPanel/ExpansionPanel';
-import Table from '../Table/Table';
+import Action from '../../components/Action/Action';
+import Button from '../../components/Button/Button';
+import HeaderButton from '../../components/Button/HeaderButton';
+import Tabs from '../../components/Tabs/Tabs';
+import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
+import Table from '../../components/Table/Table';
 
 import styles from './InfoPage.module.scss';
 

@@ -1,0 +1,25 @@
+[debug] [2018-10-24T12:01:35.001Z] ----------------------------------------------------------------------
+[debug] [2018-10-24T12:01:35.003Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-10-24T12:01:35.003Z] CLI Version:   5.1.1
+[debug] [2018-10-24T12:01:35.003Z] Platform:      darwin
+[debug] [2018-10-24T12:01:35.003Z] Node Version:  v10.11.0
+[debug] [2018-10-24T12:01:35.004Z] Time:          Wed Oct 24 2018 13:01:35 GMT+0100 (British Summer Time)
+[debug] [2018-10-24T12:01:35.004Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-24T12:01:35.016Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-24T12:01:35.017Z] > authorizing via signed-in user
+[debug] [2018-10-24T12:01:35.017Z] [iam] checking project rgukeymanager for permissions ["firebase.projects.get"]
+[debug] [2018-10-24T12:01:35.019Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/rgukeymanager:testIamPermissions  
+
+[debug] [2018-10-24T12:01:36.061Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-24T12:01:36.063Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/rgukeymanager  
+ 
+[debug] [2018-10-24T12:01:36.976Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Gaetan/Documents/RGU/Project Managment/RGUKeyManager'...
+[info] 
+[debug] [2018-10-24T12:01:36.979Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/469482140407/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-24T12:01:37.590Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
