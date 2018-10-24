@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import './Header.scss';
-import AppLogo from '../../app-logo.svg';
+
+import firebase from "../Firebase/Firebase";
 
 // Header components
 import AppBar from '@material-ui/core/AppBar';
@@ -27,8 +28,12 @@ class Header extends Component {
         this.setState(state => ({ openLogoutDialog: !state.openLogoutDialog }));
     };
     handleLogout = () => {
-        alert('You are disconnected');
-        this.handleLogoutDialogClick();
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+        }).catch(function(error) {
+            // An error happened.
+            alert("Error : " + error);
+        });
     };
 
     render() {
@@ -43,7 +48,7 @@ class Header extends Component {
                         <div>
                             <Chip
                                 avatar={<Avatar><IconFace/></Avatar>}
-                                label="User name"
+                                label={firebase.auth().currentUser.displayName || "Unnamed"}
                                 onDelete={this.handleLogoutDialogClick}
                                 className="account-chip}"/>
                             <Dialog

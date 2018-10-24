@@ -16,9 +16,9 @@ class AboutPage extends Component {
     render(){
         return (
             <div lassName="root">
-                <Grid>
-                    
-                </Grid>
+            <Grid>
+                <img className="app-logo" src={AppLogo}/>
+            </Grid>
             </div>
         );
     }
