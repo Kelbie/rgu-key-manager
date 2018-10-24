@@ -10,7 +10,7 @@ import Container from './components/Container/Container';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 
 // Firebase initialisation
-import firebase from "./components/Firebase/Firebase";
+import firebase, {auth, database} from "./components/Firebase/Firebase";
 
 // Graphical components
 import Header from './components/Header/Header';
@@ -38,20 +38,36 @@ const styles = ({
 class App extends Component {
 
   state = {
-      auth: true,
+      signed: false,
+      currentUser: null
   };
+  
+  componentWillMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          signed: true,
+          currentUser: user
+        });
+      } else {
+        this.setState({
+          signed: false,
+          currentUser: null
+        });
+      }
+    });
+  }
 
   render() {
     const { classes } = this.props;
 
-    const { auth } = this.state;
+    const { signed } = this.state;
 
     return (
       <div className={classes.app}> <MuiThemeProvider theme={theme}>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
         <CssBaseline/>
 
-        {auth && (
+        {signed && (
           <Router className={classes.root}>
             <div>
               <Header/>
@@ -64,7 +80,7 @@ class App extends Component {
           </Router>
         )}
         
-        {!auth && (
+        {!signed && (
           <div>
             <WelcomePage/>
           </div>
