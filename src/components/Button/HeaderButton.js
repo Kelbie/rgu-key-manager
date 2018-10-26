@@ -13,6 +13,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import WarningIcon from '@material-ui/icons/Warning';
 import SendIcon from '@material-ui/icons/Send';
 import FolderIcon from '@material-ui/icons/Folder';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = theme => ({
   button: {
@@ -32,12 +33,13 @@ const styles = theme => ({
 function HeaderButton(props) {
   const { classes } = props;
   return (
-    <Button variant="outlined" color="primary" className={classes.button}>
+    <Button {...props} color="primary" className={classes.button}>
       {props.icon == "vpn_key" ? <VpnKeyIcon className={classes.leftIcon} /> : ""}
       {props.icon == "person_add" ? <PersonAddIcon className={classes.leftIcon} /> : ""}
       {props.icon == "warning" ? <WarningIcon className={classes.leftIcon} /> : ""}
       {props.icon == "send" ? <SendIcon className={classes.leftIcon} /> : ""}
       {props.icon == "folder" ? <FolderIcon className={classes.leftIcon} /> : ""}
+      {props.icon == "expand_more" ? <ExpandMoreIcon className={classes.leftIcon} /> : ""}
       {props.text}
     </Button>
   );
