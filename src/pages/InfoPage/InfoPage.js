@@ -8,6 +8,7 @@ import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
 import Table from '../../components/Table/Table';
+import DropDown from '../../components/DropDown/DropDown';
 
 import styles from './InfoPage.module.scss';
 
@@ -25,9 +26,11 @@ class InfoPage extends Component {
           <div styleName="gap"></div>
           <div styleName="desc">Description of account</div>
           <div styleName="buttons">
-            {this.props.buttons.slice(0,1).map(button => {
-              return <HeaderButton text={button.text} icon={button.icon} />
+            {this.props.buttons.slice(0,2).map(button => {
+              return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon} />
             })}
+            { this.props.buttons.length > 2 ? <DropDown text={"More"} icon={"expand_more"} items={this.props.buttons.slice(2, this.props.buttons.length)}/>
+               : "" }
           </div>
         </div>
         <Tabs tabs={["Activity", "Keys"]} contents={[
