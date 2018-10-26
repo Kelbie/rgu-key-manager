@@ -23,9 +23,17 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
   },
+  tabs: {
+    position: 'fixed',
+    width: "100%",
+    top: '216px'
+  }
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
+  constructor() {
+    super();
+  }
   state = {
     value: 0,
   };
@@ -36,19 +44,18 @@ class ScrollableTabsButtonAuto extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-    const content = document.getElementById('content');
+    this.handleScroll();
 
   }
 
-  handleScroll(event) {
-    const tabs = document.getElementById('tabs');
+  handleScroll = (event) => {
+    const tabs = document.getElementsByClassName(this.props.classes.tabs)[0];
     const content = document.getElementById('content');
-    if (event.pageY >= 0) {
-      tabs.style.position="fixed";
-      tabs.style.top="216px";
-
+    console.log(tabs.getBoundingClientRect().width, tabs.width);
+    // if (event.pageY >= 0) {
       content.style.marginTop=String(tabs.getBoundingClientRect().height + 100) + "px";
-    }
+      tabs.style.width=content.getBoundingClientRect().width + "px";
+    // }
   }
 
   render() {
@@ -57,7 +64,7 @@ class ScrollableTabsButtonAuto extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default" id="tabs">
+        <AppBar position="static" color="default" className={classes.tabs}>
           <Tabs
             value={value}
             onChange={this.handleChange}

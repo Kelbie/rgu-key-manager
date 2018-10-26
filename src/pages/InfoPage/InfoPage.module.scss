@@ -39,6 +39,8 @@
   position: relative;
 
   .general {
+    position: fixed;
+    z-index: 1000;
     display: grid;
     grid-template: "photo name buttons"
                    "gap   desc desc";

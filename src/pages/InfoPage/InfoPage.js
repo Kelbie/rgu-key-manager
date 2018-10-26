@@ -34,8 +34,8 @@ class InfoPage extends Component {
     const page = document.getElementsByClassName(styles['page'])[0];
 
 
-    general.style.position="fixed";
-    general.style.zIndex="1000";
+    // general.style.position="fixed";
+    // general.style.zIndex="1000";
     general.style.left=page.getBoundingClientRect().left + 32 + "px";
     general.style.top="120px";
   }
