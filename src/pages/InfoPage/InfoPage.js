@@ -21,7 +21,7 @@ class InfoPage extends Component {
       <div styleName="page">
         <div styleName="general">
           <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
-          <div styleName="name">{this.props.routeParams.match.url}</div>
+          <div styleName="name">{this.props.id}</div>
           <div styleName="gap"></div>
           <div styleName="desc">Description of account</div>
           <div styleName="buttons">
