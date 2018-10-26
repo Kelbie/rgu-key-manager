@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 
 import Action from '../../components/Action/Action';
 import Button from '../../components/Button/Button';
+import DialogButton from '../../components/Button/DialogButton';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
@@ -57,7 +58,13 @@ class InfoPage extends Component {
           <div styleName="gap"></div>
           <div styleName="buttons">
             {this.props.buttons.slice(0,2).map(button => {
-              return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon} />
+              if (button.type == "dialog") {
+                return <DialogButton variant="outlined" color="primary" text={button.text} icon={button.icon} {...this.props}/>
+              } else {
+                return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon}/>
+              }
+
+
             })}
             { this.props.buttons.length > 2 ? <DropDown text={"More"} icon={"expand_more"} items={this.props.buttons.slice(2, this.props.buttons.length)}/>
                : "" }
