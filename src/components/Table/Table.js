@@ -48,12 +48,10 @@ function SimpleTable(props) {
         <TableBody>
           {props.rows.map(row => {
             return (
-              <TableRow hover={true} key={row.id} onClick={() => window.location.href=("/key/" + row.keyId)}>
-                <TableCell component="th" scope="row">
-                  {row.keyId}
-                </TableCell>
-                <TableCell>{row.type}</TableCell>
-                <TableCell>{row.duplicates}</TableCell>
+              <TableRow hover={true} key={row.id} onClick={() => window.location.href=("/" + props.path + "/" + row[0])}>
+                {row.map(element => {
+                  return <TableCell>{element}</TableCell>
+                })}
               </TableRow>
             );
           })}
