@@ -11,10 +11,41 @@ import Table from '../../components/Table/Table';
 import DropDown from '../../components/DropDown/DropDown';
 
 import styles from './InfoPage.module.scss';
-
 class InfoPage extends Component {
+  state = {};
   constructor() {
     super();
+  }
+
+  componentWillMount() {
+
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("resize", this.updateDimensions);
+    this.handleScroll();
+  }
+
+  handleScroll = (event) => {
+    const general = document.getElementsByClassName(styles['general'])[0];
+    const tabs = document.getElementById('tabs');
+    const photo = document.getElementsByClassName(styles['photo'])[0];
+    const page = document.getElementsByClassName(styles['page'])[0];
+
+
+    general.style.position="fixed";
+    general.style.zIndex="1000";
+    general.style.left=page.getBoundingClientRect().left + 32 + "px";
+    general.style.top="120px";
+  }
+
+  updateDimensions = (event) => {
+    const general = document.getElementsByClassName(styles['general'])[0];
+    const page = document.getElementsByClassName(styles['page'])[0];
+
+    general.style.left=page.getBoundingClientRect().left + 32 + "px";
+
   }
 
   render() {
@@ -24,7 +55,6 @@ class InfoPage extends Component {
           <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
           <div styleName="name">{this.props.id}</div>
           <div styleName="gap"></div>
-          <div styleName="desc">Description of account</div>
           <div styleName="buttons">
             {this.props.buttons.slice(0,2).map(button => {
               return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon} />
