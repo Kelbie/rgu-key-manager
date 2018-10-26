@@ -9,9 +9,12 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Select from '../Selects/Selects';
 
+import firebase, {auth, database} from "../Firebase/Firebase";
+
 class AlertDialog extends React.Component {
   state = {
     open: false,
+    email: null
   };
 
   handleClickOpen = () => {
@@ -21,6 +24,22 @@ class AlertDialog extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  handleInvite = () => {
+    var state = this;
+    auth.sendSignInLinkToEmail(this.state.email, {
+      url: 'http://localhost:3000/signin',
+      handleCodeInApp: true
+    })
+    .then(function() {
+      console.log(123);
+      state.setState({ open: false });
+    })
+    .catch(function(error) {
+      console.log(error)
+      state.setState({ open: false });
+    });
+  }
 
   render() {
     return (
@@ -40,7 +59,7 @@ class AlertDialog extends React.Component {
             <Grid container
                   direction="row"
                   alignItems="center">
-            <TextField label="Email" type="email" name="email" autoComplete="email" />
+            <TextField onChange={(email) => this.setState({email: email.target.value})} label="Email" type="email" name="email" autoComplete="email" />
             <Select />
             </Grid>
           </DialogContent>
@@ -48,7 +67,7 @@ class AlertDialog extends React.Component {
             <Button text="Cancel" onClick={this.handleClose} color="primary">
               Disagree
             </Button>
-            <Button text="Save" onClick={this.handleClose} color="primary" autoFocus />
+            <Button text="Invite" onClick={this.handleInvite} color="primary" autoFocus />
           </DialogActions>
         </Dialog>
       </div>
