@@ -3,6 +3,7 @@ import {  BrowserRouter as Router, Route, Switch, withRouter } from "react-route
 
 // Router components
 import AboutPage from '../../pages/AboutPage/AboutPage';
+import UsersPage from '../../pages/UsersPage/UsersPage';
 import User from '../../objects/User/User';
 import Key from '../../objects/Key/Key';
 import Place from '../../objects/Place/Place';
@@ -16,6 +17,7 @@ class Container extends Component {
                     <Route path="/key/:keyid" component={Key}/>
                     <Route path="/place/:place" component={Place}/>
                     <Route path="/about" component={AboutPage} />
+                    <Route path="/users" component={UsersPage} />
                 </Switch>
             </div>
         );

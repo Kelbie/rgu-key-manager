@@ -48,6 +48,7 @@ class NavigationDrawer extends Component {
     state = {
         openKeyItem: false,
         openFobItem: false,
+        selectedIndex: 0,
     };
 
     handleKeyItemClick = () => {
@@ -57,26 +58,36 @@ class NavigationDrawer extends Component {
         this.setState(state => ({ openFobItem: !state.openFobItem }));
     };
 
+    handleListItemClick = (event, index) => {
+        this.setState({ selectedIndex: index });
+    };
+
     render() {
         const { classes } = this.props;
         return (
             <Drawer variant="permanent" className={classes.drawerPaper}>
                 <div className={classes.toolbar} />
                 <List>
-                    <Link className={classes.link} to="">
-                        <ListItem button selected>
+                    <Link className={classes.link} to="/">
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 0}
+                            onClick={event => this.handleListItemClick(event, 0)}>
                             <ListItemIcon><HomeIcon/></ListItemIcon>
                             <ListItemText primary="Home"/>
                         </ListItem>
                     </Link>
-                    <Link className={classes.link} to="">
-                        <ListItem button>
+                    <Link className={classes.link} to="/users">
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 1}
+                            onClick={event => this.handleListItemClick(event, 1)}>
                             <ListItemIcon><UsersIcon/></ListItemIcon>
                             <ListItemText primary="Manage users"/>
                         </ListItem>
                     </Link>
                     <Link className={classes.link} to="">
-                        <ListItem button>
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 2}
+                            onClick={event => this.handleListItemClick(event, 2)}>
                             <ListItemIcon><MapIcon/></ListItemIcon>
                             <ListItemText primary="Keys map"/>
                         </ListItem>
@@ -92,13 +103,17 @@ class NavigationDrawer extends Component {
                     </ListItem>
                     <Collapse in={this.state.openKeyItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link className={classes.link} to="">
-                                <ListItem button className={classes.nested}>
+                            <Link className={classes.link} to="" >
+                                <ListItem button className={classes.nested} 
+                                    selected={this.state.selectedIndex === 3}
+                                    onClick={event => this.handleListItemClick(event, 3)}>
                                     <ListItemText inset primary="All keys" />
                                 </ListItem>
                             </Link>
                             <Link className={classes.link} to="">
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} 
+                                    selected={this.state.selectedIndex === 4}
+                                    onClick={event => this.handleListItemClick(event, 4)}>
                                     <ListItemText inset primary="Lost Keys" />
                                 </ListItem>
                             </Link>
@@ -114,12 +129,16 @@ class NavigationDrawer extends Component {
                     <Collapse in={this.state.openFobItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <Link className={classes.link} to="">
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} 
+                                    selected={this.state.selectedIndex === 5}
+                                    onClick={event => this.handleListItemClick(event, 5)}>
                                     <ListItemText inset primary="All fobs" />
                                 </ListItem>
                             </Link>
                             <Link className={classes.link} to="">
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} 
+                                    selected={this.state.selectedIndex === 6}
+                                    onClick={event => this.handleListItemClick(event, 6)}>
                                     <ListItemText inset primary="Lost fobs" />
                                 </ListItem>
                             </Link>
@@ -128,7 +147,9 @@ class NavigationDrawer extends Component {
 
                     {/* People item list */}  
                     <Link className={classes.link} to="/people">
-                        <ListItem button>
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 7}
+                            onClick={event => this.handleListItemClick(event, 7)}>
                             <ListItemIcon><PeopleIcon/></ListItemIcon>
                             <ListItemText primary="People"/>
                         </ListItem>
@@ -137,13 +158,17 @@ class NavigationDrawer extends Component {
                 <Divider/>
                 <List>
                     <Link className={classes.link} to="/account">
-                        <ListItem button>
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 8}
+                            onClick={event => this.handleListItemClick(event, 8)}>
                             <ListItemIcon><FaceIcon/></ListItemIcon>
                             <ListItemText primary="Account settings"/>
                         </ListItem>
                     </Link>
                     <Link className={classes.link} to="/about">
-                        <ListItem button>
+                        <ListItem button 
+                            selected={this.state.selectedIndex === 9}
+                            onClick={event => this.handleListItemClick(event, 9)}>
                             <ListItemIcon><AboutIcon/></ListItemIcon>
                             <ListItemText primary="About"/>
                         </ListItem>

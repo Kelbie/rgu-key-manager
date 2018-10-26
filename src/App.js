@@ -18,11 +18,11 @@ import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
 
 // Change default theme color
 import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
+import {purple} from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: { main: purple[500] }, // Purple as primary color
-    secondary: { main: "#651fff" }, // Deeppurple as secondary color
+    secondary: { main: "#ff1744" }, // Red as secondary color
   },
 });
 const styles = ({
