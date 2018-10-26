@@ -34,7 +34,7 @@ class InfoPage extends Component {
           </div>
         </div>
         <Tabs tabs={["Activity", "Keys"]} contents={[
-            <ExpansionPanel />, <Table columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[{"keyId": "123(1)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(2)", "type": "Door Key", "duplicates": "3"},{"keyId": "123(3)", "type": "Door Key", "duplicates": "3"}]}/>
+            <ExpansionPanel />, <Table path="key" columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[["123(1)", "Door Key", "3"],["123(1)", "Door Key", "3"],["123(1)", "Door Key", "3"]]}/>
           ]} />
       </div>
     );
