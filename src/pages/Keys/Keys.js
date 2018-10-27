@@ -79,6 +79,9 @@ class People extends Component {
                 [<Button variant="flat" onClick={() => window.location.href="key/S206(1)"} text="S206(1)" />, "Pedestal", "-", "N/A", "N/A", 0],
                 [<Button variant="flat" onClick={() => window.location.href="key/932(1)"} text="932(1)" />, "-", "-", "N/A", "N/A", 0],
                 [<Button variant="flat" onClick={() => window.location.href="key/768RA399(1)"} text="768RA399(1)" />, "-", "-", "N/A", "N/A", 0],
+                [<Button variant="flat" onClick={() => window.location.href="key/0359(1)"} text="0359(1)" />, "Tambour Unit", "-", "N/A", "N/A", 0, true],
+                [<Button variant="flat" onClick={() => window.location.href="key/0828(1)"} text="0828(1)" />, "Tambour Unit", "-", "N/A", "N/A", 0, true],
+                [<Button variant="flat" onClick={() => window.location.href="key/D4060(3)"} text="D4060(3)" />, "-", "-", "N/A", "N/A", 0, true],
               ]}/>
             </>
         );

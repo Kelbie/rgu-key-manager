@@ -50,8 +50,11 @@ class SimpleTable extends Component {
             {this.state.rows.map(row => {
               return (
                 <TableRow hover={true} key={row.id}>
-                  {row.map(element => {
-                    return <TableCell>{element}</TableCell>
+                  {row.map((element, i) => {
+                    if (i <= this.props.columns.length) {
+                      return <TableCell>{element}</TableCell>
+                    }
+
                   })}
                 </TableRow>
               );
