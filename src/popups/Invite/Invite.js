@@ -17,7 +17,7 @@ class People extends Component {
                     direction="row"
                     alignItems="center">
                 <TextField onChange={(email) => this.setState({email: email.target.value})} label="Email" type="email" name="email" autoComplete="email" />
-                <Select title="Duration" options={["Super Admin", "Admin"]}/>
+                <Select title="Role" options={["Super Admin", "Admin"]}/>
               </Grid>
             } {...this.props}/>
           </>
