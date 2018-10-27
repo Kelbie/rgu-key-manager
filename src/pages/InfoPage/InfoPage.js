@@ -3,7 +3,7 @@ import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
 import Action from '../../components/Action/Action';
-import DialogButton from '../../components/Button/DialogButton';
+import Invite from '../../popups/Invite/Invite';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
@@ -55,7 +55,7 @@ class InfoPage extends Component {
           <div styleName="buttons">
             {this.props.buttons.slice(0,2).map(button => {
               if (button.type == "dialog") {
-                return <DialogButton variant="outlined" color="primary" text={button.text} icon={button.icon} {...this.props}/>
+                return <Invite {...this.props}/>
               } else {
                 return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon}/>
               }

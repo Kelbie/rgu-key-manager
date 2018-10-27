@@ -42,7 +42,7 @@ class ControlledOpenSelect extends React.Component {
     return (
       <form autoComplete="off">
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="demo-controlled-open-select">Role</InputLabel>
+          <InputLabel htmlFor="demo-controlled-open-select">{this.props.title}</InputLabel>
           <Select
             open={this.state.open}
             onClose={this.handleClose}
@@ -50,12 +50,13 @@ class ControlledOpenSelect extends React.Component {
             value={this.state.age}
             onChange={this.handleChange}
             inputProps={{
-              name: 'age',
+              name: 'role',
               id: 'demo-controlled-open-select',
             }}
           >
-            <MenuItem value={10}>Admin</MenuItem>
-            <MenuItem value={20}>Super Admin</MenuItem>
+          {this.props.options.map((option, i) => {
+            return <MenuItem value={i}>{option}</MenuItem>
+          })}
           </Select>
         </FormControl>
       </form>
