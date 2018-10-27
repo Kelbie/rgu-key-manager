@@ -17,35 +17,32 @@ class InfoPage extends Component {
     super();
   }
 
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener("resize", this.updateDimensions);
     this.handleScroll();
   }
 
-  handleScroll = (event) => {
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  handleScroll(event) {
     const general = document.getElementsByClassName(styles['general'])[0];
     const tabs = document.getElementById('tabs');
     const photo = document.getElementsByClassName(styles['photo'])[0];
     const page = document.getElementsByClassName(styles['page'])[0];
 
-
-    // general.style.position="fixed";
-    // general.style.zIndex="1000";
     general.style.left=page.getBoundingClientRect().left + 32 + "px";
     general.style.top="120px";
   }
 
-  updateDimensions = (event) => {
+  updateDimensions(event) {
     const general = document.getElementsByClassName(styles['general'])[0];
     const page = document.getElementsByClassName(styles['page'])[0];
 
     general.style.left=page.getBoundingClientRect().left + 32 + "px";
-
   }
 
   render() {

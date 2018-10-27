@@ -48,6 +48,11 @@ class ScrollableTabsButtonAuto extends React.Component {
     this.handleScroll();
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleScroll);
+  }
+
   handleScroll = (event) => {
     const tabs = document.getElementsByClassName(this.props.classes.tabs)[0];
     const content = document.getElementById('content');
