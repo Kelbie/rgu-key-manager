@@ -26,7 +26,7 @@ class People extends Component {
                 ["0977(1)", "Tambour Unit", "-", "N/A", "N/A", 0],
                 ["110(1)", "Pedestal", "ShonaLilly", "N/A", "N/A", 0],
                 ["D4129(1)", "Door Key", "ShonaLilly", "N/A", "N/A", 0],
-                ["D4129(2)", "Door Key?", "-", "N/A", "N/A", 0],
+                ["D4129(2)", "Door Key", "-", "N/A", "N/A", 0],
                 ["D4052(1)", "Door Key", "PHolt", "N/A", "N/A", 1],
                 ["D4052(2)", "Door Key", "ShonaLilly", "N/A", "N/A", 1],
                 ["D4131(1)", "Door Key", "VDawod", "N/A", "N/A", 0],
@@ -34,14 +34,14 @@ class People extends Component {
                 ["D4133(1)", "-", "ShonaLilly", "N/A", "N/A", 0],
                 ["D4134(1)", "Door Key", "JMcCall", "N/A", "N/A", 0],
                 ["D4130(1)", "Door Key", "-", "N/A", "N/A", 0],
-                ["D4130(1)", "Door Key?", "-", "N/A", "N/A", 0],
+                ["D4130(1)", "Door Key", "-", "N/A", "N/A", 0],
                 ["010(1)", "Pedestal", "-", "N/A", "N/A", 1],
                 ["0103(1)", "Tambour Unit", "-", "N/A", "N/A", 0],
                 ["0271(1)", "Tambour Unit", "-", "N/A", "N/A", 0],
                 ["0937(1)", "Tambour Unit", "-", "N/A", "N/A", 0],
                 ["168(1)", "Pedestal", "-", "N/A", "N/A", 0],
                 ["D4060(1)", "Door Key", "-", "N/A", "N/A", 0],
-                ["D4060(2)", "Door Key?", "-", "N/A", "N/A", 0],
+                ["D4060(2)", "Door Key", "-", "N/A", "N/A", 0],
                 ["W8759789(1)", "Tambour Unit", "-", "N/A", "N/A", 0],
                 ["010(2)", "Pedestal", "-", "N/A", "N/A", 1],
                 ["SM082(1)", "-", "-", "N/A", "N/A", 0],
@@ -79,9 +79,6 @@ class People extends Component {
                 ["S206(1)", "Pedestal", "-", "N/A", "N/A", 0],
                 ["932(1)", "-", "-", "N/A", "N/A", 0],
                 ["768RA399(1)", "-", "-", "N/A", "N/A", 0],
-
-
-
               ]}/>
             </>
         );
