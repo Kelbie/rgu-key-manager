@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 
 // Graphics Components
 import Invite from '../../popups/Invite/Invite';
+import Transfer from '../../popups/Transfer/Transfer';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
@@ -48,6 +49,11 @@ class InfoPage extends Component {
   }
 
   render() {
+    const mapping = {
+      "Invite": <Invite {...this.props} />,
+      "Transfer": <Transfer {...this.props} />
+    }
+
     return (<div styleName="page">
       <div styleName="general">
         <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
@@ -57,7 +63,7 @@ class InfoPage extends Component {
           {
             this.props.buttons.slice(0, 2).map(button => {
               if (button.type == "dialog") {
-                return <Invite {...this.props}/>
+                return mapping[button.text]
               } else {
                 return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon}/>
               }
