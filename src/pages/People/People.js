@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import AppLogo from '../../app-logo.svg';
 
+// Graphics Components
+import HeaderButton from '../../components/Button/HeaderButton';
 import Table from '../../components/Table/Table';
 
 class People extends Component {
@@ -20,6 +22,7 @@ class People extends Component {
               ["Test7", "10", "2"],
               ["Test8", "10", "2"],
               
+
             ]}/>
         );
     }

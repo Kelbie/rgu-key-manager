@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import AppLogo from '../../app-logo.svg';
 
+// Graphics Components
 import Table from '../../components/Table/Table';
 import Button from '../../components/Button/HeaderButton';
 

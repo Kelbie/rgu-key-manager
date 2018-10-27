@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
+// Graphics Components
 import Invite from '../../popups/Invite/Invite';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
@@ -9,7 +10,9 @@ import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
 import Table from '../../components/Table/Table';
 import DropDown from '../../components/DropDown/DropDown';
 
+// Styles
 import styles from './InfoPage.module.scss';
+
 class InfoPage extends Component {
   state = {};
   constructor() {

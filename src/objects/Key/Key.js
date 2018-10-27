@@ -3,8 +3,10 @@ import MaterialIcon from 'material-icons-react';
 import Identicon from 'identicon.js';
 import sha256 from 'js-sha256';
 
+// Layout Components
 import InfoPage from '../../pages/InfoPage/InfoPage';
 
+// Styles
 import styles from './Key.module.scss';
 
 class Key extends Component {

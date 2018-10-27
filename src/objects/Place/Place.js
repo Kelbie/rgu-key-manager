@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 import Trianglify from 'trianglify'; // only needed in node.js
 
+// Layout Components
 import InfoPage from '../../pages/InfoPage/InfoPage';
 
+// Styles
 import styles from './Place.module.scss';
 
 class Place extends Component {

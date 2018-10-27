@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 
+// Layout Components
 import InfoPage from '../../pages/InfoPage/InfoPage';
 
+// Styles
 import styles from './User.module.scss';
 
 class User extends Component {
