@@ -49,7 +49,7 @@ class SimpleTable extends Component {
           <TableBody>
             {this.state.rows.map(row => {
               return (
-                <TableRow hover={true} key={row.id} onClick={() => window.location.href=("/" + this.props.path + "/" + row[0])}>
+                <TableRow hover={true} key={row.id}>
                   {row.map(element => {
                     return <TableCell>{element}</TableCell>
                   })}
