@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import HeaderButton from '../Button/HeaderButton';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -37,9 +37,9 @@ class SimpleTable extends Component {
                     var that = this;
                     this.setState({rows: this.state.rows.sort(function(a, b) {
                       if (that.state.asc) {
-                        return a[i]<b[i]
+                        return a[i].text<b[i].text
                       } else {
-                        return a[i]>b[i]
+                        return a[i].text>b[i].text
                       }
 
                     })})}}>{column}</TableCell>
@@ -52,7 +52,12 @@ class SimpleTable extends Component {
                 <TableRow hover={true} key={row.id}>
                   {row.map((element, i) => {
                     if (i <= this.props.columns.length) {
-                      return <TableCell>{element}</TableCell>
+                      if (element.type == "button") {
+                        return <TableCell><HeaderButton text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
+                      } else {
+                        return <TableCell>{element.text}</TableCell>
+                      }
+
                     }
 
                   })}
