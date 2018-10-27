@@ -27,7 +27,7 @@ class Fob extends Component {
                 id={this.props.match.params.fobid}
                 routeParams={this.props}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
-                buttons={[{text: "Transfer", icon: "send"}, {text: "Reprogram", icon: "settings_backup_restore"}, {text: "lost", icon: "warning"}]} />
+                buttons={[{text: "Transfer", icon: "send"}, {text: "Reprogram", icon: "settings_backup_restore"}, {text: "lost", icon: "warning", type: "dialog"}]} />
     );
   }
 }

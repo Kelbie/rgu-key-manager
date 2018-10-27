@@ -27,7 +27,7 @@ class Key extends Component {
                 id={this.props.match.params.keyid}
                 routeParams={this.props}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
-                buttons={[{text: "Transfer", icon: "send", type: "dialog"}, {text: "lost", icon: "warning"}]} />
+                buttons={[{text: "Transfer", icon: "send", type: "dialog"}, {text: "Lost", icon: "warning", type: "dialog"}]} />
     );
   }
 }

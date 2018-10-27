@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 
 // Graphics Components
 import Invite from '../../popups/Invite/Invite';
+import Lost from '../../popups/Lost/Lost';
 import Transfer from '../../popups/Transfer/Transfer';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
@@ -51,7 +52,8 @@ class InfoPage extends Component {
   render() {
     const mapping = {
       "Invite": <Invite {...this.props} />,
-      "Transfer": <Transfer {...this.props} />
+      "Transfer": <Transfer {...this.props} />,
+      "Lost": <Lost {...this.props} />
     }
 
     return (<div styleName="page">
