@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import AppLogo from '../../app-logo.svg';
 
+import TextField from '@material-ui/core/TextField';
+
 // Graphics Components
 import Table from '../../components/Table/Table';
 import Button from '../../components/Button/HeaderButton';
@@ -1649,17 +1651,35 @@ var keys = [
 ]
 
 class Keys extends Component {
+  state = {keys: keys, filterText: ""}
+  constructor() {
+    super();
+  }
+
+  filter = (obj) => {
+    if (this.state.filterText != "") {
+      return obj[0].text.toUpperCase().includes(this.state.filterText.toUpperCase()) ||
+             obj[2].text.toUpperCase().includes(this.state.filterText.toUpperCase())
+    } else {
+      return true
+    }
+  }
+
+  handleOnChange = (filterText) => {
+    this.setState({
+      filterText: filterText
+     }, ()=>{
+       this.setState({keys: keys.filter(this.filter)})
+     });
+
+  }
+
   render() {
-    return (<> < Button variant = "outlined" text = {
-      "test"
-    } /> <Table path="key" columns={[
-        "KEY ID",
-        "TYPE",
-        "HOLDER",
-        "OPENS",
-        "STORED",
-        "NO. OF DUPLICATES"
-      ]} rows={keys}/>
+    return (<>
+      <TextField onChange={(filterText) => this.handleOnChange(filterText.target.value)} label="Filter" />
+        <Table path="key"
+          columns={["KEY ID", "TYPE", "HOLDER", "OPENS", "STORED", "DUPLICATES"]}
+          rows={this.state.keys}/>
   </>);
   }
 

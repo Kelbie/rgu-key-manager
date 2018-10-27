@@ -20,7 +20,7 @@ const styles = theme => ({
 
 class ControlledOpenSelect extends React.Component {
   state = {
-    age: '',
+    value: '',
     open: false,
   };
 
@@ -47,10 +47,10 @@ class ControlledOpenSelect extends React.Component {
             open={this.state.open}
             onClose={this.handleClose}
             onOpen={this.handleOpen}
-            value={this.state.age}
+            value={this.state.value}
             onChange={this.handleChange}
             inputProps={{
-              name: 'role',
+              name: 'value',
               id: 'demo-controlled-open-select',
             }}
           >

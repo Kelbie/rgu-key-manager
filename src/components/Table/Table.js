@@ -23,6 +23,12 @@ class SimpleTable extends Component {
   componentDidMount() {
   }
 
+  componentWillReceiveProps(someProps) {
+    console.log(someProps);
+    console.log(this.state.rows);
+    this.setState({rows: someProps.rows})
+  }
+
   render() {
     const { classes } = this.props;
 
