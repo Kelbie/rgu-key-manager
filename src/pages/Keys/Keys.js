@@ -344,9 +344,11 @@ var keys = [
       "text": "Door Key",
       "type": "plain"
     }, {
+      "text": "-",
+      "type": "plain"
+    }, {
       "text": "N/A",
-      "type": "button",
-      "linkTo": "key/PHolt"
+      "type": "plain",
     }, {
       "text": "N/A",
       "type": "plain"
@@ -1659,7 +1661,10 @@ class Keys extends Component {
   filter = (obj) => {
     if (this.state.filterText != "") {
       return obj[0].text.toUpperCase().includes(this.state.filterText.toUpperCase()) ||
-             obj[2].text.toUpperCase().includes(this.state.filterText.toUpperCase())
+             obj[1].text.toUpperCase().includes(this.state.filterText.toUpperCase()) ||
+             obj[2].text.toUpperCase().includes(this.state.filterText.toUpperCase()) ||
+             obj[3].text.toUpperCase().includes(this.state.filterText.toUpperCase()) ||
+             obj[4].text.toUpperCase().includes(this.state.filterText.toUpperCase())
     } else {
       return true
     }
