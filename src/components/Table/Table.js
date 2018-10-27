@@ -19,14 +19,35 @@ const styles = theme => ({
 });
 
 class SimpleTable extends Component {
-  state = {sortBy: 0, asc: true, rows: this.props.rows};
+  state = {sortBy: 0, asc: false, rows: this.props.rows};
   componentDidMount() {
+  }
+
+  componentDidMount() {
+    this.sortTable(0);
   }
 
   componentWillReceiveProps(someProps) {
     console.log(someProps);
     console.log(this.state.rows);
     this.setState({rows: someProps.rows})
+  }
+
+  sortTable = (i) => {
+    this.setState({
+      sortBy: i,
+      asc: !this.state.asc
+    })
+    var that = this;
+    this.setState({
+      rows: this.state.rows.sort(function(a, b) {
+        if (that.state.asc) {
+          return a[i].text < b[i].text
+        } else {
+          return a[i].text > b[i].text
+        }
+      })
+    })
   }
 
   render() {
@@ -38,17 +59,7 @@ class SimpleTable extends Component {
           <TableHead>
             <TableRow>
               {this.props.columns.map((column, i) => {
-                return <TableCell onClick={() => {
-                    this.setState({sortBy: i, asc: !this.state.asc})
-                    var that = this;
-                    this.setState({rows: this.state.rows.sort(function(a, b) {
-                      if (that.state.asc) {
-                        return a[i].text<b[i].text
-                      } else {
-                        return a[i].text>b[i].text
-                      }
-
-                    })})}}>{column}</TableCell>
+                return <TableCell onClick={() => this.sortTable(i)}>{column}</TableCell>
               })}
             </TableRow>
           </TableHead>
