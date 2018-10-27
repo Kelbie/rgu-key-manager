@@ -113,7 +113,7 @@ class NavigationDrawer extends Component {
                     </ListItem>
                     <Collapse in={this.state.openFobItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link className={classes.link} to="">
+                            <Link className={classes.link} to="/fobs">
                                 <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="All fobs" />
                                 </ListItem>
