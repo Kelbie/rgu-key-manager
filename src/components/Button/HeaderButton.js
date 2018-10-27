@@ -14,6 +14,7 @@ import WarningIcon from '@material-ui/icons/Warning';
 import SendIcon from '@material-ui/icons/Send';
 import FolderIcon from '@material-ui/icons/Folder';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
 
 const styles = theme => ({
   button: {
@@ -40,6 +41,7 @@ function HeaderButton(props) {
       {props.icon == "send" ? <SendIcon className={classes.leftIcon} /> : ""}
       {props.icon == "folder" ? <FolderIcon className={classes.leftIcon} /> : ""}
       {props.icon == "expand_more" ? <ExpandMoreIcon className={classes.leftIcon} /> : ""}
+      {props.icon == "settings_backup_restore" ? <SettingsBackupRestoreIcon className={classes.leftIcon} /> : ""}
       {props.text}
     </Button>
   );
