@@ -3,8 +3,6 @@ import MaterialIcon from 'material-icons-react';
 import Identicon from 'identicon.js';
 import sha256 from 'js-sha256';
 
-import Action from '../../components/Action/Action';
-
 import InfoPage from '../../pages/InfoPage/InfoPage';
 
 import styles from './Key.module.scss';

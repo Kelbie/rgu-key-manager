@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
-import Action from '../../components/Action/Action';
 import Invite from '../../popups/Invite/Invite';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';

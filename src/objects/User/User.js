@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 
-import Action from '../../components/Action/Action';
-
 import InfoPage from '../../pages/InfoPage/InfoPage';
 
 import styles from './User.module.scss';
