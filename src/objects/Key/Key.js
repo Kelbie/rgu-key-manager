@@ -26,7 +26,6 @@ class Key extends Component {
       <InfoPage type={"key"}
                 id={this.props.match.params.keyid}
                 routeParams={this.props}
-                navigation={["history", "spares"]}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
                 buttons={[{text: "Transfer", icon: "send"}, {text: "lost", icon: "warning"}]} />
     );
