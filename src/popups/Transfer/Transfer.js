@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Select from '../../components/Selects/Selects';
 
-class People extends Component {
+class Transfer extends Component {
     render(){
         return (
           <>
@@ -25,4 +25,4 @@ class People extends Component {
     }
 
 }
-export default People;
+export default Transfer;
