@@ -3,7 +3,6 @@ import MaterialIcon from 'material-icons-react';
 import CSSModules from 'react-css-modules';
 
 import Action from '../../components/Action/Action';
-import Button from '../../components/Button/Button';
 import DialogButton from '../../components/Button/DialogButton';
 import HeaderButton from '../../components/Button/HeaderButton';
 import Tabs from '../../components/Tabs/Tabs';
