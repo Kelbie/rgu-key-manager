@@ -49,7 +49,7 @@ class AlertDialog extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{this.props.title + this.props.id}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {this.props.desc}
@@ -57,10 +57,8 @@ class AlertDialog extends React.Component {
             {this.props.content}
           </DialogContent>
           <DialogActions>
-            <Button text="Cancel" onClick={this.handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button text="Invite" onClick={this.handleInvite} color="primary" autoFocus />
+            <Button text={this.props.no} onClick={this.handleClose} color="primary" />
+            <Button text={this.props.yes} onClick={this.handleInvite} color="primary" autoFocus />
           </DialogActions>
         </Dialog>
       </div>
