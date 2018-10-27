@@ -57,7 +57,7 @@ class SimpleTable extends Component {
               return (
                 <TableRow hover={true} key={row.id}>
                   {row.map((element, i) => {
-                    if (i <= this.props.columns.length) {
+                    if (i < this.props.columns.length) {
                       if (element.type == "button") {
                         return <TableCell><HeaderButton text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
                       } else {
