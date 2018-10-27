@@ -28,7 +28,7 @@ class Fob extends Component {
                 routeParams={this.props}
                 navigation={["history", "spares"]}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
-                buttons={[{text: "Transfer", icon: "send"}, {text: "Reprogram", icon: "settings_backup_restore"}]} />
+                buttons={[{text: "Transfer", icon: "send"}, {text: "Reprogram", icon: "settings_backup_restore"}, {text: "lost", icon: "warning"}]} />
     );
   }
 }
