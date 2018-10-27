@@ -26,8 +26,8 @@ class InfoPage extends Component {
   }
 
   componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
-      window.removeEventListener('resize', this.updateDimensions);
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   handleScroll(event) {
@@ -36,43 +36,86 @@ class InfoPage extends Component {
     const photo = document.getElementsByClassName(styles['photo'])[0];
     const page = document.getElementsByClassName(styles['page'])[0];
 
-    general.style.left=page.getBoundingClientRect().left + 32 + "px";
-    general.style.top="120px";
+    general.style.left = page.getBoundingClientRect().left + 32 + "px";
+    general.style.top = "120px";
   }
 
   updateDimensions(event) {
     const general = document.getElementsByClassName(styles['general'])[0];
     const page = document.getElementsByClassName(styles['page'])[0];
 
-    general.style.left=page.getBoundingClientRect().left + 32 + "px";
+    general.style.left = page.getBoundingClientRect().left + 32 + "px";
   }
 
   render() {
-    return (
-      <div styleName="page">
-        <div styleName="general">
-          <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
-          <div styleName="name">{this.props.id}</div>
-          <div styleName="gap"></div>
-          <div styleName="buttons">
-            {this.props.buttons.slice(0,2).map(button => {
+    return (<div styleName="page">
+      <div styleName="general">
+        <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
+        <div styleName="name">{this.props.id}</div>
+        <div styleName="gap"></div>
+        <div styleName="buttons">
+          {
+            this.props.buttons.slice(0, 2).map(button => {
               if (button.type == "dialog") {
                 return <Invite {...this.props}/>
               } else {
                 return <HeaderButton variant="outlined" color="primary" text={button.text} icon={button.icon}/>
               }
 
-
-            })}
-            { this.props.buttons.length > 2 ? <DropDown text={"More"} icon={"expand_more"} items={this.props.buttons.slice(2, this.props.buttons.length)}/>
-               : "" }
-          </div>
+            })
+          }
+          {
+            this.props.buttons.length > 2
+              ? <DropDown text={"More"} icon={"expand_more"} items={this.props.buttons.slice(2, this.props.buttons.length)}/>
+              : ""
+          }
         </div>
-        <Tabs tabs={["Activity", "Keys"]} contents={[
-            <ExpansionPanel />, <Table path="key" columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[["123(1)", "Door Key", "3"],["123(1)", "Door Key", "3"],["123(1)", "Door Key", "3"]]}/>
-          ]} />
       </div>
-    );
+      <Tabs tabs={["Activity", "Keys"]} contents={[
+          <ExpansionPanel/>,
+          <Table path="key" columns={["KEY ID", "TYPE", "DUPLICATES"]} rows={[
+              [
+                {
+                  text: "123(1)",
+                  type: "button",
+                  linkTo: "/key/123(1)"
+                }, {
+                  text: "Door Key",
+                  type: "plain"
+                }, {
+                  text: 2,
+                  type: "plain"
+                }
+              ],
+              [
+                {
+                  text: "123(2)",
+                  type: "button",
+                  linkTo: "/key/123(2)"
+                }, {
+                  text: "Door Key",
+                  type: "plain"
+                }, {
+                  text: 2,
+                  type: "plain"
+                }
+              ],
+              [
+                {
+                  text: "123(3)",
+                  type: "button",
+                  linkTo: "/key/123(3)"
+                }, {
+                  text: "Door Key",
+                  type: "plain"
+                }, {
+                  text: 2,
+                  type: "plain"
+                }
+              ]
+            ]}/>
+        ]}/>
+    </div>);
   }
 }
 
