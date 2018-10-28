@@ -69,9 +69,14 @@ class Key extends Component {
           },
           comment: {
             text: row.comment
+          },
+          time: {
+            text: row.time
           }
         })
-        this.setState({history: this.state.history})
+        this.setState({history: this.state.history.sort(function(a, b) {
+          return new Date(b.time.text) > new Date(a.time.text);
+        })})
     })
 
     console.log(1011, this.state.history)
