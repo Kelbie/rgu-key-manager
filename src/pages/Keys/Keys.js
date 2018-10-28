@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 // Graphics Components
 import Table from '../../components/Table/Table';
-import Button from '../../components/Button/HeaderButton';
+import Button from '../../components/Button/MiniButton';
 
 var keys = [
   [
