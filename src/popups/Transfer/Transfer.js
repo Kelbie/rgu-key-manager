@@ -37,7 +37,7 @@ class AlertDialog extends React.Component {
   };
 
   async componentDidMount() {
-    this.test()
+    
   }
 
   async test() {
