@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import HeaderButton from '../Button/HeaderButton';
+import Button from '../Button/MiniButton';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -69,7 +69,7 @@ class SimpleTable extends Component {
                   {row.map((element, i) => {
                     if (i < this.props.columns.length) {
                       if (element.type == "button") {
-                        return <TableCell><HeaderButton text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
+                        return <TableCell><Button text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
                       } else {
                         return <TableCell>{element.text}</TableCell>
                       }
