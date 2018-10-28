@@ -54,7 +54,7 @@ class AlertDialog extends React.Component {
     console.log("auth", author)
     firestore.collection('history').add({
       author: this.state.author,
-      comment: "blah",
+      comment: this.state.note,
       from: "Someone",
       keyid: this.props.id,
       time: new Date,
@@ -88,6 +88,14 @@ class AlertDialog extends React.Component {
               <TextField onChange={(username) => this.setState({username: username.target.value})} label="Username" type="username" name="username" autoComplete="username" />
               <Select title="Duration" options={["N/A"]}/>
             </Grid>
+            <TextField
+              onChange={(note) => this.setState({note: note.target.value})}
+              placeholder="Write a note about this transfer"
+              variant="outlined"
+              fullWidth={true}
+              multiline={true}
+              rows={3}
+            />
           </DialogContent>
           <DialogActions>
             <Button text={"Cancel"} onClick={this.handleClose} color="primary" />
