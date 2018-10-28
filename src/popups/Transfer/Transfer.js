@@ -41,8 +41,19 @@ class AlertDialog extends React.Component {
   }
 
   async test() {
+    const author = auth.currentUser.email
+    const userRef = await firestore.collection('users').where('email', '==', author)
+    try {
+      const snap = await userRef.get()
+      snap.forEach(doc => {
+        this.setState({author: doc.data().username})
+      })
+    } catch(e) {
+      console.log(1123, e)
+    }
+    console.log("auth", author)
     firestore.collection('history').add({
-      author: this.state.username,
+      author: this.state.author,
       comment: "blah",
       from: "Someone",
       keyid: this.props.id,
