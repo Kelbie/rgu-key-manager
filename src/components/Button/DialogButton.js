@@ -56,10 +56,11 @@ class AlertDialog extends React.Component {
               {this.props.desc}
             </DialogContentText>
             {this.props.content}
+            awd
           </DialogContent>
           <DialogActions>
             <Button text={this.props.no} onClick={this.handleClose} color="primary" />
-            <Button text={this.props.yes} onClick={this.props.handleYes} color="primary" autoFocus />
+            <Button text={this.props.yes} onClick={this.props.handleClickOpen} color="primary" autoFocus />
           </DialogActions>
         </Dialog>
       </div>

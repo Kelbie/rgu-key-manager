@@ -19,8 +19,9 @@ import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore'
 const styles = theme => ({
   button: {
     margin: 0,
-    padding: 0,
-    minHeight: 0
+    padding: 4,
+    minHeight: 0,
+    minWidth: 0
   },
   iconSmall: {
     fontSize: 20,

@@ -12,6 +12,7 @@ import InfoPage from '../../pages/InfoPage/InfoPage';
 import styles from './Key.module.scss';
 
 class Key extends Component {
+  state = {history: []}
   constructor() {
     super();
   }
@@ -23,20 +24,61 @@ class Key extends Component {
     this.setState({"identicon": data});
 
     this.getDetails()
+    this.getHistory()
   }
 
   async getDetails() {
-    const keyRef = await firestore.collection('keys').doc("80(1)")
+    const keyRef = await firestore.collection('keys').doc(this.props.match.params.keyid)
 
     try {
       const snap = await keyRef.get()
       const keyid = snap.data().keyid
       const holder = snap.data().holder.id
       const type = snap.data().type
-      this.setState({"desc": {holder: holder, type: type}})
+      const opens = snap.data().opens.id
+      const stored = snap.data().stored.id
+      this.setState({"desc": {holder: holder, type: type, opens: opens, stored: stored}})
 
     } catch(e) {
       console.log(e);
+    }
+  }
+
+  async getHistory() {
+    const historyRef = await firestore.collection('history').where('keyid', '==', this.props.match.params.keyid)
+
+    try {
+      const snap = await historyRef.get()
+      snap.forEach(row => {
+        row = row.data()
+        this.state.history.push({
+          author: {
+            text: row.author,
+            type: "button",
+            linkTo: "/user/" + row.author
+          },
+          keyid: {
+            text: row.keyid,
+            type: "button",
+            linkTo: "/key/" + row.keyid
+          },
+          to: {
+            text: row.to,
+            type: "button",
+            linkTo: "/user/" + row.to
+          },
+          comment: {
+            text: row.comment
+          }
+        })
+        this.setState({history: this.state.history})
+    })
+
+    console.log(1011, this.state.history)
+
+
+    } catch(e) {
+      console.log(999, e);
     }
   }
 
@@ -45,6 +87,7 @@ class Key extends Component {
       <InfoPage type={"key"}
                 id={this.props.match.params.keyid}
                 desc={this.state.desc}
+                history={this.state.history}
                 routeParams={this.props}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
                 buttons={[{text: "Transfer", icon: "send", type: "dialog"}, {text: "Lost", icon: "warning", type: "dialog"}]} />
