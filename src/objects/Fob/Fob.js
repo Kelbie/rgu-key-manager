@@ -25,6 +25,7 @@ class Fob extends Component {
     return (
       <InfoPage type={"fob"}
                 id={this.props.match.params.fobid}
+                history={[]}
                 routeParams={this.props}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
                 buttons={[{text: "Transfer", icon: "send"}, {text: "Reprogram", icon: "settings_backup_restore"}, {text: "lost", icon: "warning", type: "dialog"}]} />

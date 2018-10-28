@@ -23,9 +23,9 @@ class AlertDialog extends React.Component {
   state = {
     open: false,
     email: null,
-    transfer_author: null,
-    assigned_user: null,
-    key: null,
+    author: null,
+    to: null,
+    keyid: null,
   };
 
   handleClickOpen = () => {
@@ -37,40 +37,17 @@ class AlertDialog extends React.Component {
   };
 
   async componentDidMount() {
-    
+
   }
 
   async test() {
-    // const userRef = await firestore.collection('users')
-    //                             .where("username", "==", this.state.username)
-    // try {
-    //   const snap = await userRef.get()
-    //   const that = this;
-    //   snap.forEach(function(doc) {
-    //     that.setState({assigned_user: doc})
-    //   })
-    // } catch(e) {
-    //   console.log(e);
-    // }
-    //
-    // const keyRef = await firestore.collection('keys')
-    //                             .where("keyid", "==", this.props.id)
-    //
-    // try {
-    //   const snap = await keyRef.get()
-    //   const that = this;
-    //   snap.forEach(function(doc) {
-    //     that.setState({key: doc})
-    //   })
-    //
-    // } catch(e) {
-    //   console.log(e);
-    // }
-
     firestore.collection('history').add({
-      author: firestore.doc("users/" + this.state.username),
-      entity: firestore.doc("keys/" + this.props.id),
-      dest: firestore.doc("users/" + this.state.username)
+      author: this.state.username,
+      comment: "blah",
+      from: "Someone",
+      keyid: this.props.id,
+      time: new Date,
+      to: this.state.username
     })
   }
 
