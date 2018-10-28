@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.1.2",
     "@material-ui/icons": "^3.0.1",
+    "async": "^2.6.1",
     "firebase": "^5.5.5",
     "identicon.js": "^2.3.3",
     "js-sha256": "^0.9.0",

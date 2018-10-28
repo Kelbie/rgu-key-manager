@@ -47,6 +47,10 @@
     grid-template-columns: max-content max-content auto;
     grid-column-gap: 12px;
 
+    .desc {
+      grid-area: desc;
+    }
+
     .photo {
       transition: 1s ease 0s;
       display: flex;

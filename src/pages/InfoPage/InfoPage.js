@@ -7,6 +7,7 @@ import Invite from '../../popups/Invite/Invite';
 import Lost from '../../popups/Lost/Lost';
 import Transfer from '../../popups/Transfer/Transfer';
 import HeaderButton from '../../components/Button/HeaderButton';
+import MiniButton from '../../components/Button/MiniButton';
 import Tabs from '../../components/Tabs/Tabs';
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel';
 import Table from '../../components/Table/Table';
@@ -16,7 +17,7 @@ import DropDown from '../../components/DropDown/DropDown';
 import styles from './InfoPage.module.scss';
 
 class InfoPage extends Component {
-  state = {};
+  state = {desc: {holder: undefined, type: undefined}};
   constructor() {
     super();
   }
@@ -49,6 +50,10 @@ class InfoPage extends Component {
     general.style.left = page.getBoundingClientRect().left + 32 + "px";
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({"desc": props.desc})
+  }
+
   render() {
     const mapping = {
       "Invite": <Invite {...this.props} />,
@@ -60,6 +65,7 @@ class InfoPage extends Component {
       <div styleName="general">
         <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
         <div styleName="name">{this.props.id}</div>
+        <div styleName="desc"><MiniButton variant="flat" color="primary" text={this.state.desc.holder} /></div>
         <div styleName="gap"></div>
         <div styleName="buttons">
           {

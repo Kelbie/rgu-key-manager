@@ -6,9 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-
-import firebase, {auth, database} from "../Firebase/Firebase";
-
 class AlertDialog extends React.Component {
   state = {
     open: false,
@@ -23,21 +20,25 @@ class AlertDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  handleInvite = () => {
-    var state = this;
-    auth.sendSignInLinkToEmail(this.state.email, {
-      url: 'http://localhost:3000/signin',
-      handleCodeInApp: true
-    })
-    .then(function() {
-      console.log(123);
-      state.setState({ open: false });
-    })
-    .catch(function(error) {
-      console.log(error)
-      state.setState({ open: false });
-    });
+  componentWillMount() {
+    console.log(this.props);
   }
+
+  // handleInvite = () => {
+  //   var state = this;
+  //   auth.sendSignInLinkToEmail(this.state.email, {
+  //     url: 'http://localhost:3000/signin',
+  //     handleCodeInApp: true
+  //   })
+  //   .then(function() {
+  //     console.log(123);
+  //     state.setState({ open: false });
+  //   })
+  //   .catch(function(error) {
+  //     console.log(error)
+  //     state.setState({ open: false });
+  //   });
+  // }
 
   render() {
     return (
@@ -58,7 +59,7 @@ class AlertDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button text={this.props.no} onClick={this.handleClose} color="primary" />
-            <Button text={this.props.yes} onClick={this.handleInvite} color="primary" autoFocus />
+            <Button text={this.props.yes} onClick={this.props.handleYes} color="primary" autoFocus />
           </DialogActions>
         </Dialog>
       </div>
