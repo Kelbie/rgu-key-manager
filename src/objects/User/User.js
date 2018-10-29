@@ -20,7 +20,8 @@ class User extends Component {
   }
 
   async getHistory() {
-    const historyRef = await firestore.collection('history').where('to', '==', this.props.match.params.username)
+    const historyRef = await firestore.collection('history')
+      .where('to', '==', this.props.match.params.username)
 
     try {
       const snap = await historyRef.get()
@@ -53,6 +54,43 @@ class User extends Component {
     } catch (e) {
       console.log(e)
     }
+
+    const historyRef2 = await firestore.collection('history')
+      .where('from', '==', firestore.doc("/users/" + this.props.match.params.username))
+
+    try {
+      const snap = await historyRef2.get()
+      snap.forEach(row => {
+        row = row.data()
+        console.log(777, row)
+        this.state.history.push({
+          author: {
+            text: row.author,
+            type: "button",
+            linkTo: "/user/" + row.author
+          },
+          keyid: {
+            text: row.keyid,
+            type: "button",
+            linkTo: "/key/" + row.keyid
+          },
+          to: {
+            text: row.to,
+            type: "button",
+            linkTo: "/user/" + row.to
+          },
+          comment: {
+            text: row.comment
+          },
+          time: {
+            text: row.time
+          }
+        })
+      })
+    } catch (e) {
+      console.log(e)
+    }
+
     this.setState({
       history: this.state.history.sort(function(a, b) {
         return new Date(b.time.text) > new Date(a.time.text);

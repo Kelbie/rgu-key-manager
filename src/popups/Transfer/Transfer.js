@@ -24,6 +24,8 @@ class AlertDialog extends React.Component {
     open: false,
     email: null,
     author: null,
+    lastOwner: null,
+    note: null,
     to: null,
     keyid: null,
   };
@@ -40,22 +42,51 @@ class AlertDialog extends React.Component {
 
   }
 
-  async test() {
+  async getLastOwner() {
+    console.log(888, this.props.id)
+    const keyid = this.props.id
+    const keyRef = await firestore.collection('keys').where('keyid', '==', keyid)
+
+    try {
+      const snap = await keyRef.get()
+      console.log(888, snap)
+      snap.forEach(row => {
+        row = row.data()
+        console.log(888, row)
+        this.setState({lastOwner: row.holder.id})
+      })
+    } catch (e) {
+      console.log(888, e)
+    }
+  }
+
+  async updateOwner() {
+    await this.getLastOwner()
+    const keyRef = await firestore.collection('keys').doc("80(1)")
+      .update({holder: firestore.doc('/users/' + this.state.username)})
+  }
+
+  async createHistoryElement() {
     const author = auth.currentUser.email
     const userRef = await firestore.collection('users').where('email', '==', author)
     try {
       const snap = await userRef.get()
       snap.forEach(doc => {
-        this.setState({author: doc.data().username})
+        console.log(888, doc.data().username)
+        this.setState({
+          author: doc.data().username
+        })
+
       })
     } catch(e) {
-      console.log(1123, e)
+      console.log(888, e)
     }
-    console.log("auth", author)
+
+    console.log(888, this.state.author, this.state.note, this.state.lastOwner, this.props.id, this.state.username)
     firestore.collection('history').add({
       author: this.state.author,
       comment: this.state.note,
-      from: "Someone",
+      from: firestore.doc('/users/' + this.state.lastOwner),
       keyid: this.props.id,
       time: new Date,
       to: this.state.username
@@ -63,7 +94,8 @@ class AlertDialog extends React.Component {
   }
 
   handleTransfer = () => {
-    this.test()
+    this.updateOwner()
+    this.createHistoryElement()
     this.handleClose()
   }
 
