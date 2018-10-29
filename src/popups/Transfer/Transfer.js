@@ -64,7 +64,8 @@ class AlertDialog extends React.Component {
 
   async updateOwner() {
     await this.getLastOwner()
-    const keyRef = await firestore.collection('keys').doc("80(1)")
+    console.log(666, this.state.keyid)
+    const keyRef = await firestore.collection('keys').doc(this.props.id)
       .update({holder: firestore.doc('/users/' + this.state.username)})
   }
 
