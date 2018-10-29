@@ -23,6 +23,7 @@ class InfoPage extends Component {
   }
 
   componentWillMount() {
+
     this.setState({history: this.props.history})
   }
 
@@ -57,7 +58,7 @@ class InfoPage extends Component {
   componentWillReceiveProps(p) {
     this.setState({"desc": p.desc})
     this.setState({"history": p.history})
-    console.log(900, this.state.history)
+    console.log(900, p)
   }
 
   render() {

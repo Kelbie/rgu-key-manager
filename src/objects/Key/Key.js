@@ -37,7 +37,8 @@ class Key extends Component {
       const type = snap.data().type
       const opens = snap.data().opens.id
       const stored = snap.data().stored.id
-      this.setState({"desc": {holder: holder, type: type, opens: opens, stored: stored}})
+      const lost = snap.data().lost
+      this.setState({"desc": {holder: holder, type: type, opens: opens, stored: stored, lost: lost}})
 
     } catch(e) {
       console.log(e);

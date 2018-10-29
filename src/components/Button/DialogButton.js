@@ -56,7 +56,6 @@ class AlertDialog extends React.Component {
               {this.props.desc}
             </DialogContentText>
             {this.props.content}
-            awd
           </DialogContent>
           <DialogActions>
             <Button text={this.props.no} onClick={this.handleClose} color="primary" />
