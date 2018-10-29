@@ -4,6 +4,8 @@ import AppLogo from '../../app-logo.svg';
 
 import async from 'async';
 
+import Select from 'react-select';
+
 // Firebase
 import firebase, {auth, database, firestore} from "../../components/Firebase/Firebase";
 
@@ -18,7 +20,7 @@ import Grid from '@material-ui/core/Grid';
 
 // Graphics Components
 import Button from '../../components/Button/HeaderButton';
-import Select from '../../components/Selects/Selects';
+import AutoComplete from '../../components/AutoComplete/AutoComplete'
 
 
 class AlertDialog extends React.Component {
@@ -30,6 +32,8 @@ class AlertDialog extends React.Component {
     note: null,
     to: null,
     keyid: null,
+    users: [],
+    username: "root"
   };
 
   handleClickOpen = () => {
@@ -40,8 +44,23 @@ class AlertDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getUsers()
+  }
 
+  async getUsers() {
+    const usersRef = await firestore.collection('users')
+
+    try {
+      const snap = await usersRef.get()
+      snap.forEach(row => {
+        row = row.data()
+        console.log(888, row.username)
+        this.state.users.push({label: row.username})
+      })
+    } catch (e) {
+      console.log(888, e)
+    }
   }
 
   async getLastOwner() {
@@ -64,7 +83,6 @@ class AlertDialog extends React.Component {
 
   async updateOwner() {
     await this.getLastOwner()
-    console.log(666, this.state.keyid)
     const keyRef = await firestore.collection('keys').doc(this.props.id)
       .update({holder: firestore.doc('/users/' + this.state.username)})
   }
@@ -75,7 +93,6 @@ class AlertDialog extends React.Component {
     try {
       const snap = await userRef.get()
       snap.forEach(doc => {
-        console.log(888, doc.data().username)
         this.setState({
           author: doc.data().username
         })
@@ -120,8 +137,7 @@ class AlertDialog extends React.Component {
             <Grid container
                   direction="row"
                   alignItems="center">
-              <TextField onChange={(username) => this.setState({username: username.target.value})} label="Username" type="username" name="username" autoComplete="username" />
-              <Select title="Duration" options={["N/A"]}/>
+              <AutoComplete setSelected={(selectedUsername) => this.setState({username:selectedUsername})} options={this.state.users}/>
             </Grid>
             <TextField
               onChange={(note) => this.setState({note: note.target.value})}
