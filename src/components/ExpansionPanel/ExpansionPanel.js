@@ -41,13 +41,13 @@ class SimpleExpansionPanel extends Component {
           return <ExpansionPanel>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                <Button onClick={() => window.location.href="/user/Person1"}
+                <Button onClick={() => window.location.href="/user/" + row.author.text}
                         text={row.author.text}
                         variant="flat"
                         size="small" /> assigned
-                <Button onClick={() => window.location.href="/key/123"}
+                <Button onClick={() => window.location.href="/key/" + row.keyid.text}
                         text={row.keyid.text} variant="flat" size="small" />  to
-                <Button onClick={() => window.location.href="/user/Person2"}
+                <Button onClick={() => window.location.href="/user/" + row.to.text}
                         text={row.to.text}
                         variant="flat"
                         size="small" />
