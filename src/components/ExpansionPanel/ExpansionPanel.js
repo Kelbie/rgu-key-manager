@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+// Material UI Components
 import { withStyles } from '@material-ui/core/styles';
+
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import Button from '../Button/MiniButton';
@@ -27,7 +31,6 @@ class SimpleExpansionPanel extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props != nextProps) {
-      console.log(888, nextProps);
       this.setState({
         history: nextProps.history
       });
@@ -45,11 +48,14 @@ class SimpleExpansionPanel extends Component {
                 <Button onClick={() => window.location.href="/user/" + row.author.text}
                         text={row.author.text}
                         variant="flat"
-                        size="small" /> assigned
+                        size="small" />
+                {" assigned "}
                 <Button onClick={() => window.location.href="/key/" + row.keyid.text}
-                        text={row.keyid.text} variant="flat" size="small" /> from
-                        <Button onClick={() => window.location.href="/user/" + row.from.text}
-                                text={row.from.text} variant="flat" size="small" /> to
+                        text={row.keyid.text} variant="flat" size="small" />
+                {" from "}
+                <Button onClick={() => window.location.href="/user/" + row.from.text}
+                        text={row.from.text} variant="flat" size="small" />
+                {" to "}
                 <Button onClick={() => window.location.href="/user/" + row.to.text}
                         text={row.to.text}
                         variant="flat"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {  BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 
-// Router components
+// Router Components
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import People from '../../pages/People/People';
 import Keys from '../../pages/Keys/Keys';

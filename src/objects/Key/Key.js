@@ -3,6 +3,7 @@ import MaterialIcon from 'material-icons-react';
 import Identicon from 'identicon.js';
 import sha256 from 'js-sha256';
 
+// Firebase
 import firebase, {auth, database, firestore} from "../../components/Firebase/Firebase";
 
 // Layout Components

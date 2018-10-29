@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import AppLogo from '../../app-logo.svg';
 
+// Material UI Components
 import TextField from '@material-ui/core/TextField';
 
 // Graphics Components

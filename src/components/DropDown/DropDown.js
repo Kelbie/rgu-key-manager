@@ -1,9 +1,12 @@
 import React from 'react';
+
+// Material UI Components
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import HeaderButton from '../Button/HeaderButton';
 import { withStyles } from '@material-ui/core/styles';
+
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import KeyboardVoiceICon from '@material-ui/icons/KeyboardVoice';

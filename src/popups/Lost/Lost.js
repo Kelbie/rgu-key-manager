@@ -6,17 +6,18 @@ import async from 'async';
 
 import firebase, {auth, database, firestore} from "../../components/Firebase/Firebase";
 
-
-import Button from '../../components/Button/HeaderButton';
+// Material UI Components
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+
+// Graphics Components
 import Select from '../../components/Selects/Selects';
+import Button from '../../components/Button/HeaderButton';
 
 
 class Lost extends React.Component {
@@ -35,7 +36,7 @@ class Lost extends React.Component {
 
   async test() {
     const keyRef = await firestore.collection('keys').doc("80(1)")
-    .update({lost: true})
+      .update({lost: true})
   }
 
   handleTransfer = () => {

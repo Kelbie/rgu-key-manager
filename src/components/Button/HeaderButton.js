@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+// Material UI Icons
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import KeyboardVoiceICon from '@material-ui/icons/KeyboardVoice';
+
 import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -15,6 +15,9 @@ import SendIcon from '@material-ui/icons/Send';
 import FolderIcon from '@material-ui/icons/Folder';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import KeyboardVoiceICon from '@material-ui/icons/KeyboardVoice';
 
 const styles = theme => ({
   button: {
