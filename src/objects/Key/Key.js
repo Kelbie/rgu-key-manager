@@ -63,6 +63,11 @@ class Key extends Component {
             type: "button",
             linkTo: "/key/" + row.keyid
           },
+          from: {
+            text: row.from.id,
+            type: "button",
+            linkTo: "/user/" + row.from.id
+          },
           to: {
             text: row.to,
             type: "button",

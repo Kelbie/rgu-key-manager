@@ -27,6 +27,7 @@ class SimpleExpansionPanel extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props != nextProps) {
+      console.log(888, nextProps);
       this.setState({
         history: nextProps.history
       });
@@ -46,7 +47,9 @@ class SimpleExpansionPanel extends Component {
                         variant="flat"
                         size="small" /> assigned
                 <Button onClick={() => window.location.href="/key/" + row.keyid.text}
-                        text={row.keyid.text} variant="flat" size="small" />  to
+                        text={row.keyid.text} variant="flat" size="small" /> from
+                        <Button onClick={() => window.location.href="/user/" + row.from.text}
+                                text={row.from.text} variant="flat" size="small" /> to
                 <Button onClick={() => window.location.href="/user/" + row.to.text}
                         text={row.to.text}
                         variant="flat"

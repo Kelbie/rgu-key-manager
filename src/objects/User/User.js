@@ -38,6 +38,11 @@ class User extends Component {
             type: "button",
             linkTo: "/key/" + row.keyid
           },
+          from: {
+            text: row.from.id,
+            type: "button",
+            linkTo: "/user/" + row.from.id
+          },
           to: {
             text: row.to,
             type: "button",
@@ -62,7 +67,7 @@ class User extends Component {
       const snap = await historyRef2.get()
       snap.forEach(row => {
         row = row.data()
-        console.log(777, row)
+        console.log(888, row)
         this.state.history.push({
           author: {
             text: row.author,
@@ -73,6 +78,11 @@ class User extends Component {
             text: row.keyid,
             type: "button",
             linkTo: "/key/" + row.keyid
+          },
+          from: {
+            text: row.from.id,
+            type: "button",
+            linkTo: "/user/" + row.from.id
           },
           to: {
             text: row.to,
