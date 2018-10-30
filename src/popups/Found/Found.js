@@ -20,7 +20,7 @@ import Select from '../../components/Selects/Selects';
 import Button from '../../components/Button/HeaderButton';
 
 
-class Lost extends React.Component {
+class Found extends React.Component {
   state = {
     open: false,
     lost: false,
@@ -36,7 +36,7 @@ class Lost extends React.Component {
 
   async test() {
     const keyRef = await firestore.collection('keys').doc(this.props.id)
-      .update({lost: true})
+      .update({lost: false})
   }
 
   handleTransfer = () => {
@@ -47,17 +47,17 @@ class Lost extends React.Component {
   render() {
     return (
       <div>
-        <Button variant={"outlined"} color={"primary"} text={"Lost"} icon={"warning"} onClick={this.handleClickOpen} />
+        <Button variant={"outlined"} color={"primary"} text={"Found"} icon={"warning"} onClick={this.handleClickOpen} />
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Assign " + this.props.id + " as lost"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"Assign " + this.props.id + " as Found"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              {"Once assigned as lost the key will remain in the database but will be removed from the 'All keys' page and put into the 'Lost keys' page as seen on the side panel."}
+              {"Once assigned as found the key will remain in the database but will be removed from the 'All keys' page and put into the 'Found keys' page as seen on the side panel."}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -70,4 +70,4 @@ class Lost extends React.Component {
   }
 }
 
-export default Lost;
+export default Found;

@@ -13,9 +13,28 @@ import InfoPage from '../../pages/InfoPage/InfoPage';
 import styles from './Key.module.scss';
 
 class Key extends Component {
-  state = {history: []}
+  state = {
+    history: [],
+    desc: {},
+    buttons: [
+
+    ]}
   constructor() {
     super();
+  }
+
+  isLost() {
+    if (this.state.desc.lost) {
+      console.log(123, 1)
+      this.state.buttons.push(
+        {text: "Found", icon: "warning", type: "dialog"}
+      )
+    } else {
+      this.state.buttons.push(
+        {text: "Transfer", icon: "send", type: "dialog"},
+        {text: "Lost", icon: "warning", type: "dialog"},
+      )
+    }
   }
 
   componentWillMount() {
@@ -40,7 +59,7 @@ class Key extends Component {
       const stored = snap.data().stored.id
       const lost = snap.data().lost
       this.setState({"desc": {holder: holder, type: type, opens: opens, stored: stored, lost: lost}})
-
+      this.isLost()
     } catch(e) {
       console.log(e);
     }
@@ -102,7 +121,7 @@ class Key extends Component {
                 history={this.state.history}
                 routeParams={this.props}
                 image={<img width={420} height={420} src={"data:image/png;base64," + this.state.identicon } />}
-                buttons={[{text: "Transfer", icon: "send", type: "dialog"}, {text: "Lost", icon: "warning", type: "dialog"}]} />
+                buttons={this.state.buttons} />
     );
   }
 }
