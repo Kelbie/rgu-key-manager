@@ -44,7 +44,7 @@
     display: grid;
     grid-template: "photo name buttons"
                    "gap   desc desc";
-    grid-template-columns: max-content max-content auto;
+    grid-template-columns: min-content min-content auto;
     grid-column-gap: 12px;
 
     .desc {
