@@ -9,6 +9,9 @@ import User from '../../objects/User/User';
 import Key from '../../objects/Key/Key';
 import Fob from '../../objects/Fob/Fob';
 import Fobs from '../../pages/Fobs/Fobs';
+
+// Router components
+import AboutPage from '../../pages/AboutPage/AboutPage';
 import Place from '../../objects/Place/Place';
 
 class Container extends Component {
@@ -24,6 +27,7 @@ class Container extends Component {
                     <Route path="/people" component={People} />
                     <Route path="/keys" component={Keys} />
                     <Route path="/fobs" component={Fobs} />
+                    <Route path="/about" component={AboutPage} />
                 </Switch>
             </div>
         );
