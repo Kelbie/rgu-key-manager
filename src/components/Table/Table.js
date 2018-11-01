@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+// Material UI Components
 import { withStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,63 +11,86 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+// Graphics Components
+import Button from '../Button/MiniButton';
+
 const styles = theme => ({
   root: {
     width: '100%',
     overflowX: 'auto',
   },
   table: {
-    minWidth: 700,
   },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
+class SimpleTable extends Component {
+  state = {sortBy: 0, asc: false, rows: this.props.rows};
+  componentDidMount() {
+  }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+  componentDidMount() {
+    this.sortTable(0);
+  }
 
-function SimpleTable(props) {
-  const { classes } = props;
+  componentWillReceiveProps(someProps) {
+    console.log(someProps);
+    console.log(this.state.rows);
+    this.setState({rows: someProps.rows})
+  }
 
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            {props.columns.map(column => {
-              return <TableCell>{column}</TableCell>
+  sortTable = (i) => {
+    this.setState({
+      sortBy: i,
+      asc: !this.state.asc
+    })
+    var that = this;
+    this.setState({
+      rows: this.state.rows.sort(function(a, b) {
+        if (that.state.asc) {
+          return a[i].text < b[i].text
+        } else {
+          return a[i].text > b[i].text
+        }
+      })
+    })
+  }
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              {this.props.columns.map((column, i) => {
+                return <TableCell onClick={() => this.sortTable(i)}>{column}</TableCell>
+              })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {this.state.rows.map(row => {
+              return (
+                <TableRow hover={true} key={row.id}>
+                  {row.map((element, i) => {
+                    if (i < this.props.columns.length) {
+                      if (element.type == "button") {
+                        return <TableCell><Button text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
+                      } else {
+                        return <TableCell>{element.text}</TableCell>
+                      }
+
+                    }
+
+                  })}
+                </TableRow>
+              );
             })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.rows.map(row => {
-            return (
-              <TableRow hover={true} key={row.id} onClick={() => window.location.href=("/key/" + row.keyId)}>
-                <TableCell component="th" scope="row">
-                  {row.keyId}
-                </TableCell>
-                <TableCell>{row.type}</TableCell>
-                <TableCell>{row.duplicates}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
+          </TableBody>
+        </Table>
+      </Paper>
+    );
+  }
 }
-
-SimpleTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(SimpleTable);

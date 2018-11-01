@@ -92,7 +92,7 @@ class NavigationDrawer extends Component {
                     </ListItem>
                     <Collapse in={this.state.openKeyItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link className={classes.link} to="">
+                            <Link className={classes.link} to="/keys">
                                 <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="All keys" />
                                 </ListItem>
@@ -105,7 +105,7 @@ class NavigationDrawer extends Component {
                         </List>
                     </Collapse>
 
-                    {/* Fobs collapse list */}  
+                    {/* Fobs collapse list */}
                     <ListItem button onClick={this.handleFobItemClick}>
                         <ListItemIcon><FobIcon/></ListItemIcon>
                         <ListItemText inset primary="Fobs"/>
@@ -113,7 +113,7 @@ class NavigationDrawer extends Component {
                     </ListItem>
                     <Collapse in={this.state.openFobItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link className={classes.link} to="">
+                            <Link className={classes.link} to="/fobs">
                                 <ListItem button className={classes.nested}>
                                     <ListItemText inset primary="All fobs" />
                                 </ListItem>
@@ -126,7 +126,7 @@ class NavigationDrawer extends Component {
                         </List>
                     </Collapse>
 
-                    {/* People item list */}  
+                    {/* People item list */}
                     <Link className={classes.link} to="/people">
                         <ListItem button>
                             <ListItemIcon><PeopleIcon/></ListItemIcon>

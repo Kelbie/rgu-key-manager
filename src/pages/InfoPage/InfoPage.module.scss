@@ -28,6 +28,7 @@
 }
 
 .page {
+  position: relative;
   display: grid;
   grid-template-rows: max-content 1fr;
   grid-row-gap: 32px;
@@ -35,15 +36,27 @@
   max-width: 800px;
   min-height: 100vh;
   padding: 32px;
+  position: relative;
 
   .general {
+    position: fixed;
+    z-index: 1000;
     display: grid;
     grid-template: "photo name buttons"
                    "gap   desc desc";
-    grid-template-columns: max-content max-content auto;
+    grid-template-columns: min-content min-content auto;
     grid-column-gap: 12px;
 
+    .desc {
+      grid-area: desc;
+    }
+
     .photo {
+      transition: 1s ease 0s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
       overflow: hidden;
       grid-area: photo;
       width: 64px;
@@ -90,7 +103,12 @@
     }
 
     .gap {
-      grid-area: gap;
+      position: fixed;
+      width: 100%;
+      height: 160px;
+      z-index: -1;
+      transform: translateY(-60px);
+      background: #fafafa;
     }
 
     .buttons {

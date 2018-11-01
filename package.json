@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.1.2",
     "@material-ui/icons": "^3.0.1",
+    "async": "^2.6.1",
     "firebase": "^5.5.5",
     "identicon.js": "^2.3.3",
     "js-sha256": "^0.9.0",
@@ -16,6 +17,7 @@
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.0-next.2150693d",
+    "react-select": "^2.1.1",
     "react-tabs": "^2.3.0",
     "trianglify": "^1.2.0"
   },
