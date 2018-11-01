@@ -11,7 +11,6 @@ import Fob from '../../objects/Fob/Fob';
 import Fobs from '../../pages/Fobs/Fobs';
 
 // Router components
-import AboutPage from '../../pages/AboutPage/AboutPage';
 import Place from '../../objects/Place/Place';
 
 class Container extends Component {
