@@ -3,6 +3,7 @@ import {  BrowserRouter as Router, Route, Switch, withRouter } from "react-route
 
 // Router Components
 import AboutPage from '../../pages/AboutPage/AboutPage';
+import UsersPage from '../../pages/UsersPage/UsersPage';
 import People from '../../pages/People/People';
 import Keys from '../../pages/Keys/Keys';
 import User from '../../objects/User/User';

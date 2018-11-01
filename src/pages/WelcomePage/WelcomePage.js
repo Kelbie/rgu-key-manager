@@ -45,11 +45,11 @@ class WelcomePage extends Component {
             <div lassName="root">
                 <img className="background" src={background}/>
                 <Grid container spacing={12}>
-                    <Grid container item xs={12} sm={6} className="left-container">
+                    <Grid container item sm={12} md={9} lg={6} className="left-container">
                         <Paper container className="paper-container" elevation={10}>
                             <img className="rgu-logo" src={RGULogo}/>
                             <Typography className="title" variant="h5" component="h2">
-                                Welcome to RGU Key Manager
+                                RGU Key Manager
                             </Typography>
                             
                             <div className="form">
