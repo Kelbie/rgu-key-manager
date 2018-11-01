@@ -22,7 +22,7 @@ import {purple} from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: { main: purple[500] }, // Purple as primary color
-    secondary: { main: "#ff1744" }, // Red as secondary color
+    secondary: { main: "#d50000" }, // Red as secondary color
   },
 });
 const styles = ({
