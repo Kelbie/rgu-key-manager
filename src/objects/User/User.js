@@ -103,7 +103,7 @@ class User extends Component {
 
     this.setState({
       history: this.state.history.sort(function(a, b) {
-        return new Date(b.time.text) > new Date(a.time.text);
+        return new Date(b.time.text) - new Date(a.time.text);
       })
     })
   }

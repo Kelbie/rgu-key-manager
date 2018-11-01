@@ -25,10 +25,8 @@ class Keys extends Component {
 
     try {
       const snap = await keysRef.get()
-      console.log(888, snap)
       snap.forEach(row => {
         row = row.data()
-        console.log(888, row.keyid)
         this.state.keys.push([
             {
               text: row.keyid,
