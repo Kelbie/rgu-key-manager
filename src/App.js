@@ -34,6 +34,15 @@ const styles = ({
   },
   toolbar: theme.mixins.toolbar,
 });
+const styles = ({
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    marginLeft: 240,
+  },
+  toolbar: theme.mixins.toolbar,
+});
 
 class App extends Component {
 

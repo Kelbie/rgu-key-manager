@@ -103,7 +103,7 @@ class NavigationDrawer extends Component {
                     </ListItem>
                     <Collapse in={this.state.openKeyItem} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <Link className={classes.link} to="" >
+                            <Link className={classes.link} to="/keys" >
                                 <ListItem button className={classes.nested} 
                                     selected={this.state.selectedIndex === 3}
                                     onClick={event => this.handleListItemClick(event, 3)}>
