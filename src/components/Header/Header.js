@@ -2,33 +2,37 @@ import React, { Component } from 'react';
 
 import './Header.scss';
 
-import firebase from "../Firebase/Firebase";
+import {auth, firestore} from "../Firebase/Firebase";
 
 // Header components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconFace from '@material-ui/icons/Face';
-import Chip from '@material-ui/core/Chip'
-import Avatar from '@material-ui/core/Avatar'
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import Button from '@material-ui/core/Button'
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Button from '@material-ui/core/Button';
 
 class Header extends Component {
 
-    state = {
-        openLogoutDialog: false,
-    };
+    constructor() {
+        super();
+
+        this.state = {
+            openLogoutDialog: false,
+        };
+    }
 
     handleLogoutDialogClick = () => {
         this.setState(state => ({ openLogoutDialog: !state.openLogoutDialog }));
     };
     handleLogout = () => {
-        firebase.auth().signOut().then(function() {
+        auth.signOut().then(function() {
             // Sign-out successful.
         }).catch(function(error) {
             // An error happened.
@@ -48,7 +52,7 @@ class Header extends Component {
                         <div>
                             <Chip
                                 avatar={<Avatar><IconFace/></Avatar>}
-                                label={firebase.auth().currentUser.displayName || "Unnamed"}
+                                label={this.props.authUser.username || "Unknow"}
                                 onDelete={this.handleLogoutDialogClick}
                                 className="account-chip}"/>
                             <Dialog

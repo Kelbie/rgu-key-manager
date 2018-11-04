@@ -27,7 +27,7 @@ class Container extends Component {
                     <Route path="/people" component={People} />
                     <Route path="/keys" component={Keys} />
                     <Route path="/fobs" component={Fobs} />
-                    <Route path="/about" component={AboutPage} />
+                    <Route path="/users" component={UsersPage} />
                 </Switch>
             </div>
         );

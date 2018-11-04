@@ -8,14 +8,10 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from "@material-ui/core/Collapse"; 
 import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from "@material-ui/core/Typography";
-import Button from '@material-ui/core/Button';
-import {List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
 import IconPerson from "./icon_person.svg";
-import IconMail from "@material-ui/icons/Mail"
 
 const styles = theme => ({
     cardHead: {
@@ -45,9 +41,6 @@ const styles = theme => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
-    details: {
-        marginLeft: -25,
-    },
     delete: {
         marginLeft: 'auto',
     },
@@ -75,38 +68,24 @@ class UserCard extends Component {
                         component="img"
                         image={IconPerson}/>
                     <CardContent className={classes.content}>
-                        <Typography variant="subtitle1" color="textSecondary">
+                        <Typography variant="title" color="textSecondary">
                             Name
                         </Typography>
-                        <Typography component="h5" variant="h5">
+                        <Typography variant="subheading" color="textSecondary">
+                            mail
+                        </Typography>
+                        <Typography variant="subheading" color="textPrimary">
                             role
                         </Typography>
                         <CardActions className={classes.actions} disableActionSpacing>
                             <IconButton
-                                className={classnames(classes.expand, {
-                                [classes.expandOpen]: this.state.expanded,
-                                })}
                                 onClick={this.handleExpandClick}
-                                aria-expanded={this.state.expanded}
-                                aria-label="Show more">
-                                <ExpandMoreIcon />
+                                aria-label="Remove">
+                                <DeleteIcon/>
                             </IconButton>
                         </CardActions>
                     </CardContent>
                 </div>
-                <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                    <List className={classes.details} dense="true">
-                        <ListItem>
-                            <ListItemIcon><IconMail/></ListItemIcon>
-                            <ListItemText primary="mail@rgu.ac.uk"/>
-                        </ListItem>
-                        </List>
-                    </CardContent>
-                    <CardActions className={classes.footer} disableActionSpacing>
-                        <Button color="secondary" className={classes.delete}>Delete</Button>
-                    </CardActions>
-                </Collapse>
             </Card>
         )
     }
