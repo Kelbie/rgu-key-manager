@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 
 import './Header.scss';
 
-import {auth, firestore} from "../Firebase/Firebase";
+import {auth} from "../Firebase/Firebase";
 
 // Header components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconFace from '@material-ui/icons/Face';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,6 +16,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
+import PersonIcon from "./icon_person.svg";
 
 class Header extends Component {
 
@@ -51,7 +51,7 @@ class Header extends Component {
                         </Typography>
                         <div>
                             <Chip
-                                avatar={<Avatar><IconFace/></Avatar>}
+                                avatar={<Avatar src={this.props.authUser.avatar || PersonIcon}></Avatar>}
                                 label={this.props.authUser.username || "Unknow"}
                                 onDelete={this.handleLogoutDialogClick}
                                 className="account-chip}"/>

@@ -12,6 +12,7 @@ import UserCard from "./UserCard";
 const styles = theme => ({
     root: {
       flexGrow: 1,
+      padding: theme.spacing.unit,
     },
     grid: {
         padding: 20,

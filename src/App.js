@@ -10,7 +10,7 @@ import Container from './components/Container/Container';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 // Firebase initialisation
-import {auth, firestore} from "./components/Firebase/Firebase";
+import { auth, firestore, storage } from "./components/Firebase/Firebase";
 
 // Graphical components
 import Header from './components/Header/Header';
@@ -19,7 +19,8 @@ import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
 // Change default theme color
 import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
 import {purple} from '@material-ui/core/colors';
-import zIndex from '@material-ui/core/styles/zIndex';
+
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: purple[500] }, // Purple as primary color
@@ -47,14 +48,15 @@ class App extends Component {
         email: "",
         rgu_id: "",
         role: "",
-        username: ""
+        username: "",
+        avatar: ""
       },
   };
   
   componentWillMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        firestore.collection("users").doc(user.uid).get().then(doc => {
+        firestore.collection("users").doc(user.uid).onSnapshot(doc => {
           this.setState({
             signed: true,
             authUser: {
@@ -62,9 +64,10 @@ class App extends Component {
               rgu_id: doc.data().rgu_id,
               role: doc.data().role,
               username: doc.data().username,
+              avatar: doc.data().avatar
             },
           });
-        })
+        });
       } else {
         this.setState({
           signed: false,
@@ -90,7 +93,7 @@ class App extends Component {
               <NavigationDrawer/>
               <div className={classes.toolbar}/>
               <div className={classes.content}>
-                <Container/>
+                <Container authUser={this.state.authUser}/>
               </div>
             </div>
           </Router>
