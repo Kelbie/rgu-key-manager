@@ -1,32 +1,22 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 // Material UI Components
 import { withStyles } from '@material-ui/core/styles';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
 // Graphics Components
-import Button from '../Button/MiniButton';
+import { Paper, ListSubheader, List, ListItem, Grid } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
     width: '100%',
-    overflowX: 'auto',
-    
+    maxHeight: "75vh",
+    overflowX: "auto"
   },
-  tableHead: {
-    position: "sticky",
-    backgroundColor: theme.palette.common.white,
+  header: {
+    backgroundColor: theme.palette.common.white
   },
-  tableBody:{
-    height: "75vh",
-    overflow: "hidden"
+  item: {
+    textAlign: "center"
   }
 });
 
@@ -67,34 +57,28 @@ class SimpleTable extends Component {
 
     return (
       <Paper className={classes.root}>
-        <Table >
-          <TableHead>
-            <TableRow>
-                {this.props.columns.map((column, i) => {
-                  return <TableCell onClick={() => this.sortTable(i)}>{column}</TableCell>
-                })}
-            </TableRow>
-          </TableHead>
-          <TableBody className={classes.tableBody}>
+        <List>
+            <ListSubheader className={classes.header}>
+                <Grid container spacing={12}>
+                  {this.props.columns.map((column, i) => {
+                    return <Grid className={classes.item} item xs={4} onClick={() => this.sortTable(i)}>{column}</Grid>
+                  })}
+                </Grid>
+            </ListSubheader>
             {this.state.rows.map(row => {
               return (
-                <TableRow hover={true} key={row.id}>
-                  {row.map((element, i) => {
-                    if (i < this.props.columns.length) {
-                      if (element.type == "button") {
-                        return <TableCell><Button text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
-                      } else {
-                        return <TableCell>{element.text}</TableCell>
-                      }
-
-                    }
-
-                  })}
-                </TableRow>
+                <ListItem hover={true} key={row.id}>
+                    <Grid container spacing={12}>
+                      {row.map((element, i) => {
+                        if (i < this.props.columns.length) {
+                          return <Grid className={classes.item} item xs={4}>{element.text}</Grid>
+                        }
+                      })}
+                    </Grid>
+                </ListItem>
               );
             })}
-          </TableBody>
-        </Table>
+        </List>
       </Paper>
     );
   }

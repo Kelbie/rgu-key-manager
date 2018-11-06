@@ -28,6 +28,11 @@ const theme = createMuiTheme({
   },
 });
 const styles = ({
+  app: {
+    position: "fixed",
+    width: "100%",
+    height: "100%",
+  },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,

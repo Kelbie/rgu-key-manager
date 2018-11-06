@@ -26,7 +26,6 @@ import AboutIcon from '@material-ui/icons/Info';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import FaceIcon from '@material-ui/icons/Face'
-import { NEG_ONE } from 'long';
 
 const styles = theme => ({
     drawerPaper: {

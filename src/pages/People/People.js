@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 // Graphics Components
-import Table from '../../components/Table/Table';
-import { Typography, InputBase, Toolbar, Button } from '@material-ui/core';
+import { Typography, InputBase, Toolbar, Button, Paper, Grid, List, ListItem, ListSubheader, Divider, ListItemIcon, ListItemText, Icon, Avatar, ListItemSecondaryAction, IconButton } from '@material-ui/core';
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
+import PersonIcon from "@material-ui/icons/Person"
+import DeleteIcon from "@material-ui/icons/Delete"
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { purple } from '@material-ui/core/colors';
 
@@ -16,108 +17,88 @@ var people = [
     {
       text: "ShonaLilly",
       role: "Super Admin",
-      type: "button",
       linkTo: "user/ShonaLilly",
     },
     {
       text: 24,
-      type: "plain",
     },
     {
       text: 2,
-      type: "plain",
     }
   ],
   [
     {
       text: "EMatheson",
-      type: "button",
       role: "Admin",
       linkTo: "user/EMatheson",
     },
     {
       text: 10,
-      type: "plain",
     },
     {
       text: 2,
-      type: "plain",
     }
   ],
   [
     {
       text: "VDawod",
-      type: "button",
       role: "Admin",
       linkTo: "user/VDawod",
     },
     {
       text: 8,
-      type: "plain",
     },
     {
       text: 2,
-      type: "plain",
     }
   ],
   [
     {
       text: "JMcCall",
-      type: "button",
       role: "None",
       linkTo: "user/JMcCall",
     },
     {
       text: 6,
-      type: "plain",
     },
     {
       text: 1,
-      type: "plain",
     }
   ],
   [
     {
       text: "PHolt",
-      type: "button",
       role: "None",
       linkTo: "user/PHolt",
     },
     {
       text: 6,
-      type: "plain",
     },
     {
       text: 1,
-      type: "plain",
     }
   ],
   [
     {
       text: "SRae",
-      type: "button",
       role: "None",
       linkTo: "user/SRae",
     },
     {
       text: 5,
-      type: "plain",
     },
     {
       text: 0,
-      type: "plain",
     }
   ],
   [
     {
       text: "HKalutarage",
-      type: "button",
       role: "None",
       linkTo: "user/HKalutarage",
     },
     {
       text: 3,
-      type: "plain",
     },
     {
       text: 1,
@@ -356,8 +337,23 @@ const styles = theme => ({
           },
         },
     },
-    table: {
-        top: theme.spacing.unit * 5,
+    paper: {
+        width: '100%',
+        maxHeight: "75vh",
+        overflowX: "auto"
+    },
+    header: {
+        backgroundColor: theme.palette.common.white,
+        textAlign: "center",
+    },
+    item: {
+        '&:hover': {
+            backgroundColor: fade(purple[500], 0.10),
+        }
+    },
+    number: {
+        textAlign: "center",
+        marginTop: 10,
     },
     fab: {
         position: 'fixed',
@@ -378,18 +374,43 @@ class People extends Component {
                     <div className={classes.grow} />
                     <div className={classes.search}>
                         <div className={classes.searchIcon}><SearchIcon/></div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}/>
+                        <InputBase placeholder="Search…" classes={{root: classes.inputRoot, input: classes.inputInput,}}/>
                     </div>
                 </Toolbar>
-                <Table className={classes.table}
-                    path="user"
-                    columns={["USERNAME", "NO. OF KEYS", "NO. OF KEY FOBS"]}
-                    rows={people}/>
+                <Paper className={classes.paper}>
+                    <List>
+                        <ListSubheader className={classes.header}>
+                            <Toolbar disableGutters>
+                                <Grid container spacing={12}>
+                                    <Grid item xs={4}>NAME</Grid>
+                                    <Grid item xs={4}>NB KEYS</Grid>
+                                    <Grid item xs={4}>NB FOBS</Grid>
+                                </Grid>
+                            </Toolbar>
+                            <Divider/>
+                        </ListSubheader>
+                        {people.map(row => {
+                        return (
+                            <div>
+                                <ListItem button className={classes.item}>
+                                    <Grid container spacing={12}>
+                                        <Grid item xs={1}><Avatar><PersonIcon/></Avatar></Grid>
+                                        <Grid item xs={3}>
+                                            <ListItemText primary={row[0].text} secondary="1807127"/>
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <ListItemText className={classes.number} primary={row[1].text}/>
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <ListItemText className={classes.number} primary={row[2].text}/>
+                                        </Grid>
+                                    </Grid>
+                                </ListItem>
+                            </div>
+                        );
+                        })}
+                    </List>
+                </Paper>
                 <Button variant="fab" className={classes.fab} color="secondary">
                     <AddIcon />
                 </Button>
