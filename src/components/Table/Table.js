@@ -18,9 +18,16 @@ const styles = theme => ({
   root: {
     width: '100%',
     overflowX: 'auto',
+    
   },
-  table: {
+  tableHead: {
+    position: "sticky",
+    backgroundColor: theme.palette.common.white,
   },
+  tableBody:{
+    height: "75vh",
+    overflow: "hidden"
+  }
 });
 
 class SimpleTable extends Component {
@@ -60,15 +67,15 @@ class SimpleTable extends Component {
 
     return (
       <Paper className={classes.root}>
-        <Table className={classes.table}>
+        <Table >
           <TableHead>
             <TableRow>
-              {this.props.columns.map((column, i) => {
-                return <TableCell onClick={() => this.sortTable(i)}>{column}</TableCell>
-              })}
+                {this.props.columns.map((column, i) => {
+                  return <TableCell onClick={() => this.sortTable(i)}>{column}</TableCell>
+                })}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className={classes.tableBody}>
             {this.state.rows.map(row => {
               return (
                 <TableRow hover={true} key={row.id}>

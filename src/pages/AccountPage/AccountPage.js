@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import firebase, { auth, firestore, storage } from '../../components/Firebase/Firebase';
 
-import { Typography, Paper, TextField, Avatar, Button, Badge, Grid, CircularProgress } from '@material-ui/core';
+import { Typography, Paper, TextField, Avatar, Button, Badge, Grid, CircularProgress, Toolbar } from '@material-ui/core';
 import PersonIcon from "./icon_person.svg";
 
 import EditIcon from "@material-ui/icons/Edit"
@@ -15,7 +15,7 @@ import CheckIcon from '@material-ui/icons/Check';
 const styles = theme => ({
     root: {
       flexGrow: 1,
-      padding: theme.spacing.unit,
+      padding: theme.spacing.unit
     },
     paper: {
         ...theme.mixins.gutters(),
@@ -159,8 +159,10 @@ class AccountPage extends Component {
 
         return (
             <div className={classes.root}>
-                <Typography component="h1" variant="display2">Account Settings</Typography>
-                <Paper className={classes.paper} elevation={1}>
+                <Toolbar>
+                    <Typography component="h1" variant="display2">Account Settings</Typography>
+                </Toolbar>
+                <Paper className={classes.paper}>
                     <Grid container direction="column" justify="center" alignItems="center">
                         <Grid item>
                             <input id="avatarInput" type="file" accept="image/*" style={{ display: 'none' }} 

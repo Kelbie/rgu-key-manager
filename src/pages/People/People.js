@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
-import AppLogo from '../../app-logo.svg';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 // Graphics Components
-import HeaderButton from '../../components/Button/HeaderButton';
 import Table from '../../components/Table/Table';
+import { Typography, InputBase, Toolbar, Button } from '@material-ui/core';
+import SearchIcon from "@material-ui/icons/Search";
+import AddIcon from "@material-ui/icons/Add";
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import { purple } from '@material-ui/core/colors';
 
 var people = [
   [
@@ -297,14 +302,105 @@ var people = [
   ]
 ]
 
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        padding: theme.spacing.unit,
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(purple[500], 0.15),
+        '&:hover': {
+          backgroundColor: fade(purple[500], 0.30),
+        },
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: theme.spacing.unit,
+          width: 'auto',
+        },
+    },
+    searchIcon: {
+        color: theme.palette.common.white,
+        width: theme.spacing.unit * 9,
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+        width: '100%',
+    },
+    inputInput: {
+        color: theme.palette.common.white,
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(purple[500], 0.50),
+        paddingTop: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit * 10,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          width: 120,
+          '&:focus': {
+            width: 200,
+            backgroundColor: fade(purple[500], 0.75),
+          },
+        },
+    },
+    table: {
+        top: theme.spacing.unit * 5,
+    },
+    fab: {
+        position: 'fixed',
+        bottom: theme.spacing.unit * 5,
+        right: theme.spacing.unit * 5,
+    }
+});
+
 class People extends Component {
+
     render(){
+        const { classes } = this.props;
+
         return (
-          <Table path="user"
-            columns={["USERNAME", "NO. OF KEYS", "NO. OF KEY FOBS"]}
-            rows={people}/>
+            <div className={classes.root}>
+                <Toolbar>
+                    <Typography className={classes.title} component="h1" variant="display2">People</Typography>
+                    <div className={classes.grow} />
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}><SearchIcon/></div>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}/>
+                    </div>
+                </Toolbar>
+                <Table className={classes.table}
+                    path="user"
+                    columns={["USERNAME", "NO. OF KEYS", "NO. OF KEY FOBS"]}
+                    rows={people}/>
+                <Button variant="fab" className={classes.fab} color="secondary">
+                    <AddIcon />
+                </Button>
+            </div>
         );
     }
 
 }
-export default People;
+
+People.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(People);  

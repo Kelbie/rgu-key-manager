@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
 import UserCard from "./UserCard";
+import { Toolbar, Typography, Grid } from '@material-ui/core';
 
 
 const styles = theme => ({
@@ -40,8 +38,9 @@ class UsersPage extends Component {
 
         return (
             <div className={classes.root}>
-                <Typography component="h1" variant="display2">Manage Users</Typography>
-
+                <Toolbar>
+                    <Typography component="h1" variant="display2">Manage Users</Typography>
+                </Toolbar>
                 <Grid container className={classes.grid} spacing={16}>
                     <Grid item xs={12}>
                         <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
