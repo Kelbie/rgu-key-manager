@@ -2,286 +2,20 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 // Graphics Components
-import { Typography, InputBase, Toolbar, Button, Paper, Grid, List, ListItem, ListSubheader, Divider, ListItemIcon, ListItemText, Icon, Avatar, ListItemSecondaryAction, IconButton } from '@material-ui/core';
+import { Typography, InputBase, Toolbar, Button, Paper, Grid, List, ListItem, ListSubheader, Divider, ListItemText, Avatar, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, InputAdornment, Snackbar, LinearProgress } from '@material-ui/core';
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import PersonIcon from "@material-ui/icons/Person"
-import DeleteIcon from "@material-ui/icons/Delete"
+import KeyIcon from '@material-ui/icons/VpnKey';
+import FobIcon from '@material-ui/icons/Nfc'
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { purple } from '@material-ui/core/colors';
 
-var people = [
-  [
-    {
-      text: "ShonaLilly",
-      role: "Super Admin",
-      linkTo: "user/ShonaLilly",
-    },
-    {
-      text: 24,
-    },
-    {
-      text: 2,
-    }
-  ],
-  [
-    {
-      text: "EMatheson",
-      role: "Admin",
-      linkTo: "user/EMatheson",
-    },
-    {
-      text: 10,
-    },
-    {
-      text: 2,
-    }
-  ],
-  [
-    {
-      text: "VDawod",
-      role: "Admin",
-      linkTo: "user/VDawod",
-    },
-    {
-      text: 8,
-    },
-    {
-      text: 2,
-    }
-  ],
-  [
-    {
-      text: "JMcCall",
-      role: "None",
-      linkTo: "user/JMcCall",
-    },
-    {
-      text: 6,
-    },
-    {
-      text: 1,
-    }
-  ],
-  [
-    {
-      text: "PHolt",
-      role: "None",
-      linkTo: "user/PHolt",
-    },
-    {
-      text: 6,
-    },
-    {
-      text: 1,
-    }
-  ],
-  [
-    {
-      text: "SRae",
-      role: "None",
-      linkTo: "user/SRae",
-    },
-    {
-      text: 5,
-    },
-    {
-      text: 0,
-    }
-  ],
-  [
-    {
-      text: "HKalutarage",
-      role: "None",
-      linkTo: "user/HKalutarage",
-    },
-    {
-      text: 3,
-    },
-    {
-      text: 1,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "KHui",
-      type: "button",
-      role: "None",
-      linkTo: "user/KHui",
-    },
-    {
-      text: 6,
-      type: "plain",
-    },
-    {
-      text: 1,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "AFryer",
-      type: "button",
-      role: "None",
-      linkTo: "user/AFryer",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "SSturley",
-      type: "button",
-      role: "None",
-      linkTo: "user/SSturley",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "APetrovky",
-      type: "button",
-      role: "None",
-      linkTo: "user/APetrovky",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "IArana",
-      type: "button",
-      role: "None",
-      linkTo: "user/IArana",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "MZarb",
-      type: "button",
-      role: "None",
-      linkTo: "user/MZarb",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "RMcDermott",
-      type: "button",
-      role: "None",
-      linkTo: "user/RMcDermott",
-    },
-    {
-      text: 2,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "RLothian",
-      type: "button",
-      role: "None",
-      linkTo: "user/RLothian",
-    },
-    {
-      text: 1,
-      type: "plain",
-    },
-    {
-      text: 1,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "LMorison",
-      type: "button",
-      role: "None",
-      linkTo: "user/LMorison",
-    },
-    {
-      text: 1,
-      type: "plain",
-    },
-    {
-      text: 1,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "AilsaMcWhirter",
-      type: "button",
-      role: "None",
-      linkTo: "user/AilsaMcWhirter",
-    },
-    {
-      text: 1,
-      type: "plain",
-    },
-    {
-      text: 0,
-      type: "plain",
-    }
-  ],
-  [
-    {
-      text: "FionaMatheson",
-      type: "button",
-      role: "None",
-      linkTo: "user/FionaMatheson",
-    },
-    {
-      text: 1,
-      type: "plain",
-    },
-    {
-      text: 2,
-      type: "plain",
-    }
-  ]
-]
+// Firebase Components
+import { firestore  } from '../../components/Firebase/Firebase';
 
 const styles = theme => ({
     root: {
@@ -346,6 +80,9 @@ const styles = theme => ({
         backgroundColor: theme.palette.common.white,
         textAlign: "center",
     },
+    link: {
+        textDecoration: 'none',
+    },
     item: {
         '&:hover': {
             backgroundColor: fade(purple[500], 0.10),
@@ -359,14 +96,90 @@ const styles = theme => ({
         position: 'fixed',
         bottom: theme.spacing.unit * 5,
         right: theme.spacing.unit * 5,
+    },
+    avatar: {
+        height: 70,
+        width: 70,
+    },
+    icon: {
+        height: 60,
+        width: 60,
     }
 });
 
 class People extends Component {
 
+    constructor() {
+        super();
+
+        this.unsubscribe = null;
+        this.state = {
+            openDialog: false,
+            requiredName: false,
+            requiredRGUID: false,
+            name: "",
+            rgu_id: "",
+            nb_keys: "",
+            nb_fobs: "",
+            people: [],
+            loading: true,
+        };
+    }
+
+    componentDidMount(){
+        this.unsubscribe = firestore.collection("people").onSnapshot(this.onCollectionUpdate)
+    }
+
+    componentWillUnmount(){
+        this.unsubscribe();
+    }
+
+    onCollectionUpdate = (querySnapshot) => {
+        var people = [];
+        querySnapshot.forEach(doc => {
+            people.push(doc.data());
+        });
+        this.setState({loading: false, people});
+    }
+
+    handleChange = name => event => {
+        this.setState({
+          [name]: event.target.value
+        });
+    };
+
+    handleOpenDialog = () => {
+        this.setState({ openDialog: true });
+    }
+
+    handleCloseDialog = () => {
+        this.setState({ openDialog: false });
+    }
+
+    handleSaveAdding = () => {
+        if (this.state.name != "" && this.state.rgu_id != "") {
+            firestore.collection("people").add({
+                name: this.state.name,
+                rgu_id: this.state.rgu_id,
+                nb_keys: this.state.nb_keys,
+                nb_fobs: this.state.nb_fobs
+            })
+            .then(() => {
+                console.log("Key owner successfully added!");
+                this.handleCloseDialog();
+                this.setState({required: false});
+            })
+            .catch(function(error) {
+                alert("Error adding owner: " + error);
+            });
+        } else {
+            this.state.name === "" ? this.setState({requiredName: true}) : this.setState({requiredName: false});
+            this.state.rgu_id === "" ? this.setState({requiredRGUID: true}) : this.setState({requiredRGUID: false});
+        }
+    }
+
     render(){
         const { classes } = this.props;
-
         return (
             <div className={classes.root}>
                 <Toolbar>
@@ -389,31 +202,68 @@ class People extends Component {
                             </Toolbar>
                             <Divider/>
                         </ListSubheader>
-                        {people.map(row => {
+                        {this.state.loading && <LinearProgress />}
+                        {this.state.people.map(doc => {
                         return (
-                            <div>
+                            <Link className={classes.link} to={"/user/"+doc.name}>
                                 <ListItem button className={classes.item}>
                                     <Grid container spacing={12}>
                                         <Grid item xs={1}><Avatar><PersonIcon/></Avatar></Grid>
                                         <Grid item xs={3}>
-                                            <ListItemText primary={row[0].text} secondary="1807127"/>
+                                            <ListItemText primary={doc.name} secondary={doc.rgu_id}/>
                                         </Grid>
                                         <Grid item xs={4}>
-                                            <ListItemText className={classes.number} primary={row[1].text}/>
+                                            <ListItemText className={classes.number} primary={doc.nb_keys}/>
                                         </Grid>
                                         <Grid item xs={4}>
-                                            <ListItemText className={classes.number} primary={row[2].text}/>
+                                            <ListItemText className={classes.number} primary={doc.nb_fobs}/>
                                         </Grid>
                                     </Grid>
                                 </ListItem>
-                            </div>
+                            </Link>
                         );
                         })}
                     </List>
                 </Paper>
-                <Button variant="fab" className={classes.fab} color="secondary">
+                <Button variant="fab" className={classes.fab} color="secondary" onClick={this.handleOpenDialog}>
                     <AddIcon />
                 </Button>
+                <Dialog open={this.state.openDialog} onClose={this.handleCloseDialog} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Add a key owner's</DialogTitle>
+                    <DialogContent>
+                        <Grid container direction="column" spacing="32">
+                            <Grid item>
+                                <Grid container direction="row" justify="space-evenly" alignItems="center">
+                                    <Grid item>
+                                        <Avatar className={classes.avatar}><PersonIcon className={classes.icon}/></Avatar>
+                                    </Grid>
+                                    <Grid item>
+                                        <Grid container direction="column" spacing="8">
+                                            <Grid item><TextField autoFocus id="name" label="Name" type="name" onChange={this.handleChange('name')} error={this.state.requiredName} required/></Grid>
+                                            <Grid item><TextField id="rgu_id" label="RGU ID" type="number" onChange={this.handleChange('rgu_id')} error={this.state.requiredRGUID} required/></Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item>
+                                <Grid container direction="row" justify="space-around" alignItems="flex-end" >
+                                    <Grid item xs="3">
+                                        <TextField id="nb_keys" label="Nb keys" type="number" onChange={this.handleChange('nb_keys')} InputProps={{
+                                            startAdornment: (<InputAdornment position="start"><KeyIcon/></InputAdornment>),}}/>
+                                    </Grid>
+                                    <Grid item xs="3">
+                                        <TextField id="nb_fobs" label="Nb fobs" type="number" onChange={this.handleChange('nb_fobs')} InputProps={{
+                                            startAdornment: (<InputAdornment position="start"><FobIcon/></InputAdornment>),}}/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleCloseDialog} color="secondary">Cancel</Button>
+                        <Button onClick={this.handleSaveAdding} color="primary" variant="contained">Add</Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     }
@@ -422,6 +272,6 @@ class People extends Component {
 
 People.propTypes = {
     classes: PropTypes.object.isRequired,
-};
+}
 
 export default withStyles(styles)(People);  

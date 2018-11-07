@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import { Link } from "react-router-dom";
 
 // Material UI Components
 import { withStyles } from '@material-ui/core/styles';
 
 // Graphics Components
 import { Paper, ListSubheader, List, ListItem, Grid } from '@material-ui/core';
+import Button from '../Button/MiniButton';
 
 const styles = theme => ({
   root: {
@@ -59,19 +61,23 @@ class SimpleTable extends Component {
       <Paper className={classes.root}>
         <List>
             <ListSubheader className={classes.header}>
-                <Grid container spacing={12}>
+                <Grid container>
                   {this.props.columns.map((column, i) => {
-                    return <Grid className={classes.item} item xs={4} onClick={() => this.sortTable(i)}>{column}</Grid>
+                    return <Grid className={classes.item} item xs onClick={() => this.sortTable(i)}>{column}</Grid>
                   })}
                 </Grid>
             </ListSubheader>
             {this.state.rows.map(row => {
               return (
                 <ListItem hover={true} key={row.id}>
-                    <Grid container spacing={12}>
+                    <Grid container>
                       {row.map((element, i) => {
                         if (i < this.props.columns.length) {
-                          return <Grid className={classes.item} item xs={4}>{element.text}</Grid>
+                          if (element.type == "button") {
+                            return <Grid className={classes.item} item xs><Button text={element.text} component={Link} to={element.linkTo}/></Grid>
+                          }else{
+                            return <Grid className={classes.item} item xs>{element.text}</Grid>
+                          }
                         }
                       })}
                     </Grid>
