@@ -41,7 +41,13 @@ const styles = theme => ({
 class NavigationDrawer extends Component {
 
     state = {
+        openKeyItem: false,
+        openFobItem: false,
         selectedIndex: 0,
+    };
+
+    handleListItemClick = (event, index) => {
+        this.setState({ selectedIndex: index });
     };
 
     handleListItemClick = (event, index) => {
@@ -110,6 +116,7 @@ class NavigationDrawer extends Component {
                         <ListItem button 
                             selected={this.state.selectedIndex === 5}
                             onClick={event => this.handleListItemClick(event, 5)}>
+
                             <ListItemIcon><FaceIcon/></ListItemIcon>
                             <ListItemText primary="Account Settings"/>
                         </ListItem>
@@ -118,6 +125,7 @@ class NavigationDrawer extends Component {
                         <ListItem button 
                             selected={this.state.selectedIndex === 6}
                             onClick={event => this.handleListItemClick(event, 6)}>
+
                             <ListItemIcon><AboutIcon/></ListItemIcon>
                             <ListItemText primary="About"/>
                         </ListItem>

@@ -20,7 +20,6 @@ import NavigationDrawer from './components/NavigationDrawer/NavigationDrawer';
 import {MuiThemeProvider ,createMuiTheme} from '@material-ui/core/styles';
 import {purple} from '@material-ui/core/colors';
 
-
 const theme = createMuiTheme({
   palette: {
     primary: { main: purple[500] }, // Purple as primary color

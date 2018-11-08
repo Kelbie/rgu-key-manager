@@ -141,6 +141,7 @@ class Keys extends Component {
 
     try {
       const snap = await keysRef.onSnapshot(this.onCollectionUpdate)
+
     } catch (e) {
       console.log(e)
     }

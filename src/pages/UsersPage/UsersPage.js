@@ -13,6 +13,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { purple } from '@material-ui/core/colors';
 
 
+
 const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -132,6 +133,7 @@ class UsersPage extends Component {
                             <UserCard user={user}/>
                         </Grid>
                     ))}
+
                 </Grid>
             </div>
         );

@@ -16,6 +16,7 @@ import { Button, ListItem, ListItemIcon, ListItemText, Avatar, Grid } from '@mat
 const styles = theme => ({
     card:{
         width: 310
+
     },
     avatar: {
         width: 100,
@@ -30,10 +31,12 @@ const styles = theme => ({
     },
     grow: {
         flexGrow: 1,
+
     },
 });
 
 class UserCard extends Component {
+
 
     render(){
 
@@ -71,6 +74,7 @@ class UserCard extends Component {
                             <ListItemText primary={this.props.user.email} />
                         </ListItem>
                     </CardContent>
+
             </Card>
         )
     }

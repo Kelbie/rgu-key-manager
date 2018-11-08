@@ -30,10 +30,7 @@ class SimpleTable extends Component {
     asc: false, 
     rows: this.props.rows,
     loading: true
-  }
 
-  componentDidMount() {
-    this.sortTable(0);
   }
 
   componentWillReceiveProps(someProps) {
@@ -58,7 +55,6 @@ class SimpleTable extends Component {
     })
     this.setState({loading: false});
   }
-
   render() {
     const { classes } = this.props;
 
@@ -73,6 +69,7 @@ class SimpleTable extends Component {
                 </Grid>
             </ListSubheader>
             {this.state.loading && <LinearProgress />}
+
             {this.state.rows.map(row => {
               return (
                 <ListItem hover={true} key={row.id}>
