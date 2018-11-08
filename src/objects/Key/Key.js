@@ -37,7 +37,7 @@ class Key extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     var hash = sha256.create();
     hash.update(this.props.match.params.keyid);
     var data = new Identicon(hash.hex(), 420).toString();
@@ -53,10 +53,10 @@ class Key extends Component {
     try {
       const snap = await keyRef.get()
       const keyid = snap.data().keyid
-      const holder = snap.data().holder.id
+      const holder = snap.data().holder
       const type = snap.data().type
-      const opens = snap.data().opens.id
-      const stored = snap.data().stored.id
+      const opens = snap.data().opens
+      const stored = snap.data().stored
       const lost = snap.data().lost
       this.setState({"desc": {holder: holder, type: type, opens: opens, stored: stored, lost: lost}})
       this.isLost()
@@ -84,9 +84,9 @@ class Key extends Component {
             linkTo: "/key/" + row.keyid
           },
           from: {
-            text: row.from.id,
+            text: row.from,
             type: "button",
-            linkTo: "/user/" + row.from.id
+            linkTo: "/user/" + row.from
           },
           to: {
             text: row.to,
@@ -98,6 +98,9 @@ class Key extends Component {
           },
           time: {
             text: row.time
+          },
+          actionType: {
+            text: row.actionType
           }
         })
         this.setState({history: this.state.history.sort(function(a, b) {

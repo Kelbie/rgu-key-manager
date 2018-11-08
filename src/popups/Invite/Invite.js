@@ -30,7 +30,7 @@ class AlertDialog extends React.Component {
       handleCodeInApp: true
     })
     .then(function() {
-      console.log(123);
+      console.log(123,);
       state.setState({ open: false });
     })
     .catch(function(error) {

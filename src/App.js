@@ -57,7 +57,7 @@ class App extends Component {
         avatar: ""
       },
   };
-  
+
   componentWillMount() {
     auth.onAuthStateChanged(user => {
       if (user) {

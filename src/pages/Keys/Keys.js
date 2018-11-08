@@ -19,6 +19,7 @@ import { purple } from '@material-ui/core/colors';
 // Graphics Components
 import Table from '../../components/Table/Table';
 import FilterChip from '../../components/FilterChip/FilterChip';
+import AddKeyPopup from "../../popups/AddKeyPopup/AddKeyPopup";
 
 const styles = theme => ({
   root: {
@@ -92,50 +93,53 @@ const styles = theme => ({
 class Keys extends Component {
 
   state = {
-    filterKeys: [], 
-    keys: [], 
+    filterKeys: [],
+    keys: [],
     filterText: "",
   }
 
-  async componentWillMount() {
+  onCollectionUpdate = (querySnapshot) => {
+    querySnapshot.forEach(row => {
+      row = row.data()
+      this.state.keys.push([
+          {
+            text: row.keyid,
+            a: row.typeid,
+            b: row.uid,
+            type: "button",
+            linkTo: "/key/" + row.keyid
+          },
+          {
+            text: row.type,
+            type: "plain"
+          },
+          {
+            text: row.holder,
+            type: "button",
+            linkTo: "/user/" + row.holder
+          },
+          {
+            text: row.opens,
+            type: "plain",
+          },
+          {
+            text: row.stored,
+            type: "plain",
+          },
+          {
+            text: 0,
+            type: "plain"
+          }
+      ])
+      this.setState({filterKeys: this.state.keys})
+    })
+  }
+
+  async componentDidMount() {
     const keysRef = await firestore.collection('keys')
 
     try {
-      const snap = await keysRef.get()
-      console.log(888, snap)
-      snap.forEach(row => {
-        row = row.data()
-        console.log(888, row.keyid)
-        this.state.keys.push([
-            {
-              text: row.keyid,
-              type: "button",
-              linkTo: "/key/" + row.keyid
-            },
-            {
-              text: row.type,
-              type: "plain"
-            },
-            {
-              text: row.holder.id,
-              type: "button",
-              linkTo: "/user/" + row.holder.id
-            },
-            {
-              text: row.opens.id,
-              type: "plain",
-            },
-            {
-              text: row.stored.id,
-              type: "plain",
-            },
-            {
-              text: 0,
-              type: "plain"
-            }
-        ])
-        this.setState({filterKeys: this.state.keys})
-      })
+      const snap = await keysRef.onSnapshot(this.onCollectionUpdate)
     } catch (e) {
       console.log(e)
     }
@@ -172,14 +176,6 @@ class Keys extends Component {
     });
   }
 
-  handleOpenDialog = () => {
-    this.setState({ openDialog: true });
-  }
-
-  handleCloseDialog = () => {
-    this.setState({ openDialog: false });
-  }
-
   render() {
     const { classes } = this.props;
     return (
@@ -196,44 +192,23 @@ class Keys extends Component {
         </Toolbar>
         <Table path="key"
           columns={["KEY ID", "TYPE", "HOLDER", "OPENS", "STORED", "DUPLICATES"]}
-          rows={this.state.filterKeys}/>
-        <Button variant="fab" className={classes.fab} color="secondary" onClick={this.handleOpenDialog}>
-          <AddIcon />
-        </Button>
-        <Dialog disableBackdropClick disableEscapeKeyDown open={this.state.openDialog} onClose={this.handleCloseDialog} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Add a new key</DialogTitle>
-          <DialogContent>
-              <Grid container direction="column" alignItems='center' spacing="24">
-                  <Grid item>
-                      <Grid container direction="row" spacing="32" justify="space-evenly" alignItems="center">
-                          <Grid item>
-                              <Avatar className={classes.avatar}><KeyIcon className={classes.icon}/></Avatar>
-                          </Grid>
-                          <Grid item>
-                              <Grid container direction="column" spacing="8">
-                                  <Grid item><TextField autoFocus id="key_id" label="Key ID" type="text" onChange={this.handleOnDialogChange('key_id')} error={this.state.requiredKeyID} required/></Grid>
-                                  <Grid item><TextField id="key_type" label="Key type" type="text" onChange={this.handleOnDialogChange('key_type')}/></Grid>
-                              </Grid>
-                          </Grid>
-                      </Grid>
-                  </Grid>
-                  <Grid item>
-                    <Grid container spacing={8} alignItems="flex-end">
-                      <Grid item><LocationIcon/></Grid>
-                      <Grid item><TextField id="opens" label="Opens" type="name" onChange={this.handleOnDialogChange('opens')}/></Grid>
-                    </Grid>
-                    <Grid container spacing={8} alignItems="flex-end">
-                      <Grid item><LocationIcon/></Grid>
-                      <Grid item><TextField id="location" label="Location" type="name" onChange={this.handleOnDialogChange('location')}/></Grid>
-                    </Grid>
-                  </Grid>
-              </Grid>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={this.handleCloseDialog} color="secondary">Cancel</Button>
-                <Button onClick={this.handleSaveAdding} color="primary" variant="contained">Add</Button>
-            </DialogActions>
-        </Dialog>
+          rows={this.state.filterKeys.sort(function(a, b) {
+            var aSize = a[0].a;
+            var bSize = b[0].a;
+            var aLow = a[0].b;
+            var bLow = b[0].b;
+            console.log(123, aLow + " | " + bLow);
+
+            if(aSize == bSize)
+            {
+                return (aLow < bLow) ? -1 : (aLow > bLow) ? 1 : 0;
+            }
+            else
+            {
+                return (aSize < bSize) ? -1 : 1;
+            }
+          })}/>
+        <AddKeyPopup />
       </div>
     );
   }

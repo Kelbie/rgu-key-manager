@@ -15,7 +15,7 @@ class User extends Component {
     super();
   }
 
-  componentWillMount() {
+  async componentDidMount() {
     this.getHistory()
   }
 
@@ -39,9 +39,9 @@ class User extends Component {
             linkTo: "/key/" + row.keyid
           },
           from: {
-            text: row.from.id,
+            text: row.from,
             type: "button",
-            linkTo: "/user/" + row.from.id
+            linkTo: "/user/" + row.from
           },
           to: {
             text: row.to,
@@ -53,47 +53,9 @@ class User extends Component {
           },
           time: {
             text: row.time
-          }
-        })
-      })
-    } catch (e) {
-      console.log(e)
-    }
-
-    const historyRef2 = await firestore.collection('history')
-      .where('from', '==', firestore.doc("/users/" + this.props.match.params.username))
-
-    try {
-      const snap = await historyRef2.get()
-      snap.forEach(row => {
-        row = row.data()
-        console.log(888, row)
-        this.state.history.push({
-          author: {
-            text: row.author,
-            type: "button",
-            linkTo: "/user/" + row.author
           },
-          keyid: {
-            text: row.keyid,
-            type: "button",
-            linkTo: "/key/" + row.keyid
-          },
-          from: {
-            text: row.from.id,
-            type: "button",
-            linkTo: "/user/" + row.from.id
-          },
-          to: {
-            text: row.to,
-            type: "button",
-            linkTo: "/user/" + row.to
-          },
-          comment: {
-            text: row.comment
-          },
-          time: {
-            text: row.time
+          actionType: {
+            text: row.actionType
           }
         })
       })

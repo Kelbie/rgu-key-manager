@@ -35,13 +35,61 @@ class Lost extends React.Component {
   };
 
   async test() {
+    await this.getLastOwner()
+    await this.createHistoryElement()
     const keyRef = await firestore.collection('keys').doc(this.props.id)
-      .update({lost: true})
+      .update({lost: true, holder: "root"})
   }
 
   handleTransfer = () => {
     this.test()
     this.handleClose()
+  }
+
+  async getLastOwner() {
+    console.log(888, this.props.id)
+    const keyid = this.props.id
+    const keyRef = await firestore.collection('keys').where('keyid', '==', keyid)
+
+    try {
+      const snap = await keyRef.get()
+      console.log(888, snap)
+      snap.forEach(row => {
+        row = row.data()
+        console.log(888, row)
+        this.setState({lastOwner: row.holder})
+      })
+    } catch (e) {
+      console.log(888, e)
+    }
+  }
+
+  async createHistoryElement() {
+    const author = auth.currentUser.email
+    const userRef = await firestore.collection('users').where('email', '==', author)
+    try {
+      const snap = await userRef.get()
+      snap.forEach(doc => {
+        this.setState({
+          author: doc.data().username
+        })
+
+      })
+    } catch(e) {
+      console.log(123, e)
+    }
+
+    console.log(123456, this.state);
+
+    firestore.collection('history').add({
+      author: this.state.author,
+      comment: "",
+      from: this.state.lastOwner,
+      keyid: this.props.id,
+      time: new Date,
+      to: "root",
+      actionType: "lost"
+    })
   }
 
   render() {
