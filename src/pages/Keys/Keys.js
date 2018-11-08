@@ -7,13 +7,18 @@ import { withStyles } from '@material-ui/core/styles';
 import firebase, {auth, database, firestore} from "../../components/Firebase/Firebase";
 
 // Material UI Components
-import { Toolbar, Typography, InputBase } from '@material-ui/core';
-import SearchIcon from "@material-ui/icons/Search"
+import { Toolbar, Typography, InputBase, Button, Dialog, DialogTitle, DialogContent, DialogActions, Grid, Avatar, TextField, InputAdornment } from '@material-ui/core';
+import SearchIcon from "@material-ui/icons/Search";
+import AddIcon from "@material-ui/icons/Add";
+import KeyIcon from '@material-ui/icons/VpnKey';
+import PersonIcon from '@material-ui/icons/Person';
+import LocationIcon from '@material-ui/icons/LocationOn';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { purple } from '@material-ui/core/colors';
 
 // Graphics Components
 import Table from '../../components/Table/Table';
+import FilterChip from '../../components/FilterChip/FilterChip';
 
 const styles = theme => ({
   root: {
@@ -69,6 +74,19 @@ const styles = theme => ({
         },
       },
   },
+  fab: {
+    position: 'fixed',
+    bottom: theme.spacing.unit * 5,
+    right: theme.spacing.unit * 5,
+  },
+  avatar: {
+    height: 80,
+    width: 80,
+  },
+  icon: {
+      height: 70,
+      width: 70,
+  },
 });
 
 class Keys extends Component {
@@ -76,7 +94,7 @@ class Keys extends Component {
   state = {
     filterKeys: [], 
     keys: [], 
-    filterText: ""
+    filterText: "",
   }
 
   async componentWillMount() {
@@ -145,13 +163,31 @@ class Keys extends Component {
 
   }
 
+  handleClickChip = (item) => {
+  }
+
+  handleOnDialogChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    });
+  }
+
+  handleOpenDialog = () => {
+    this.setState({ openDialog: true });
+  }
+
+  handleCloseDialog = () => {
+    this.setState({ openDialog: false });
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Toolbar>
-          <Typography className={classes.title} component="h1" variant="display2">All keys</Typography>
-          <div className={classes.grow} />
+          <Typography className={classes.title} component="h1" variant="display2">Keys</Typography>
+          <div className={classes.grow}/>
+          <FilterChip label="Lost keys"/>
           <div className={classes.search}>
               <div className={classes.searchIcon}><SearchIcon/></div>
               <InputBase placeholder="Search…" classes={{root: classes.inputRoot, input: classes.inputInput,}}
@@ -161,6 +197,43 @@ class Keys extends Component {
         <Table path="key"
           columns={["KEY ID", "TYPE", "HOLDER", "OPENS", "STORED", "DUPLICATES"]}
           rows={this.state.filterKeys}/>
+        <Button variant="fab" className={classes.fab} color="secondary" onClick={this.handleOpenDialog}>
+          <AddIcon />
+        </Button>
+        <Dialog disableBackdropClick disableEscapeKeyDown open={this.state.openDialog} onClose={this.handleCloseDialog} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Add a new key</DialogTitle>
+          <DialogContent>
+              <Grid container direction="column" alignItems='center' spacing="24">
+                  <Grid item>
+                      <Grid container direction="row" spacing="32" justify="space-evenly" alignItems="center">
+                          <Grid item>
+                              <Avatar className={classes.avatar}><KeyIcon className={classes.icon}/></Avatar>
+                          </Grid>
+                          <Grid item>
+                              <Grid container direction="column" spacing="8">
+                                  <Grid item><TextField autoFocus id="key_id" label="Key ID" type="text" onChange={this.handleOnDialogChange('key_id')} error={this.state.requiredKeyID} required/></Grid>
+                                  <Grid item><TextField id="key_type" label="Key type" type="text" onChange={this.handleOnDialogChange('key_type')}/></Grid>
+                              </Grid>
+                          </Grid>
+                      </Grid>
+                  </Grid>
+                  <Grid item>
+                    <Grid container spacing={8} alignItems="flex-end">
+                      <Grid item><LocationIcon/></Grid>
+                      <Grid item><TextField id="opens" label="Opens" type="name" onChange={this.handleOnDialogChange('opens')}/></Grid>
+                    </Grid>
+                    <Grid container spacing={8} alignItems="flex-end">
+                      <Grid item><LocationIcon/></Grid>
+                      <Grid item><TextField id="location" label="Location" type="name" onChange={this.handleOnDialogChange('location')}/></Grid>
+                    </Grid>
+                  </Grid>
+              </Grid>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={this.handleCloseDialog} color="secondary">Cancel</Button>
+                <Button onClick={this.handleSaveAdding} color="primary" variant="contained">Add</Button>
+            </DialogActions>
+        </Dialog>
       </div>
     );
   }

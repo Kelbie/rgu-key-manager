@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 
 // Graphics Components
-import { Paper, ListSubheader, List, ListItem, Grid } from '@material-ui/core';
+import { Paper, ListSubheader, List, ListItem, Grid, Icon } from '@material-ui/core';
+import CheckBoxIcon from "@material-ui/icons/CheckBox"
+import CheckBoxOutlineIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import Button from '../Button/MiniButton';
 
 const styles = theme => ({
@@ -75,6 +77,8 @@ class SimpleTable extends Component {
                         if (i < this.props.columns.length) {
                           if (element.type == "button") {
                             return <Grid className={classes.item} item xs><Button text={element.text} component={Link} to={element.linkTo}/></Grid>
+                          }else if (element.type == "check") {
+                          return <Grid className={classes.item} item xs>{element.lost ? <Icon><CheckBoxIcon color="primary"/></Icon> : <Icon><CheckBoxOutlineIcon color="primary"/></Icon>}</Grid>
                           }else{
                             return <Grid className={classes.item} item xs>{element.text}</Grid>
                           }

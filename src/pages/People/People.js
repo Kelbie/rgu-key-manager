@@ -16,6 +16,7 @@ import { purple } from '@material-ui/core/colors';
 
 // Firebase Components
 import { firestore  } from '../../components/Firebase/Firebase';
+import FilterChip from '../../components/FilterChip/FilterChip';
 
 const styles = theme => ({
     root: {
@@ -183,7 +184,10 @@ class People extends Component {
         return (
             <div className={classes.root}>
                 <Toolbar>
-                    <Typography className={classes.title} component="h1" variant="display2">People</Typography>
+                    <Typography className={classes.title} component="h1" variant="display2">Holders</Typography>
+                    <div className={classes.grow} />
+                    <FilterChip icon={<KeyIcon/>} label="Key Holders"/>
+                    <FilterChip icon={<FobIcon/>} label="Fob Holders"/>
                     <div className={classes.grow} />
                     <div className={classes.search}>
                         <div className={classes.searchIcon}><SearchIcon/></div>
@@ -228,7 +232,7 @@ class People extends Component {
                 <Button variant="fab" className={classes.fab} color="secondary" onClick={this.handleOpenDialog}>
                     <AddIcon />
                 </Button>
-                <Dialog open={this.state.openDialog} onClose={this.handleCloseDialog} aria-labelledby="form-dialog-title">
+                <Dialog disableBackdropClick disableEscapeKeyDown open={this.state.openDialog} onClose={this.handleCloseDialog} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add a key owner's</DialogTitle>
                     <DialogContent>
                         <Grid container direction="column" spacing="32">

@@ -71,13 +71,6 @@ class UserCard extends Component {
                             <ListItemText primary={this.props.user.email} />
                         </ListItem>
                     </CardContent>
-                    <CardActions>
-                        <IconButton aria-label="Remove">
-                            <DeleteIcon/>
-                        </IconButton>
-                        <div className={classes.grow} />
-                        <Button color="primary">Edit</Button>
-                    </CardActions>
             </Card>
         )
     }
