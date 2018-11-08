@@ -214,7 +214,7 @@ class IntegrationReactSelect extends React.Component {
             components={components}
             value={this.state.single}
             onChange={this.handleChange('single')}
-            placeholder="Search a country (start with a)"
+            placeholder="Select a user"
           />
         </NoSsr>
       </div>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,7 +19,7 @@ import { purple } from '@material-ui/core/colors';
 // Graphics Components
 import Table from '../../components/Table/Table';
 import FilterChip from '../../components/FilterChip/FilterChip';
-import AddKeyPopup from "../../popups/AddKeyPopup/AddKeyPopup";
+import AddKey from "../../popups/AddKey/AddKey";
 
 const styles = theme => ({
   root: {
@@ -99,6 +99,7 @@ class Keys extends Component {
   }
 
   onCollectionUpdate = (querySnapshot) => {
+    this.state.keys = [];
     querySnapshot.forEach(row => {
       row = row.data()
       this.state.keys.push([
@@ -162,7 +163,6 @@ class Keys extends Component {
       filterText: filterText
      }, ()=>{
        this.setState({filterKeys: this.state.keys.filter(this.filter)})
-       console.log(this.state.filterKeys.length, this.state.keys.length)
      });
 
   }
@@ -183,6 +183,8 @@ class Keys extends Component {
         <Toolbar>
           <Typography className={classes.title} component="h1" variant="display2">Keys</Typography>
           <div className={classes.grow}/>
+            <AddKey />
+          
           <FilterChip label="Lost keys"/>
           <div className={classes.search}>
               <div className={classes.searchIcon}><SearchIcon/></div>
@@ -197,7 +199,6 @@ class Keys extends Component {
             var bSize = b[0].a;
             var aLow = a[0].b;
             var bLow = b[0].b;
-            console.log(123, aLow + " | " + bLow);
 
             if(aSize == bSize)
             {
@@ -208,7 +209,6 @@ class Keys extends Component {
                 return (aSize < bSize) ? -1 : 1;
             }
           })}/>
-        <AddKeyPopup />
       </div>
     );
   }

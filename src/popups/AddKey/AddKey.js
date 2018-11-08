@@ -10,7 +10,9 @@ import Select from 'react-select';
 import firebase, {auth, database, firestore} from "../../components/Firebase/Firebase";
 
 // Material UI Components
+import { withStyles } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
+import AddIcon from "@material-ui/icons/Add";
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -22,6 +24,21 @@ import Grid from '@material-ui/core/Grid';
 import Button from '../../components/Button/HeaderButton';
 import AutoComplete from '../../components/AutoComplete/AutoComplete'
 
+const styles = theme => ({
+  fab: {
+    position: 'fixed',
+    bottom: theme.spacing.unit * 5,
+    right: theme.spacing.unit * 5,
+  },
+  avatar: {
+    height: 80,
+    width: 80,
+  },
+  icon: {
+      height: 70,
+      width: 70,
+  },
+});
 
 class AlertDialog extends React.Component {
   state = {
@@ -59,14 +76,11 @@ class AlertDialog extends React.Component {
   }
 
   keySnapshot = (querySnapshot) => {
-    this.state.key = [];
-    this.state.uid = 1;
-    querySnapshot.forEach(row => {
-        this.state.keys.push(row)
-    })
+    this.setState({keys: querySnapshot, uid: 1})
+
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const userRef = firestore.collection('users');
     try {
       const snap = await userRef.onSnapshot(this.userSnapshot);
@@ -119,7 +133,6 @@ class AlertDialog extends React.Component {
   async handleAdd() {
     await this.createHistoryElement()
     const keysRef = await firestore.collection('keys');
-    console.log(this.state);
     keysRef.doc(this.state.typeid + "(" + this.state.uid + ")").set({
       typeid: this.state.typeid,
       type: this.state.type,
@@ -131,7 +144,6 @@ class AlertDialog extends React.Component {
       holder: "root"
     })
     this.handleClose()
-    window.location.refresh()
   }
 
   async getLastOwner() {
@@ -178,6 +190,7 @@ class AlertDialog extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Button variant={"outlined"} color={"primary"} text={"Add"} icon={"send"} onClick={this.handleClickOpen} />
@@ -220,4 +233,4 @@ class AlertDialog extends React.Component {
   }
 }
 
-export default AlertDialog;
+export default withStyles(styles)(AlertDialog);

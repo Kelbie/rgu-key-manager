@@ -131,7 +131,6 @@ class AlertDialog extends React.Component {
       if (key.data().typeid == this.state.typeid) {
         uid += 1;
         type = key.data().type;
-        console.log(123, key.data().typeid, key.data().type, this.state.typeid)
       } else {
         type = ""
       }
@@ -226,8 +225,9 @@ class AlertDialog extends React.Component {
                           </Grid>
                           <Grid item>
                               <Grid container direction="column" spacing="8">
-                                  <Grid item><TextField autoFocus id="key_id" label="Key ID" type="text" error={this.state.requiredKeyID} required/></Grid>
-                                  <Grid item><TextField id="key_type" label="Key type" type="text" /></Grid>
+                                <Grid item><TextField autoFocus id="type_id" label="Type ID" type="text" onChange={(input) => this.setState({typeid: input.target.value})} error={this.state.requiredKeyID} required/></Grid>
+                                <Grid item><TextField autoFocus id="type" label="Type" type="text" onChange={(input) => this.setState({type: input.target.value})} error={this.state.requiredKeyID} required/></Grid>
+
                               </Grid>
                           </Grid>
                       </Grid>
@@ -235,18 +235,18 @@ class AlertDialog extends React.Component {
                   <Grid item>
                     <Grid container spacing={8} alignItems="flex-end">
                       <Grid item><LocationIcon/></Grid>
-                      <Grid item><TextField id="opens" label="Opens" type="name" /></Grid>
+                      <Grid item><TextField id="opens" label="Opens" type="name" onChange={(input) => this.setState({opens: input.target.value})} /></Grid>
                     </Grid>
                     <Grid container spacing={8} alignItems="flex-end">
                       <Grid item><LocationIcon/></Grid>
-                      <Grid item><TextField id="location" label="Location" type="name" /></Grid>
+                      <Grid item><TextField id="stored" label="Stored" type="name" onChange={(input) => this.setState({stored: input.target.value})} /></Grid>
                     </Grid>
                   </Grid>
               </Grid>
             </DialogContent>
             <DialogActions>
                 <Button onClick={this.handleCloseDialog} color="secondary">Cancel</Button>
-                <Button onClick={this.handleSaveAdding} color="primary" variant="contained">Add</Button>
+                <Button onClick={this.handleAdd} color="primary" variant="contained">Add</Button>
             </DialogActions>
         </Dialog>
       </div>
