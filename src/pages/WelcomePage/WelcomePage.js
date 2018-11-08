@@ -51,7 +51,6 @@ class WelcomePage extends Component {
                             <Typography className="title" variant="h5" component="h2">
                                 RGU Key Manager
                             </Typography>
-                            
                             <div className="form">
                                 <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>

@@ -37,6 +37,7 @@ class AlertDialog extends React.Component {
   };
 
   handleClickOpen = () => {
+    console.log(888, this.props);
     this.setState({ open: true });
   };
 
@@ -74,7 +75,7 @@ class AlertDialog extends React.Component {
       snap.forEach(row => {
         row = row.data()
         console.log(888, row)
-        this.setState({lastOwner: row.holder.id})
+        this.setState({lastOwner: row.holder})
       })
     } catch (e) {
       console.log(888, e)
@@ -83,8 +84,9 @@ class AlertDialog extends React.Component {
 
   async updateOwner() {
     await this.getLastOwner()
+    console.log(123, this.state.lastOwner);
     const keyRef = await firestore.collection('keys').doc(this.props.id)
-      .update({holder: firestore.doc('/users/' + this.state.username)})
+      .update({holder: this.state.username})
   }
 
   async createHistoryElement() {
@@ -99,15 +101,15 @@ class AlertDialog extends React.Component {
 
       })
     } catch(e) {
-      console.log(888, e)
+      console.log(e)
     }
 
-    console.log(888, this.state.author, this.state.note, this.state.lastOwner, this.props.id, this.state.username)
     firestore.collection('history').add({
       author: this.state.author,
       comment: this.state.note,
-      from: firestore.doc('/users/' + this.state.lastOwner),
+      from: this.state.lastOwner,
       keyid: this.props.id,
+      actionType: "transfer",
       time: new Date,
       to: this.state.username
     })

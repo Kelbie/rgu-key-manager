@@ -1,70 +1,100 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 // Material UI Components
 import { withStyles } from '@material-ui/core/styles';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
 // Graphics Components
+import { Paper, ListSubheader, List, ListItem, Grid, Icon, LinearProgress } from '@material-ui/core';
+import CheckBoxIcon from "@material-ui/icons/CheckBox"
+import CheckBoxOutlineIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import Button from '../Button/MiniButton';
 
 const styles = theme => ({
   root: {
     width: '100%',
-    overflowX: 'auto',
+    maxHeight: '75vh',
+    overflowX: "auto",
   },
-  table: {
+  header: {
+    backgroundColor: theme.palette.common.white
   },
+  item: {
+    textAlign: "center"
+  }
 });
 
 class SimpleTable extends Component {
-  state = {rows: this.props.rows};
-  componentDidMount() {
+  state = {
+    sortBy: 0, 
+    asc: false, 
+    rows: this.props.rows,
+    loading: true
+
   }
 
   componentWillReceiveProps(someProps) {
     this.setState({rows: someProps.rows})
   }
 
+  sortTable = (i) => {
+    this.setState({loading: true});
+    this.setState({
+      sortBy: i,
+      asc: !this.state.asc
+    })
+    var that = this;
+    this.setState({
+      rows: this.state.rows.sort(function(a, b) {
+        if (that.state.asc) {
+          return a[i].text < b[i].text
+        } else {
+          return a[i].text > b[i].text
+        }
+      })
+    })
+    this.setState({loading: false});
+  }
   render() {
     const { classes } = this.props;
 
     return (
       <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              {this.props.columns.map((column, i) => {
-                return <TableCell>{column}</TableCell>
-              })}
-            </TableRow>
-          </TableHead>
-          <TableBody>
+        <List>
+            <ListSubheader className={classes.header}>
+                <Grid container>
+                  {this.props.columns.map((column, i) => {
+                    return <Grid className={classes.item} item xs onClick={() => this.sortTable(i)}>{column}</Grid>
+                  })}
+                </Grid>
+            </ListSubheader>
+            {this.state.loading && <LinearProgress />}
+
             {this.state.rows.map(row => {
               return (
-                <TableRow hover={true} key={row.id}>
-                  {row.map((element, i) => {
-                    if (i < this.props.columns.length) {
-                      if (element.type == "button") {
-                        return <TableCell><Button text={element.text} onClick={() => window.location.href=element.linkTo} /></TableCell>
-                      } else {
-                        return <TableCell>{element.text}</TableCell>
-                      }
-
-                    }
-
-                  })}
-                </TableRow>
+                <ListItem hover={true} key={row.id}>
+                    <Grid container>
+                      {row.map((element, i) => {
+                        if (i < this.props.columns.length) {
+                          if (element.type == "button") {
+                            if (element.text == "root") {
+                              return <Grid className={classes.item} item xs><Button component={Link} to={element.linkTo}/></Grid>
+                            } else {
+                              return <Grid className={classes.item} item xs><Button text={element.text} component={Link} to={element.linkTo}/></Grid>
+                              
+                            }
+                          } else if (element.type == "check") {
+                            return <Grid className={classes.item} item xs>{element.lost ? <Icon><CheckBoxIcon color="primary"/></Icon> : <Icon><CheckBoxOutlineIcon color="primary"/></Icon>}</Grid>
+                          } else{
+                            return <Grid className={classes.item} item xs>{element.text}</Grid>
+                          }
+                        }
+                      })}
+                    </Grid>
+                </ListItem>
               );
             })}
-          </TableBody>
-        </Table>
+        </List>
       </Paper>
     );
   }

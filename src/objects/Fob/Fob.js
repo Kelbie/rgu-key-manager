@@ -14,7 +14,7 @@ class Fob extends Component {
     super();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     var hash = sha256.create();
     hash.update(this.props.match.params.fobid);
     var data = new Identicon(hash.hex(), 420).toString();

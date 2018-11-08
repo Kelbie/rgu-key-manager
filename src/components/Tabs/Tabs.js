@@ -59,7 +59,7 @@ class ScrollableTabsButtonAuto extends React.Component {
   handleScroll = (event) => {
     const tabs = document.getElementsByClassName(this.props.classes.tabs)[0];
     const content = document.getElementById('content');
-    content.style.marginTop=String(tabs.getBoundingClientRect().height + 100) + "px";
+    content.style.marginTop=String(tabs.getBoundingClientRect().height + -40) + "px";
     tabs.style.width=content.getBoundingClientRect().width + "px";
   }
 

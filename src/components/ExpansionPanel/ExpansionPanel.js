@@ -49,21 +49,64 @@ class SimpleExpansionPanel extends Component {
                         text={row.author.text}
                         variant="flat"
                         size="small" />
-                {" assigned "}
-                <Button onClick={() => window.location.href="/key/" + row.keyid.text}
-                        text={row.keyid.text} variant="flat" size="small" />
-                {" from "}
-                <Button onClick={() => window.location.href="/user/" + row.from.text}
-                        text={row.from.text} variant="flat" size="small" />
-                {" to "}
-                <Button onClick={() => window.location.href="/user/" + row.to.text}
-                        text={row.to.text}
-                        variant="flat"
-                        size="small" />
+
+                      { row.actionType.text == "created"  ?
+                   <>
+
+                   { " created "}
+                   <Button onClick={() => window.location.href="/key/" + row.keyid.text}
+                           text={row.keyid.text} variant="flat" size="small" />
+                         </>
+
+                       :
+                       row.actionType.text == "transfer" && row.from.text == "root" ?
+                         <>
+                         {" assigned "}
+                         <Button onClick={() => window.location.href="/key/" + row.keyid.text}
+                                 text={row.keyid.text} variant="flat" size="small" />
+                         {" to "}
+                         <Button onClick={() => window.location.href="/user/" + row.to.text}
+                                 text={row.to.text}
+                                 variant="flat"
+                                 size="small" />
+
+                               </>
+
+                             :
+
+                             row.actionType.text == "lost" || row.actionType.text == "found" ?
+
+                             <>
+                             {" assigned "}
+                             <Button onClick={() => window.location.href="/key/" + row.keyid.text}
+                                     text={row.keyid.text} variant="flat" size="small" />
+                                   {" as " + row.actionType.text}
+                                   </>
+                                 :
+                             <>
+                             {" assigned "}
+                             <Button onClick={() => window.location.href="/key/" + row.keyid.text}
+                                     text={row.keyid.text} variant="flat" size="small" />
+                             {" from "}
+                             <Button onClick={() => window.location.href="/user/" + row.from.text}
+                                     text={row.from.text} variant="flat" size="small" />
+                             {" to "}
+                             <Button onClick={() => window.location.href="/user/" + row.to.text}
+                                     text={row.to.text}
+                                     variant="flat"
+                                     size="small" />
+
+
+                                   </>
+
+
+                 }
+
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Typography>
+
                 {row.comment.text}
               </Typography>
             </ExpansionPanelDetails>

@@ -46,7 +46,7 @@ class InfoPage extends Component {
     const page = document.getElementsByClassName(styles['page'])[0];
 
     general.style.left = page.getBoundingClientRect().left + 32 + "px";
-    general.style.top = "120px";
+    general.style.top = "0px";
   }
 
   updateDimensions(event) {
@@ -75,7 +75,7 @@ class InfoPage extends Component {
         <div className={`${styles.photo} ${styles[this.props.type]}`}>{this.props.image}</div>
         <div styleName="name">{this.props.id}</div>
         <div styleName="desc">
-          {this.state.desc.holder != undefined ? <><MiniButton variant="flat" color="primary" text={this.state.desc.holder} onClick={() => window.location.href="/user/" + this.state.desc.holder} />{this.state.desc.type}{this.state.desc.opens}{this.state.desc.stored}</>: this.props.type == "key" ? "No Owner": ""}
+          {this.state.desc.holder != "root" ? <><MiniButton variant="flat" color="primary" text={this.state.desc.holder} onClick={() => window.location.href="/user/" + this.state.desc.holder} /></>: this.props.type == "key" ? "No Owner": ""}
         </div>
         <div styleName="gap"></div>
         <div styleName="buttons">

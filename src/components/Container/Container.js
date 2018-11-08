@@ -10,9 +10,8 @@ import User from '../../objects/User/User';
 import Key from '../../objects/Key/Key';
 import Fob from '../../objects/Fob/Fob';
 import Fobs from '../../pages/Fobs/Fobs';
-
-// Router components
 import Place from '../../objects/Place/Place';
+import AccountPage from '../../pages/AccountPage/AccountPage';
 
 class Container extends Component {
     render() {
@@ -27,7 +26,8 @@ class Container extends Component {
                     <Route path="/people" component={People} />
                     <Route path="/keys" component={Keys} />
                     <Route path="/fobs" component={Fobs} />
-                    <Route path="/about" component={AboutPage} />
+                    <Route path="/users" component={UsersPage} />
+                    <Route path="/account" component={() => <AccountPage authUser={this.props.authUser} />} />
                 </Switch>
             </div>
         );
