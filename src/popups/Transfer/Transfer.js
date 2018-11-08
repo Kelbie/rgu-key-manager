@@ -37,6 +37,7 @@ class AlertDialog extends React.Component {
   };
 
   handleClickOpen = () => {
+    console.log(888, this.props);
     this.setState({ open: true });
   };
 

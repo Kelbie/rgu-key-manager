@@ -37,8 +37,6 @@ class SimpleTable extends Component {
   }
 
   componentWillReceiveProps(someProps) {
-    console.log(someProps);
-    console.log(this.state.rows);
     this.setState({rows: someProps.rows})
   }
 
@@ -82,10 +80,15 @@ class SimpleTable extends Component {
                       {row.map((element, i) => {
                         if (i < this.props.columns.length) {
                           if (element.type == "button") {
-                            return <Grid className={classes.item} item xs><Button text={element.text} component={Link} to={element.linkTo}/></Grid>
-                          }else if (element.type == "check") {
-                          return <Grid className={classes.item} item xs>{element.lost ? <Icon><CheckBoxIcon color="primary"/></Icon> : <Icon><CheckBoxOutlineIcon color="primary"/></Icon>}</Grid>
-                          }else{
+                            if (element.text == "root") {
+                              return <Grid className={classes.item} item xs><Button component={Link} to={element.linkTo}/></Grid>
+                            } else {
+                              return <Grid className={classes.item} item xs><Button text={element.text} component={Link} to={element.linkTo}/></Grid>
+                              
+                            }
+                          } else if (element.type == "check") {
+                            return <Grid className={classes.item} item xs>{element.lost ? <Icon><CheckBoxIcon color="primary"/></Icon> : <Icon><CheckBoxOutlineIcon color="primary"/></Icon>}</Grid>
+                          } else{
                             return <Grid className={classes.item} item xs>{element.text}</Grid>
                           }
                         }

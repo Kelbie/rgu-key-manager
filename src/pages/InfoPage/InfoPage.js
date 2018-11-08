@@ -46,7 +46,7 @@ class InfoPage extends Component {
     const page = document.getElementsByClassName(styles['page'])[0];
 
     general.style.left = page.getBoundingClientRect().left + 32 + "px";
-    general.style.top = "120px";
+    general.style.top = "0px";
   }
 
   updateDimensions(event) {
