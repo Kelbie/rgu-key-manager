@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 
 // Graphics Components
-import { Paper, ListSubheader, List, ListItem, Grid, Icon } from '@material-ui/core';
+import { Paper, ListSubheader, List, ListItem, Grid, Icon, LinearProgress } from '@material-ui/core';
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 import CheckBoxOutlineIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import Button from '../Button/MiniButton';
@@ -13,8 +13,8 @@ import Button from '../Button/MiniButton';
 const styles = theme => ({
   root: {
     width: '100%',
-    maxHeight: "75vh",
-    overflowX: "auto"
+    maxHeight: '75vh',
+    overflowX: "auto",
   },
   header: {
     backgroundColor: theme.palette.common.white
@@ -25,8 +25,11 @@ const styles = theme => ({
 });
 
 class SimpleTable extends Component {
-  state = {sortBy: 0, asc: false, rows: this.props.rows};
-  componentDidMount() {
+  state = {
+    sortBy: 0, 
+    asc: false, 
+    rows: this.props.rows,
+    loading: true
   }
 
   componentDidMount() {
@@ -40,6 +43,7 @@ class SimpleTable extends Component {
   }
 
   sortTable = (i) => {
+    this.setState({loading: true});
     this.setState({
       sortBy: i,
       asc: !this.state.asc
@@ -54,6 +58,7 @@ class SimpleTable extends Component {
         }
       })
     })
+    this.setState({loading: false});
   }
 
   render() {
@@ -69,6 +74,7 @@ class SimpleTable extends Component {
                   })}
                 </Grid>
             </ListSubheader>
+            {this.state.loading && <LinearProgress />}
             {this.state.rows.map(row => {
               return (
                 <ListItem hover={true} key={row.id}>
